@@ -211,7 +211,7 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' => $e 
                       ];  
-  }elseif{
+  }else {
     $replyToken = $event['replyToken'];
     $text = "ฉันไม่เข้าใจค่ะ";
     $messages = [
@@ -221,31 +221,31 @@ if (!is_null($events['events'])) {
 
 
 
-   }else{
-    $replyToken = $event['replyToken'];
-    $text = "คุณสนใจมีผู้ช่วยไหม";
-        $messages = [
-               'type' => 'template',
-                'altText' => 'this is a confirm template',
-                'template' => [
-                    'type' => 'confirm',
-                    'text' => $text ,
-                    'actions' => [
-                        [
-                            'type' => 'message',
-                            'label' => 'สนใจ',
-                            'text' => 'สนใจ'
-                        ],
-                        [
-                            'type' => 'message',
-                            'label' => 'ไม่สนใจ',
-                            'text' => 'ไม่สนใจ'
-                        ],
-                    ]
-                ]
-            ]; 
+  //  }else{
+  //   $replyToken = $event['replyToken'];
+  //   $text = "คุณสนใจมีผู้ช่วยไหม";
+  //       $messages = [
+  //              'type' => 'template',
+  //               'altText' => 'this is a confirm template',
+  //               'template' => [
+  //                   'type' => 'confirm',
+  //                   'text' => $text ,
+  //                   'actions' => [
+  //                       [
+  //                           'type' => 'message',
+  //                           'label' => 'สนใจ',
+  //                           'text' => 'สนใจ'
+  //                       ],
+  //                       [
+  //                           'type' => 'message',
+  //                           'label' => 'ไม่สนใจ',
+  //                           'text' => 'ไม่สนใจ'
+  //                       ],
+  //                   ]
+  //               ]
+  //           ]; 
     
-  }
+  // }
   }
 }
 
