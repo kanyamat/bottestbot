@@ -230,7 +230,7 @@ if (!is_null($events['events'])) {
     }else if (strpos($_msg, 'หา') !== false) {
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("หา","", $_msg);
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyAACKRpkX5IcqTtZeQAY0i4MGM8Gx2_Xrk&q='.$x_tra;
     
     $json= file_get_contents($url);
     $events = json_decode($json, true);
