@@ -225,13 +225,13 @@ if (!is_null($events['events'])) {
       
       $json= file_get_contents($url);
       $events = json_decode($json, true);
-      $title= $events['items'][0]['title'];
+      //$title= $events['items'][0]['title'];
       // $link = $events['items'][0]['link'];
       // $link2 = $events['items'][1]['link'];
 location
       $messages = [
           'type' => 'location',
-          'text' => $title
+          'title'=> "my location"
         ];
 
   }
