@@ -252,28 +252,28 @@ if (!is_null($events['events'])) {
 //         'text' => $text
 //       ];
 // }
-//    $replyToken = $event['replyToken'];
-//     $text = "คุณสนใจมีผู้ช่วยไหม";
-//         $messages = [
-//                'type' => 'template',
-//                 'altText' => 'this is a confirm template',
-//                 'template' => [
-//                     'type' => 'confirm',
-//                     'text' => $text ,
-//                     'actions' => [
-//                         [
-//                             'type' => 'message',
-//                             'label' => 'สนใจ',
-//                             'text' => 'สนใจ'
-//                         ],
-//                         [
-//                             'type' => 'message',
-//                             'label' => 'ไม่สนใจ',
-//                             'text' => 'ไม่สนใจ'
-//                         ],
-//                     ]
-//                 ]
-//             ]; 
+   $replyToken = $event['replyToken'];
+    $text = "คุณสนใจมีผู้ช่วยไหม";
+        $messages = [
+               'type' => 'template',
+                'altText' => 'this is a confirm template',
+                'template' => [
+                    'type' => 'confirm',
+                    'text' => $text ,
+                    'actions' => [
+                        [
+                            'type' => 'message',
+                            'label' => 'สนใจ',
+                            'text' => 'สนใจ'
+                        ],
+                        [
+                            'type' => 'message',
+                            'label' => 'ไม่สนใจ',
+                            'text' => 'ไม่สนใจ'
+                        ],
+                    ]
+                ]
+            ]; 
 }
 }
  
