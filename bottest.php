@@ -228,7 +228,7 @@ if (!is_null($events['events'])) {
       //$title= $events['items'][0]['title'];
       // $link = $events['items'][0]['link'];
       // $link2 = $events['items'][1]['link'];
-location
+
       $messages = [
           'type' => 'location',
           'title'=> "my location"
