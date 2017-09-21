@@ -12,7 +12,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 $_msg = $events['events'][0]['message']['text'];
 $user = $events['events'][0]['source']['userId'];
-$replyToken = $event['replyToken'];
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
  // Loop through each event
@@ -214,13 +214,25 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' => $e 
                       ];
-   }elseif ($event['message']['text'] == $event['replyToken'] ) {
+   }elseif ($replyToken == $event['replyToken'] ) {
                  //$replyToken = $event['replyToken'];
                 $text = "ฉันไม่เข้าใจค่ะ";
                  $messages = [
                         'type' => 'text',
                         'text' => $text
                       ];   
+
+   }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
+//       || $event['type'] == 'message' && $event['message']['type'] == 'text') {
+  
+   $replyToken = $event['replyToken'];
+   // Build message to reply back
+    $text = "ฉันไม่เข้าใจค่ะ";
+    $messages = [
+        'type' => 'text',
+        'text' => $text
+      ];
+
   }else {
     // $replyToken = $event['replyToken'];
     // $text = "ฉันไม่เข้าใจค่ะ";
@@ -229,7 +241,7 @@ if (!is_null($events['events'])) {
     //     'text' => $text
     //   ];
 
- //$replyToken = $event['replyToken'];
+ $replyToken = $event['replyToken'];
     $text = "คุณสนใจมีผู้ช่วยไหม";
         $messages = [
                'type' => 'template',
