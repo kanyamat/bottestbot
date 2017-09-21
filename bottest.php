@@ -12,6 +12,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 $_msg = $events['events'][0]['message']['text'];
 $user = $events['events'][0]['source']['userId'];
+$replyToken = $event['replyToken'];
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
  // Loop through each event
