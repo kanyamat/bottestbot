@@ -213,7 +213,7 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' => $e 
                       ];
-  }elseif ($replyToken = $event['replyToken'];) {
+  }elseif ($replyToken = $event['replyToken']) {
     //$replyToken = $event['replyToken'];
     $text = "ฉันไม่เข้าใจค่ะ";
     $messages = [
