@@ -234,7 +234,7 @@ if (!is_null($events['events'])) {
           'title'=> "my location"
         ];
 
-  }
+  
 
      // $messages = [
      //      'type' => 'template',
