@@ -214,14 +214,45 @@ if (!is_null($events['events'])) {
                         'text' => $e 
                       ];
   }else {
-    // $replyToken = $event['replyToken'];
-    // $text = "ฉันไม่เข้าใจค่ะ";
-    // $messages = [
-    //     'type' => 'text',
-    //     'text' => $text
-    //   ];
+    $replyToken = $event['replyToken'];
+    $text = "ฉันไม่เข้าใจค่ะ";
+    $messages = [
+        'type' => 'text',
+        'text' => $text
+      ];
 
- $replyToken = $event['replyToken'];
+ // $replyToken = $event['replyToken'];
+ //    $text = "คุณสนใจมีผู้ช่วยไหม";
+ //        $messages = [
+ //               'type' => 'template',
+ //                'altText' => 'this is a confirm template',
+ //                'template' => [
+ //                    'type' => 'confirm',
+ //                    'text' => $text ,
+ //                    'actions' => [
+ //                        [
+ //                            'type' => 'message',
+ //                            'label' => 'สนใจ',
+ //                            'text' => 'สนใจ'
+ //                        ],
+ //                        [
+ //                            'type' => 'message',
+ //                            'label' => 'ไม่สนใจ',
+ //                            'text' => 'ไม่สนใจ'
+ //                        ],
+ //                    ]
+ //                ]
+ //            ]; 
+  }
+
+//     $replyToken = $event['replyToken'];
+//     $text = "ฉันไม่เข้าใจค่ะ";
+//     $messages = [
+//         'type' => 'text',
+//         'text' => $text
+//       ];
+// }
+   $replyToken = $event['replyToken'];
     $text = "คุณสนใจมีผู้ช่วยไหม";
         $messages = [
                'type' => 'template',
@@ -243,15 +274,6 @@ if (!is_null($events['events'])) {
                     ]
                 ]
             ]; 
-  }
-  
-    $replyToken = $event['replyToken'];
-    $text = "ฉันไม่เข้าใจค่ะ";
-    $messages = [
-        'type' => 'text',
-        'text' => $text
-      ];
-}
 }
  
   // Make a POST Request to Messaging API to reply to sender
