@@ -230,8 +230,8 @@ if (!is_null($events['events'])) {
       // $link2 = $events['items'][1]['link'];
 
       $messages = [
-          'type' => 'location',
-          'title'=> "my location"
+          'type' => 'uri',
+          'uri'=> $url
         ];
 
   
