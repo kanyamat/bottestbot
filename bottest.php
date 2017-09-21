@@ -218,15 +218,6 @@ if (!is_null($events['events'])) {
                         'text' => $text
                       ];   
 
-   }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
-    
-     $replyToken = $event['replyToken'];
-     // Build message to reply back
-      $text = "ฉันไม่เข้าใจค่ะ";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ];
     }else if (strpos($_msg, 'หา') !== false) {
       $replyToken = $event['replyToken'];
       $x_tra = str_replace("หา","", $_msg);
@@ -264,6 +255,17 @@ if (!is_null($events['events'])) {
               ]
           ]
       ];
+
+
+   }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
+    
+     $replyToken = $event['replyToken'];
+     // Build message to reply back
+      $text = "ฉันไม่เข้าใจค่ะ";
+      $messages = [
+          'type' => 'text',
+          'text' => $text
+        ];
 
   }else {
 
