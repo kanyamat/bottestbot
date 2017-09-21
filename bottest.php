@@ -228,7 +228,7 @@ if (!is_null($events['events'])) {
     //     'text' => $text
     //   ];
 
- $replyToken = $event['replyToken'];
+ //$replyToken = $event['replyToken'];
     $text = "คุณสนใจมีผู้ช่วยไหม";
         $messages = [
                'type' => 'template',
