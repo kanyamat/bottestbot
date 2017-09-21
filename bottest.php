@@ -16,7 +16,7 @@ $user = $events['events'][0]['source']['userId'];
 if (!is_null($events['events'])) {
  // Loop through each event
  foreach ($events['events'] as $event) {
-    
+
   // Reply only when message sent is in 'text' format
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
@@ -212,7 +212,14 @@ if (!is_null($events['events'])) {
                  $messages = [
                         'type' => 'text',
                         'text' => $e 
-                      ];  
+                      ];
+  }elseif ($replyToken = $event['replyToken'];) {
+    //$replyToken = $event['replyToken'];
+    $text = "ฉันไม่เข้าใจค่ะ";
+    $messages = [
+        'type' => 'text',
+        'text' => $text
+      ];
   }else {
     // $replyToken = $event['replyToken'];
     // $text = "ฉันไม่เข้าใจค่ะ";
@@ -245,31 +252,6 @@ if (!is_null($events['events'])) {
             ]; 
     
 
-   // }else{
-  //   $replyToken = $event['replyToken'];
-  //   $text = "คุณสนใจมีผู้ช่วยไหม";
-  //       $messages = [
-  //              'type' => 'template',
-  //               'altText' => 'this is a confirm template',
-  //               'template' => [
-  //                   'type' => 'confirm',
-  //                   'text' => $text ,
-  //                   'actions' => [
-  //                       [
-  //                           'type' => 'message',
-  //                           'label' => 'สนใจ',
-  //                           'text' => 'สนใจ'
-  //                       ],
-  //                       [
-  //                           'type' => 'message',
-  //                           'label' => 'ไม่สนใจ',
-  //                           'text' => 'ไม่สนใจ'
-  //                       ],
-  //                   ]
-  //               ]
-  //           ]; 
-    
-  // }
   }
 }
 }
