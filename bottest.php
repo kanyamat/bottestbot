@@ -235,7 +235,7 @@ if (!is_null($events['events'])) {
         ];
 
   }
-}
+
      // $messages = [
      //      'type' => 'template',
      //      'altText' => 'template',
