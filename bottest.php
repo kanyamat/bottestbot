@@ -235,12 +235,12 @@ if (!is_null($events['events'])) {
                         'text' => $e 
                       ];
   }else {
-    // $replyToken = $event['replyToken'];
-    // $text = "ฉันไม่เข้าใจค่ะ";
-    // $messages = [
-    //     'type' => 'text',
-    //     'text' => $text
-    //   ];
+    $replyToken = $event['replyToken'];
+    $text = "ฉันไม่เข้าใจค่ะ";
+    $messages = [
+        'type' => 'text',
+        'text' => $text
+      ];
 
  // $replyToken = $event['replyToken'];
  //    $text = "คุณสนใจมีผู้ช่วยไหม";
