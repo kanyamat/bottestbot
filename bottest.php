@@ -4,7 +4,6 @@ $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=
 $dbconn = pg_pconnect($conn_string);
 
 ##########################
-//
 
 $access_token = '4gfsGaqIXbNfJ88oUSmGLr69EtzUII/sUdbnhRKz/vk0+ZbLS180P1mNoyO3YkhK63HtsANA6HSxJnUz2C0OHaq0wNUK6eZP/zMUGlpc0+NP5i1gnM+a6bfRho35/ugJplJg4T+Kb6x9PbYXbstz4wdB04t89/1O/w1cDnyilFU=';
 $content = file_get_contents('php://input');
@@ -22,10 +21,7 @@ if (!is_null($events['events'])) {
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
       $text = "คุณสนใจมีผู้ช่วยไหม";
-      // $messages = [
-      //   'type' => 'text',
-      //   'text' => $text
-      // ];
+
         $messages = [
        'type' => 'template',
         'altText' => 'this is a confirm template',
@@ -223,7 +219,6 @@ if (!is_null($events['events'])) {
                       ];   
 
    }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
-//       || $event['type'] == 'message' && $event['message']['type'] == 'text') {
   
    $replyToken = $event['replyToken'];
    // Build message to reply back
@@ -232,37 +227,68 @@ if (!is_null($events['events'])) {
         'type' => 'text',
         'text' => $text
       ];
+    }else if (strpos($_msg, 'หา') !== false) {
+    $replyToken = $event['replyToken'];
+    $x_tra = str_replace("หา","", $_msg);
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    
+    $json= file_get_contents($url);
+    $events = json_decode($json, true);
+    $title= $events['items'][0]['title'];
+    $link = $events['items'][0]['link'];
+    $link2 = $events['items'][1]['link'];
+
+   $messages = [
+        'type' => 'template',
+        'altText' => 'template',
+        'template' => [
+            'type' => 'buttons',
+            'title' =>  $x_tra,
+            'text' =>   $title,
+            'actions' => [
+                [
+                    'type' => 'postback',
+                    'label' => 'good',
+                    'data' => 'value'
+                ],
+                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์',
+                    'uri' => $link
+                ],
+    [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์2',
+                    'uri' => $link2
+                ]
+            ]
+        ]
+    ];
 
   }else {
-    // $replyToken = $event['replyToken'];
-    // $text = "ฉันไม่เข้าใจค่ะ";
-    // $messages = [
-    //     'type' => 'text',
-    //     'text' => $text
-    //   ];
 
- $replyToken = $event['replyToken'];
-    $text = "คุณสนใจมีผู้ช่วยไหม";
-        $messages = [
-               'type' => 'template',
-                'altText' => 'this is a confirm template',
-                'template' => [
-                    'type' => 'confirm',
-                    'text' => $text ,
-                    'actions' => [
-                        [
-                            'type' => 'message',
-                            'label' => 'สนใจ',
-                            'text' => 'สนใจ'
-                        ],
-                        [
-                            'type' => 'message',
-                            'label' => 'ไม่สนใจ',
-                            'text' => 'ไม่สนใจ'
-                        ],
-                    ]
-                ]
-            ]; 
+   $replyToken = $event['replyToken'];
+      $text = "คุณสนใจมีผู้ช่วยไหม";
+          $messages = [
+                 'type' => 'template',
+                  'altText' => 'this is a confirm template',
+                  'template' => [
+                      'type' => 'confirm',
+                      'text' => $text ,
+                      'actions' => [
+                          [
+                              'type' => 'message',
+                              'label' => 'สนใจ',
+                              'text' => 'สนใจ'
+                          ],
+                          [
+                              'type' => 'message',
+                              'label' => 'ไม่สนใจ',
+                              'text' => 'ไม่สนใจ'
+                          ],
+                      ]
+                  ]
+              ]; 
   }
 
 
