@@ -75,30 +75,30 @@ if (!$dbconn) {
 // )";   
 // pg_exec($dbconn, $sql) or die(pg_errormessage());
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// $sql="CREATE TABLE sequents(
-// id SERIAL,
-// seqcode varchar(255),
-// question varchar(255),
-// answer varchar(255),
-// nexttype integer,
-// nextseqcode varchar(255),
-// created_at timestamp,
-// updated_at timestamp,
-// PRIMARY KEY(id)
-// )";   
-// pg_exec($dbconn, $sql) or die(pg_errormessage());
-$sql="CREATE TABLE sequentsteps(
+$sql="CREATE TABLE sequents(
 id SERIAL,
-sender_id varchar(30),
-seqcode varchar(30),
+seqcode varchar(255),
+question varchar(255),
 answer varchar(255),
+nexttype integer,
 nextseqcode varchar(255),
-status varchar(255),
 created_at timestamp,
 updated_at timestamp,
 PRIMARY KEY(id)
 )";   
 pg_exec($dbconn, $sql) or die(pg_errormessage());
+// $sql="CREATE TABLE sequentsteps(
+// id SERIAL,
+// sender_id varchar(30),
+// seqcode varchar(30),
+// answer varchar(255),
+// nextseqcode varchar(255),
+// status varchar(255),
+// created_at timestamp,
+// updated_at timestamp,
+// PRIMARY KEY(id)
+// )";   
+// pg_exec($dbconn, $sql) or die(pg_errormessage());
 // $sql="CREATE TABLE pregnants(
 // id SERIAL,
 // week  integer,
