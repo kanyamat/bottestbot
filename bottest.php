@@ -224,43 +224,43 @@ if (!is_null($events['events'])) {
        $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyAzNh-0u0rojtkaQvmBlCg44f7oGIvFWdw&q='.$x_tra;
       $json= file_get_contents($url);
       $events = json_decode($json, true);
-      //$title= $events['items'][0]['title'];
-      // $link = $events['items'][0]['link'];
-      // $link2 = $events['items'][1]['link'];
+      $title= $events['items'][0]['title'];
+      $link = $events['items'][0]['link'];
+      $link2 = $events['items'][1]['link'];
 
-      $messages = [
-          'type' => 'uri',
-          'uri'=> $url
-        ];
+//       $messages = [
+//           'type' => 'uri',
+//           'uri'=> $url
+//         ];
 
   
 
-     // $messages = [
-     //      'type' => 'template',
-     //      'altText' => 'template',
-     //      'template' => [
-     //          'type' => 'buttons',
-     //          'title' =>  $x_tra,
-     //          'text' =>   $title,
-     //          'actions' => [
-     //              [
-     //                  'type' => 'postback',
-     //                  'label' => 'good',
-     //                  'data' => 'value'
-     //              ],
-     //              [
-     //                  'type' => 'uri',
-     //                  'label' => 'ไปยังลิงค์',
-     //                  'uri' => $link
-     //              ],
-     //  [
-     //                  'type' => 'uri',
-     //                  'label' => 'ไปยังลิงค์2',
-     //                  'uri' => $link2
-     //              ]
-     //          ]
-     //      ]
-     //  ];
+     $messages = [
+          'type' => 'template',
+          'altText' => 'template',
+          'template' => [
+              'type' => 'buttons',
+              'title' =>  $x_tra,
+              'text' =>   $title,
+              'actions' => [
+                  [
+                      'type' => 'postback',
+                      'label' => 'good',
+                      'data' => 'value'
+                  ],
+                  [
+                      'type' => 'uri',
+                      'label' => 'ไปยังลิงค์',
+                      'uri' => $link
+                  ],
+      [
+                      'type' => 'uri',
+                      'label' => 'ไปยังลิงค์2',
+                      'uri' => $link2
+                  ]
+              ]
+          ]
+      ];
 
 
    }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
