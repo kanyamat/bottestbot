@@ -44,6 +44,7 @@ if (!is_null($events['events'])) {
     ];
   }elseif ($event['message']['text'] == "สนใจ" ) {
                  $replyToken = $event['replyToken'];
+   // สร้างตัวแปรเพื่อเรียกคำถามจากdb 
                  $messages = [
                         'type' => 'text',
                         'text' => 'ขอเริ่มสอบถามข้อมูลเบื้องต้นก่อนนะคะ ขอทราบพ.ศ.เกิดของคุณเพื่อคำนวณอายุ (ตัวอย่างการพิมพ์ เกิด2530)'
