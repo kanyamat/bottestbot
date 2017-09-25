@@ -24,15 +24,15 @@ if (!is_null($events['events'])) {
     $query = "select question from sequents order by id asc limit 4";
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
-       echo $seqcode =   $row[0] ;
+        $seqcode = $row[0] ;
        // echo $seqcode1 =   $row[1] ;
        // echo $seqcode2 =   $row[2] ;
        // echo $seqcode3 =   $row[3] ;
       }
- $seq =   $row[0] ;
+
                  $messages = [
                         'type' => 'text',
-                        'text' => $result
+                        'text' => $seqcode
                       ]; 
   
     //     $messages = [
