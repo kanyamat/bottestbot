@@ -18,40 +18,40 @@ if (!is_null($events['events'])) {
  foreach ($events['events'] as $event) {
 
   // Reply only when message sent is in 'text' format
-  // if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
-  //     $replyToken = $event['replyToken'];
-  //     //$text = "คุณสนใจมีผู้ช่วยไหม";
-  //   $query = 'select question from sequents where seqcode = '0001' ';
-  //   $result = pg_query($query);
-  //     while ($row = pg_fetch_row($result)) {
-  //      $e =  " คำถาม $row[0]" ;
-  //     }
+  if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
+      $replyToken = $event['replyToken'];
+      $text = "คุณสนใจมีผู้ช่วยไหม";
+    // $query = 'select question from sequents where seqcode = '0001' ';
+    // $result = pg_query($query);
+    //   while ($row = pg_fetch_row($result)) {
+    //    $e =  " คำถาม $row[0]" ;
+    //   }
    
-  //                $replyToken = $event['replyToken'];
-  //                $messages = [
-  //                       'type' => 'text',
-  //                       'text' => $e 
-  //                     ];  
-    //     $messages = [
-    //    'type' => 'template',
-    //     'altText' => 'this is a confirm template',
-    //     'template' => [
-    //         'type' => 'confirm',
-    //         'text' => $text ,
-    //         'actions' => [
-    //             [
-    //                 'type' => 'message',
-    //                 'label' => 'สนใจ',
-    //                 'text' => 'สนใจ'
-    //             ],
-    //             [
-    //                 'type' => 'message',
-    //                 'label' => 'ไม่สนใจ',
-    //                 'text' => 'ไม่สนใจ'
-    //             ],
-    //         ]
-    //     ]
-    // ];
+    //              $replyToken = $event['replyToken'];
+    //              $messages = [
+    //                     'type' => 'text',
+    //                     'text' => $e 
+    //                   ];  
+        $messages = [
+       'type' => 'template',
+        'altText' => 'this is a confirm template',
+        'template' => [
+            'type' => 'confirm',
+            'text' => $text ,
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => 'สนใจ',
+                    'text' => 'สนใจ'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่สนใจ',
+                    'text' => 'ไม่สนใจ'
+                ],
+            ]
+        ]
+    ];
   }elseif ($event['message']['text'] == "สนใจ" ) {
                  $replyToken = $event['replyToken'];
    // สร้างตัวแปรเพื่อเรียกคำถามจากdb 
