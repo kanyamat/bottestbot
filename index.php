@@ -3,7 +3,7 @@ $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=
 $dbconn = pg_pconnect($conn_string);
     $query = "select question from sequents order by id asc limit 4";
     $result = pg_query($query);
-      while ($row = pg_fetch_object() ($result)) {
+      while ($row = pg_fetch_row($result)) {
        echo  $seqcode = $row[0] ;
        // echo $seqcode1 =   $row[1] ;
        // echo $seqcode2 =   $row[2] ;
