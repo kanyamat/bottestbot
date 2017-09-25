@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
       //  // echo $seqcode2 =   $row[2] ;
       //  // echo $seqcode3 =   $row[3] ;
       // }
-    $rows = pg_num_rows($result);
+    $rows = pg_fetch_rows($result);
                  $messages = [
                         'type' => 'text',
                         'text' => $rows
