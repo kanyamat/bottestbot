@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
        $seqcode =   $row[0] ;
-       $seqcode1 =   $row[1] ;
+       //$seqcode1 =   $row[1] ;
        //$seqcode2 =   $row[1] ;
       }
 
