@@ -21,7 +21,7 @@ if (!is_null($events['events'])) {
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
-    $query = "select question from public.sequents where seqcode = '0001' or seqcode = '0002' or seqcode = '0003' or seqcode = '0004' ";
+    $query = "select question from sequents where seqcode = '0001' or seqcode = '0002' or seqcode = '0003' or seqcode = '0004' ";
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
        $seqcode =   $row[0] ;
@@ -69,33 +69,33 @@ if (!is_null($events['events'])) {
                       ];          
   
    
-  // }elseif (strpos($_msg, '25') !== false) {
+  }elseif (strpos($_msg, '25') !== false) {
   
-  //   $birth_years =  str_replace("","", $_msg);
-  //   $curr_years = date("Y"); 
-  //   $age = ($curr_years + 543)-$birth_years;
-  //   $age_mes = 'คุณอายุ'.$age.'ถูกต้องหรือไม่คะ' ;
-  //   $replyToken = $event['replyToken'];
-  //   $messages = [
-  //       'type' => 'template',
-  //       'altText' => 'this is a confirm template',
-  //       'template' => [
-  //           'type' => 'confirm',
-  //           'text' => $age_mes ,
-  //           'actions' => [
-  //               [
-  //                   'type' => 'message',
-  //                   'label' => 'ถูกต้อง',
-  //                   'text' => 'อายุถูกต้อง'
-  //               ],
-  //               [
-  //                   'type' => 'message',
-  //                   'label' => 'ไม่ถูกต้อง',
-  //                   'text' => 'ไม่ถูกต้อง'
-  //               ],
-  //           ]
-  //       ]
-  //   ];     
+    $birth_years =  str_replace("","", $_msg);
+    $curr_years = date("Y"); 
+    $age = ($curr_years + 543)-$birth_years;
+    $age_mes = 'คุณอายุ'.$age.'ถูกต้องหรือไม่คะ' ;
+    $replyToken = $event['replyToken'];
+    $messages = [
+        'type' => 'template',
+        'altText' => 'this is a confirm template',
+        'template' => [
+            'type' => 'confirm',
+            'text' => $age_mes ,
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => 'ถูกต้อง',
+                    'text' => 'อายุถูกต้อง'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่ถูกต้อง',
+                    'text' => 'ไม่ถูกต้อง'
+                ],
+            ]
+        ]
+    ];     
   }elseif ($event['message']['text'] == "อายุถูกต้อง" ) {
                  $replyToken = $event['replyToken'];
                  $messages = [
