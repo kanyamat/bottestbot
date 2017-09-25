@@ -24,14 +24,14 @@ if (!is_null($events['events'])) {
     $query = "select question from public.sequents where seqcode = '0001' or seqcode = '0002' or seqcode = '0003' or seqcode = '0004' ";
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
-       $seqcode =   $row[0] $row[1] ;
-       //$seqcode2 =   $row[1] ;
+       $seqcode =   $row[0] ;
+       $seqcode2 =   $row[1] ;
       }
    
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => $seqcode
+                        'text' => $seqcode,$seqcode2
                       ];  
     //     $messages = [
     //    'type' => 'template',
