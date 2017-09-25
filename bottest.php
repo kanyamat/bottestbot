@@ -69,11 +69,11 @@ if (!is_null($events['events'])) {
                       ];          
   
    
-  }elseif (strpos($_msg, date("Y")) !== false) {
+  }elseif (strpos($_msg, '25 ') !== false) {
   
-    $birth_years =  str_replace("","", $_msg);
+    //$birth_years =  str_replace("","", $_msg);
     $curr_years = date("Y"); 
-    $age = ($curr_years + 543)-$birth_years;
+    $age = ($curr_years + 543)-$_msg;
     $age_mes = 'คุณอายุ'.$age.'ถูกต้องหรือไม่คะ' ;
     $replyToken = $event['replyToken'];
     $messages = [
