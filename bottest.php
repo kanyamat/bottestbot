@@ -25,13 +25,14 @@ if (!is_null($events['events'])) {
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
        $seqcode =   $row[0] ;
-       //$seqcode1 =   $row[1] ;
-       //$seqcode2 =   $row[1] ;
+       $seqcode1 =   $row[1] ;
+       $seqcode2 =   $row[2] ;
+       $seqcode3 =   $row[3] ;
       }
 
                  $messages = [
                         'type' => 'text',
-                        'text' => $seqcode
+                        'text' => $seqcode.$seqcode1.$seqcode2.$seqcode3
                       ]; 
   
     //     $messages = [
