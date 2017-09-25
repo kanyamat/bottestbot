@@ -35,7 +35,7 @@ if (!is_null($events['events'])) {
                       ]; 
                   $messages = [
                         'type' => 'text',
-                        'text' => $seqcode
+                        'text' => $seqcode2
                       ];   
     //     $messages = [
     //    'type' => 'template',
