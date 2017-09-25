@@ -21,7 +21,7 @@ if (!is_null($events['events'])) {
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
-    $query = "select question from public.sequents order by id asc limit 4;";
+    $query = "select question from public.sequents order by id asc limit 4";
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
        $seqcode =   $row[0] ;
