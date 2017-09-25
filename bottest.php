@@ -21,27 +21,37 @@ if (!is_null($events['events'])) {
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
       $text = "คุณสนใจมีผู้ช่วยไหม";
-
-        $messages = [
-       'type' => 'template',
-        'altText' => 'this is a confirm template',
-        'template' => [
-            'type' => 'confirm',
-            'text' => $text ,
-            'actions' => [
-                [
-                    'type' => 'message',
-                    'label' => 'สนใจ',
-                    'text' => 'สนใจ'
-                ],
-                [
-                    'type' => 'message',
-                    'label' => 'ไม่สนใจ',
-                    'text' => 'ไม่สนใจ'
-                ],
-            ]
-        ]
-    ];
+    $query = 'select question from sequents where question = '001' ';
+    $result = pg_query($query);
+      while ($row = pg_fetch_row($result)) {
+       $e =  " $row[0] ";
+      }
+   
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => $e 
+                      ];  
+    //     $messages = [
+    //    'type' => 'template',
+    //     'altText' => 'this is a confirm template',
+    //     'template' => [
+    //         'type' => 'confirm',
+    //         'text' => $text ,
+    //         'actions' => [
+    //             [
+    //                 'type' => 'message',
+    //                 'label' => 'สนใจ',
+    //                 'text' => 'สนใจ'
+    //             ],
+    //             [
+    //                 'type' => 'message',
+    //                 'label' => 'ไม่สนใจ',
+    //                 'text' => 'ไม่สนใจ'
+    //             ],
+    //         ]
+    //     ]
+    // ];
   }elseif ($event['message']['text'] == "สนใจ" ) {
                  $replyToken = $event['replyToken'];
                  $messages = [
