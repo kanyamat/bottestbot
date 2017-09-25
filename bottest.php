@@ -28,13 +28,13 @@ if (!is_null($events['events'])) {
        // echo $seqcode1 =   $row[1] ;
        // echo $seqcode2 =   $row[2] ;
        // echo $seqcode3 =   $row[3] ;
-      }
+      
 
                  $messages = [
                         'type' => 'text',
                         'text' => $seqcode
                       ]; 
-  
+  }
     //     $messages = [
     //    'type' => 'template',
     //     'altText' => 'this is a confirm template',
