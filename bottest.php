@@ -24,17 +24,17 @@ if (!is_null($events['events'])) {
     $query = "select question from sequents order by id asc limit 4";
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
-        $seqcode = $row[1] ;
+       echo  $seqcode = $row[0] ;
        // echo $seqcode1 =   $row[1] ;
        // echo $seqcode2 =   $row[2] ;
        // echo $seqcode3 =   $row[3] ;
-      
+      }
 
                  $messages = [
                         'type' => 'text',
                         'text' => $seqcode
                       ]; 
-  }
+  
     //     $messages = [
     //    'type' => 'template',
     //     'altText' => 'this is a confirm template',
@@ -55,27 +55,34 @@ if (!is_null($events['events'])) {
     //         ]
     //     ]
     // ];
-  }elseif ($event['message']['text'] == "สนใจ" ) {
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
+  }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
+               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1];
+                }   
+                 //$text = 'ขอเริ่มสอบถามข้อมูลเบื้องต้นก่อนนะคะ ขอทราบพ.ศ.เกิดของคุณเพื่อคำนวณอายุ (ตัวอย่างการพิมพ์ เกิด2530)';
                  $replyToken = $event['replyToken'];
-   // สร้างตัวแปรเพื่อเรียกคำถามจากdb 
                  $messages = [
                         'type' => 'text',
-                        'text' => 'ขอเริ่มสอบถามข้อมูลเบื้องต้นก่อนนะคะ ขอทราบพ.ศ.เกิดของคุณเพื่อคำนวณอายุ (ตัวอย่างการพิมพ์ เกิด2530)'
+                        'text' =>  $question
                       ];
+                $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006','','0004','0',NOW(),NOW())") or die(pg_errormessage());
+   
   }elseif ($event['message']['text'] == "ไม่สนใจ" ) {
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
                         'text' => 'ไว้โอกาสหน้าให้เราได้เป็นผู้ช่วยของคุณนะคะ:) ขอบคุณค่ะ'
-                      ];          
-  
+                      ];     
    
-  }elseif (strpos($_msg, '25') !== false) {
+ }elseif (is_numeric($_msg) !== false && $seqcode == "0006"  && strlen($_msg) == 4 && $_msg < $curr_y && $_msg > "2500" ) {
   
-    $birth_years =  str_replace("","", $_msg);
+    $birth_years = $_msg;
     $curr_years = date("Y"); 
-    $age = ($curr_years + 543)-$birth_years;
-    $age_mes = 'คุณอายุ'.$age.'ถูกต้องหรือไม่คะ' ;
+    $age = ($curr_years+ 543)- $birth_years;
+    $age_mes = 'ปีนี้คุณอายุ'.$age.'ถูกต้องหรือไม่คะ' ;
     $replyToken = $event['replyToken'];
     $messages = [
         'type' => 'template',
@@ -97,18 +104,9 @@ if (!is_null($events['events'])) {
             ]
         ]
     ];     
-  }elseif ($event['message']['text'] == "อายุถูกต้อง" ) {
-                 $replyToken = $event['replyToken'];
-                 $messages = [
-                        'type' => 'text',
-                        'text' => 'ขอทราบครั้งสุดท้ายที่คุณมีประจำเดือนเพื่อคำนวณอายุครรภ์ค่ะ(ตัวอย่างการพิมพ์ วันที่17 01 คือวันที่17 มกราคม)'
-                      ];
-  }elseif ($event['message']['text'] == "ไม่ถูกต้อง" ) {
-                 $replyToken = $event['replyToken'];
-                 $messages = [
-                        'type' => 'text',
-                        'text' => 'กรุณาพิมพ์ใหม่'
-                      ];  
+       $q = pg_exec($dbconn, "INSERT INTO user_data(user_id,user_age,user_weight,user_height,preg_week )VALUES('{$user_id}',$age,'0','0','0') ") or die(pg_errormessage()); 
+
+       
   }elseif (strpos($_msg, 'วันที่') !== false) {
   
     $birth_years =  str_replace("วันที่","", $_msg);
