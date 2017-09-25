@@ -31,7 +31,7 @@ if (!is_null($events['events'])) {
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => $seqcode 
+                        'text' => $seqcode, $seqcode2
                       ];  
     //     $messages = [
     //    'type' => 'template',
