@@ -25,18 +25,14 @@ if (!is_null($events['events'])) {
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
        $seqcode =   $row[0] ;
-       $seqcode2 =   $row[1] ;
+       //$seqcode2 =   $row[1] ;
       }
-   
-                 $replyToken = $event['replyToken'];
+
                  $messages = [
                         'type' => 'text',
                         'text' => $seqcode
                       ]; 
-                  $messages = [
-                        'type' => 'text',
-                        'text' => $seqcode2
-                      ];   
+  
     //     $messages = [
     //    'type' => 'template',
     //     'altText' => 'this is a confirm template',
