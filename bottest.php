@@ -69,7 +69,7 @@ if (!is_null($events['events'])) {
                       ];          
   
    
-  }elseif (strpos($_msg, '25') !== false) {
+  }elseif (strpos($_msg, ' ') !== false) {
   
     $birth_years =  str_replace("","", $_msg);
     $curr_years = date("Y"); 
