@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
   // Reply only when message sent is in 'text' format
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
-      $text = "คุณสนใจมีผู้ช่วยไหม";
+      //$text = "คุณสนใจมีผู้ช่วยไหม";
     $query = 'select question from sequents where seqcode = '0001' ';
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
