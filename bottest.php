@@ -24,7 +24,7 @@ if (!is_null($events['events'])) {
     $query = 'select question from sequents where seqcode = '001' ';
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
-       $e =  $row[0] ;
+       $e =  " คำถาม $row[0]" ;
       }
    
                  $replyToken = $event['replyToken'];
