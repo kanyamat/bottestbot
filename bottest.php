@@ -24,7 +24,7 @@ if (!is_null($events['events'])) {
     $query = "select question from sequents order by id asc limit 4";
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
-       echo $seqcode =   $row[1] ;
+       echo $seqcode =   $row[0] ;
        // echo $seqcode1 =   $row[1] ;
        // echo $seqcode2 =   $row[2] ;
        // echo $seqcode3 =   $row[3] ;
