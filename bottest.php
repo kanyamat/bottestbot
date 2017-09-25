@@ -31,8 +31,12 @@ if (!is_null($events['events'])) {
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => $seqcode,$seqcode2
-                      ];  
+                        'text' => $seqcode
+                      ]; 
+                  $messages = [
+                        'type' => 'text',
+                        'text' => $seqcode
+                      ];   
     //     $messages = [
     //    'type' => 'template',
     //     'altText' => 'this is a confirm template',
