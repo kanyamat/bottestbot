@@ -18,7 +18,10 @@ if (!is_null($events['events'])) {
  foreach ($events['events'] as $event) {
 
   // Reply only when message sent is in 'text' format
-  if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
+  if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "หวัดดี"){
+//(strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false)
+  
+
       $replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
     $query = 'select question from sequents where seqcode = '0001' ';
