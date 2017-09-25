@@ -23,7 +23,7 @@ if (!is_null($events['events'])) {
       //$text = "คุณสนใจมีผู้ช่วยไหม";
     $query = "select question from sequents order by id asc limit 4";
     $result = pg_query($query);
-      while ($row = pg_fetch_row($result)) {
+      while ($row = pg_num_rows($result)) {
        echo $seqcode =   $row[0] ;
        // echo $seqcode1 =   $row[1] ;
        // echo $seqcode2 =   $row[2] ;
