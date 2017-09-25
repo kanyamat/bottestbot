@@ -21,17 +21,17 @@ if (!is_null($events['events'])) {
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
-    $query = "select question from public.sequents where seqcode = '0001' ";
-    //or seqcode = '0002' or seqcode = '0003' or seqcode = '0004' ";
+    $query = "select question from public.sequents where seqcode = '0001' or seqcode = '0002' or seqcode = '0003' or seqcode = '0004' ";
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
        $seqcode =   $row[0] ;
+       $seqcode1 =   $row[1] ;
        //$seqcode2 =   $row[1] ;
       }
 
                  $messages = [
                         'type' => 'text',
-                        'text' => $seqcode
+                        'text' => $seqcode1
                       ]; 
   
     //     $messages = [
@@ -69,7 +69,7 @@ if (!is_null($events['events'])) {
                       ];          
   
    
-  }elseif (strpos($_msg, '25 ') !== false) {
+  }elseif (strpos($_msg, '25') !== false) {
   
     $birth_years =  str_replace("","", $_msg);
     $curr_years = date("Y"); 
