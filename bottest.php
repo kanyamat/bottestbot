@@ -22,8 +22,9 @@ if (!is_null($events['events'])) {
       $replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
     $query = "select question from public.sequents where seqcode = '0001' ";
+    $query2 = "select question from public.sequents where seqcode = '0002' ";
     //or seqcode = '0002' or seqcode = '0003' or seqcode = '0004' ";
-    $result = pg_query($query);
+    $result = pg_query($query,$query2);
       while ($row = pg_fetch_row($result)) {
        $seqcode =   $row[0] ;
        //$seqcode2 =   $row[1] ;
