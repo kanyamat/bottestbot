@@ -23,16 +23,16 @@ if (!is_null($events['events'])) {
       //$text = "คุณสนใจมีผู้ช่วยไหม";
     $query = "select question from sequents order by id asc limit 4";
     $result = pg_query($query);
-      while ($row = pg_num_rows($result)) {
-       echo $seqcode =   $row[0] ;
-       // echo $seqcode1 =   $row[1] ;
-       // echo $seqcode2 =   $row[2] ;
-       // echo $seqcode3 =   $row[3] ;
-      }
-
+      // while ($row = pg_fetch_row($result)) {
+      //  echo $seqcode =   $row[0] ;
+      //  // echo $seqcode1 =   $row[1] ;
+      //  // echo $seqcode2 =   $row[2] ;
+      //  // echo $seqcode3 =   $row[3] ;
+      // }
+    $rows = pg_num_rows($result);
                  $messages = [
                         'type' => 'text',
-                        'text' => $seqcode
+                        'text' => $rows
                       ]; 
   
     //     $messages = [
