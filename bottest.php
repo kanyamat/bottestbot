@@ -21,7 +21,8 @@ if (!is_null($events['events'])) {
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
-    $query = "select question from public.sequents where seqcode = '0001' or seqcode = '0002' or seqcode = '0003' or seqcode = '0004' ";
+    $query = "select question from public.sequents where seqcode = '0001' ";
+    //or seqcode = '0002' or seqcode = '0003' or seqcode = '0004' ";
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
        $seqcode =   $row[0] ;
