@@ -32,7 +32,7 @@ if (!is_null($events['events'])) {
  $seq =   $row[0] ;
                  $messages = [
                         'type' => 'text',
-                        'text' => $seq
+                        'text' => $result
                       ]; 
   
     //     $messages = [
