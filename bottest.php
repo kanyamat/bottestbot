@@ -73,7 +73,7 @@ if (!is_null($events['events'])) {
   
     //$birth_years =  str_replace("เกิด","", $_msg);
     $curr_years = date("Y"); 
-    $age = ($curr_years+ 543)- $birth_years;
+    $age = ($curr_years - 543);
     $age_mes = 'คุณอายุ'.$age.'ถูกต้องหรือไม่คะ' ;
     $replyToken = $event['replyToken'];
     $messages = [
