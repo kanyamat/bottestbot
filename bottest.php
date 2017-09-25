@@ -22,9 +22,8 @@ if (!is_null($events['events'])) {
       $replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
     $query = "select question from public.sequents where seqcode = '0001' ";
-    $query2 = "select question from public.sequents where seqcode = '0002' ";
     //or seqcode = '0002' or seqcode = '0003' or seqcode = '0004' ";
-    $result = pg_query($query,$query2);
+    $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
        $seqcode =   $row[0] ;
        //$seqcode2 =   $row[1] ;
@@ -70,9 +69,9 @@ if (!is_null($events['events'])) {
                       ];          
   
    
-  }elseif (strpos($_msg, 'เกิด') !== false) {
+  }elseif (strpos($_msg, '25') !== false) {
   
-    $birth_years =  str_replace("เกิด","", $_msg);
+    //$birth_years =  str_replace("เกิด","", $_msg);
     $curr_years = date("Y"); 
     $age = ($curr_years+ 543)- $birth_years;
     $age_mes = 'คุณอายุ'.$age.'ถูกต้องหรือไม่คะ' ;
