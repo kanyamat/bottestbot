@@ -32,7 +32,7 @@ if (!is_null($events['events'])) {
 
                  $messages = [
                         'type' => 'text',
-                        'text' => $seqcode.$seqcode1.$seqcode2.$seqcode3
+                        'text' => $seqcode
                       ]; 
   
     //     $messages = [
