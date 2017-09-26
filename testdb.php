@@ -4,43 +4,63 @@ $dbconn = pg_pconnect($conn_string);
 if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-$sql="CREATE TABLE sequents(
+
+########################CREATE TABLE #######################################################
+
+$sql="CREATE TABLE user_data(
 id SERIAL,
-seqcode varchar(255),
-question varchar(255),
-answer varchar(255),
-nexttype integer,
-nextseqcode varchar(255),
-created_at timestamp,
-updated_at timestamp,
+user_id varchar(50),
+user_age  varchar(10),
+user_weight varchar(10),
+user_height varchar(10),
+preg_week  varchar(10),
 PRIMARY KEY(id)
 )";   
 pg_exec($dbconn, $sql) or die(pg_errormessage());
 
-$sql2="CREATE TABLE sequentsteps(
-id SERIAL,
-sender_id varchar(50),
-seqcode varchar(30),
-answer varchar(255),
-nextseqcode varchar(255),
-status varchar(255),
-created_at timestamp,
-updated_at timestamp,
-PRIMARY KEY(id)
-)";   
-pg_exec($dbconn, $sql2) or die(pg_errormessage());
 
-$sql3="CREATE TABLE pregnants(
-id SERIAL,
-week  integer,
-title text,
-descript text,
-img text,
-created_at timestamp,
-updated_at timestamp,
-PRIMARY KEY(id)
-)";   
-pg_exec($dbconn, $sql3) or die(pg_errormessage());
+// $sql2="CREATE TABLE sequents(
+// id SERIAL,
+// seqcode varchar(255),
+// question varchar(255),
+// answer varchar(255),
+// nexttype integer,
+// nextseqcode varchar(255),
+// created_at timestamp,
+// updated_at timestamp,
+// PRIMARY KEY(id)
+// )";   
+// pg_exec($dbconn, $sql2) or die(pg_errormessage());
+
+// $sql3="CREATE TABLE sequentsteps(
+// id SERIAL,
+// sender_id varchar(50),
+// seqcode varchar(30),
+// answer varchar(255),
+// nextseqcode varchar(255),
+// status varchar(255),
+// created_at timestamp,
+// updated_at timestamp,
+// PRIMARY KEY(id)
+// )";   
+// pg_exec($dbconn, $sql3) or die(pg_errormessage());
+
+// $sql4="CREATE TABLE pregnants(
+// id SERIAL,
+// week  integer,
+// title text,
+// descript text,
+// img text,
+// created_at timestamp,
+// updated_at timestamp,
+// PRIMARY KEY(id)
+// )";   
+// pg_exec($dbconn, $sql4) or die(pg_errormessage());
+
+
+##################################### INSERT ###########################################
+
+
 // $sql="INSERT INTO pregnants (id, week, title, descript, img, created_at, updated_at) VALUES
 // (1, 1, 'สัปดาห์ที่ 1', 'ในทางการแพทย์แล้ว ช่วงสัปดาห์แรกนั้นยังไม่ถือว่าเป็นการตั้งครรภ์ที่แท้จริง โดยเมื่อเสปิร์มเดินทางมาพบกับไข่และเกิดการปฎิสนธิขึ้น โดยประมาณ 4 วันหลังจากเกิดการปฏิสนธิ ไข่ที่ได้รับการผสมแล้วจะมีลักษณะเป็นลูกกลม ประกอบด้วยเซลล์ประมาณ 100 เซลล์ ภายในลูกกลมนี้จะเป็นโพรงที่บรรจุของเหลว ซึ่งขนาดของไข่นี้จะไม่สามารถมองเห็นได้ด้วยตาเปล่า ไข่จะใช้เวลาอีกประมาณ 2 – 3 วัน ลอยอยู่ในโพรงมดลูก ช่วงระยะเวลาปลายสัปดาห์ ไข่ที่ได้รับการผสมแล้วนี้ จะหาที่อยู่อันอบอุ่น และปลอดภัย โดยการฝังตัวที่ผนังมดลูก เริ่มทำการสร้างรก และสายสะดือเพื่อเป็นทางนำอาหารจากแม่สู่ลูกและขับของเสียจากลูกสู่แม่', '1', NULL, NULL),
 // (2, 2, 'สัปดาห์ที่ 2', 'ในสัปดาห์ที่สองนี้ ไข่ที่ผสมแล้วจะมีการแบ่งเซลล์อย่างรวดเร็วเป็นทวีคูณ ในช่วงนี้คุณแม่ยังไม่รับรู้ว่ามีสิ่งมีชีวิตน้อยๆ มาอยู่ในร่างกายแล้ว และหากตรวจปัสสาวะจะยังไม่ขึ้น 2 ขีด เพราะฮอร์โมนที่อยู่ในปัสสาวะจะน้อยมาก ในคุณแม่บางท่าน อาจพบมีเลือดออกเล็กน้อย จากการเคลื่อนตัว ของตัวอ่อนไปฝังยังผนังมดลูก เลือดออกที่เกิดขึ้นนั้น เรียกว่า เลือดล้างหน้าเด็ก', '2', NULL, NULL),
