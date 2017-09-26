@@ -285,40 +285,47 @@ if (!is_null($events['events'])) {
       ];
 
 
-   }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
+  //  }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
     
-     $replyToken = $event['replyToken'];
-     // Build message to reply back
+  //    $replyToken = $event['replyToken'];
+  //    // Build message to reply back
+  //     $text = "ฉันไม่เข้าใจค่ะ";
+  //     $messages = [
+  //         'type' => 'text',
+  //         'text' => $text
+  //       ];
+
+  // }else {
+
+  //  $replyToken = $event['replyToken'];
+  //     $text = "คุณสนใจมีผู้ช่วยไหม";
+  //         $messages = [
+  //                'type' => 'template',
+  //                 'altText' => 'this is a confirm template',
+  //                 'template' => [
+  //                     'type' => 'confirm',
+  //                     'text' => $text ,
+  //                     'actions' => [
+  //                         [
+  //                             'type' => 'message',
+  //                             'label' => 'สนใจ',
+  //                             'text' => 'สนใจ'
+  //                         ],
+  //                         [
+  //                             'type' => 'message',
+  //                             'label' => 'ไม่สนใจ',
+  //                             'text' => 'ไม่สนใจ'
+  //                         ],
+  //                     ]
+  //                 ]
+  //             ]; 
+    }else{
+      $replyToken = $event['replyToken'];
       $text = "ฉันไม่เข้าใจค่ะ";
       $messages = [
           'type' => 'text',
           'text' => $text
         ];
-
-  }else {
-
-   $replyToken = $event['replyToken'];
-      $text = "คุณสนใจมีผู้ช่วยไหม";
-          $messages = [
-                 'type' => 'template',
-                  'altText' => 'this is a confirm template',
-                  'template' => [
-                      'type' => 'confirm',
-                      'text' => $text ,
-                      'actions' => [
-                          [
-                              'type' => 'message',
-                              'label' => 'สนใจ',
-                              'text' => 'สนใจ'
-                          ],
-                          [
-                              'type' => 'message',
-                              'label' => 'ไม่สนใจ',
-                              'text' => 'ไม่สนใจ'
-                          ],
-                      ]
-                  ]
-              ]; 
   }
 
 
