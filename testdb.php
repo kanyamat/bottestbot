@@ -76,7 +76,7 @@ if (!$dbconn) {
 // FOREIGN KEY (user_id) REFERENCES users_data(user_id)
 // )";   
 // pg_exec($dbconn, $sql) or die(pg_errormessage());
- $sql="CREATE TABLE users_data(
+ $sql="CREATE TABLE user_data(
  id SERIAL,
  user_id  varchar(50),
  user_age varchar(10),
