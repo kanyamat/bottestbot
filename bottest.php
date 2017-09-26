@@ -50,15 +50,15 @@ if (!is_null($events['events'])) {
                     $messages = [
                         'type' => 'text',
                         'text' =>  $hello
-                      ];
+                      ],
                      $messages2 = [
                         'type' => 'text',
                         'text' =>  $hello2
-                      ];
+                      ],
                     $messages3 = [
                         'type' => 'text',
                         'text' =>  $hello3
-                      ];
+                      ],
 
 
           $messages5 = [
