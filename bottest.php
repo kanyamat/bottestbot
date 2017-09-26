@@ -29,13 +29,27 @@ if (!is_null($events['events'])) {
       //$replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
 
-$check_q = pg_query($dbconn,"SELECT question FROM sequents order by id asc limit 4 ");
+    //$check_q = pg_query($dbconn,"SELECT question FROM sequents order by id asc limit 4 ");
+    $check_q = pg_query($dbconn,"SELECT  question FROM sequents WHERE seqcode='0001'");
                 while ($row = pg_fetch_row($check_q)) {
                   echo $hello = $row[0]; 
-                  echo $hello2 = $row[1]; 
-                  echo $hello3 = $row[2]; 
-                  echo $hello4 = $row[3];  
-                } 
+                 
+                }
+    $check_q2 = pg_query($dbconn,"SELECT  question FROM sequents WHERE seqcode='0002'");
+                while ($row = pg_fetch_row($check_q2)) {
+                  echo $hello2 = $row[0]; 
+                 
+                }
+    $check_q3 = pg_query($dbconn,"SELECT  question FROM sequents WHERE seqcode='0003'");
+                while ($row = pg_fetch_row($check_q3)) {
+                  echo $hello3 = $row[0]; 
+                 
+                }
+    $check_q4 = pg_query($dbconn,"SELECT  question FROM sequents WHERE seqcode='0004'");
+                while ($row = pg_fetch_row($check_q4)) {
+                  echo $hello4 = $row[0]; 
+                 
+                }       
               
                     $replyToken = $event['replyToken'];
                     
