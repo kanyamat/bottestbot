@@ -45,11 +45,7 @@ if (!is_null($events['events'])) {
                   echo $hello3 = $row[0]; 
                  
                 }
-    $check_q4 = pg_query($dbconn,"SELECT  question FROM sequents WHERE seqcode='0004'");
-                while ($row = pg_fetch_row($check_q4)) {
-                  echo $hello4 = $row[0]; 
-                 
-                }       
+   
               
                     $replyToken = $event['replyToken'];
                     
@@ -65,12 +61,8 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' =>  $hello3
                       ];
-                    $messages4 = [
-                        'type' => 'text',
-                        'text' =>  $hello4
-                      ];
 
-      $text = "คุณสนใจมีผู้ช่วยไหม";
+      $text = "หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ โปรดกดยืนยันด้างล่างด้วยนะคะ";
           $messages5 = [
                  'type' => 'template',
                   'altText' => 'this is a confirm template',
@@ -442,7 +434,7 @@ if (!is_null($events['events'])) {
   }else {
 
    $replyToken = $event['replyToken'];
-      $text = "คุณสนใจมีผู้ช่วยไหม";
+      $text = "หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ โปรดกดยืนยันด้างล่างด้วยนะคะ";
           $messages = [
                  'type' => 'template',
                   'altText' => 'this is a confirm template',
