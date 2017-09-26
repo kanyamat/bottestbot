@@ -41,7 +41,7 @@ if (!is_null($events['events'])) {
     //                     'type' => 'text',
     //                     'text' => $seqcode
     //                   ];
-        $messages = [
+$messages = [
        'type' => 'template',
         'altText' => 'this is a confirm template',
         'template' => [
@@ -57,14 +57,12 @@ if (!is_null($events['events'])) {
                     'type' => 'message',
                     'label' => 'ไม่สนใจ',
                     'text' => 'ไม่สนใจ'
-                ]
+                ],
             ]
         ]
     ];
-
-  $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
-
-   }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
+   $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
+  }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
@@ -85,7 +83,8 @@ if (!is_null($events['events'])) {
                         'text' => 'ไว้โอกาสหน้าให้เราได้เป็นผู้ช่วยของคุณนะคะ:) ขอบคุณค่ะ'
                       ];          
   
-
+           
+    
   }elseif (is_numeric($_msg) !== false && $seqcode == "0006"  && strlen($_msg) == 4 && $_msg < $curr_y && $_msg > "2500" ) {
   
     $birth_years = $_msg;
@@ -109,12 +108,13 @@ if (!is_null($events['events'])) {
                     'type' => 'message',
                     'label' => 'ไม่ถูกต้อง',
                     'text' => 'ไม่ถูกต้อง'
-                ]
+                ],
             ]
         ]
     ];     
       $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008', $age ,'0009','0',NOW(),NOW())") or die(pg_errormessage());
-
+           
+       
   }elseif ($event['message']['text'] == "อายุถูกต้อง" ) {
       $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
                 while ($row = pg_fetch_row($check_q)) {
@@ -166,7 +166,7 @@ if (!is_null($events['events'])) {
                     'type' => 'message',
                     'label' => 'ไม่ถูกต้อง',
                     'text' => 'ไม่ถูกต้อง'
-                ]
+                ],
             ]
         ]
     ];   
@@ -219,7 +219,7 @@ if (!is_null($events['events'])) {
                                             'type' => 'message',
                                             'label' => 'ไม่ถูกต้อง',
                                             'text' => 'ไม่ถูกต้อง'
-                                        ]
+                                        ],
                                     ]
                                  ]     
                              ];   
@@ -258,7 +258,7 @@ if (!is_null($events['events'])) {
                                             'type' => 'message',
                                             'label' => 'ไม่ถูกต้อง',
                                             'text' => 'ไม่ถูกต้อง'
-                                        ]
+                                        ],
                                     ]
                                  ]     
                              ];   
@@ -306,7 +306,7 @@ if (!is_null($events['events'])) {
                                             'type' => 'message',
                                             'label' => 'ไม่ถูกต้อง',
                                             'text' => 'ไม่ถูกต้อง'
-                                        ]
+                                        ],
                                     ]
                                  ]     
                              ];   
