@@ -62,7 +62,7 @@ if (!is_null($events['events'])) {
         ]
     ];
 
-  // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
+  $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
 
   }elseif ($event['message']['text'] == "สนใจ"   ) {
     //&& $seqcode == "0004"
@@ -77,7 +77,7 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' =>  $question
                       ];
-                // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006','','0004','0',NOW(),NOW())") or die(pg_errormessage());
+                $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006','','0004','0',NOW(),NOW())") or die(pg_errormessage());
    
   }elseif ($event['message']['text'] == "ไม่สนใจ" ) {
                  $replyToken = $event['replyToken'];

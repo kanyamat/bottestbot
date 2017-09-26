@@ -78,10 +78,10 @@ if (!$dbconn) {
 // pg_exec($dbconn, $sql) or die(pg_errormessage());
  $sql="CREATE TABLE users_data(
  id SERIAL,
- user_id  varchar(225),
- user_age varchar(2),
- user_weight varchar(3),
- user_height varchar(3),
+ user_id  varchar(50),
+ user_age varchar(10),
+ user_weight varchar(10),
+ user_height varchar(10),
  preg_week date,
  PRIMARY KEY(id)
  )";   
