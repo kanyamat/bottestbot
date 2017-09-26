@@ -27,40 +27,40 @@ if (!is_null($events['events'])) {
   // Reply only when message sent is in 'text' format
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
-      $text = "คุณสนใจมีผู้ช่วยไหม";
-    // $query = "select question from sequents order by id asc limit 4";
-    // $result = pg_query($query);
-    //   while ($row = pg_fetch_row($result)) {
-    //    echo  $seqcode = $row[0] ;
-    //    // echo $seqcode1 =   $row[1] ;
-    //    // echo $seqcode2 =   $row[2] ;
-    //    // echo $seqcode3 =   $row[3] ;
-    //   }
+      // $text = "คุณสนใจมีผู้ช่วยไหม";
+    $query = "select question from sequents order by id asc limit 4";
+    $result = pg_query($query);
+      while ($row = pg_fetch_row($result)) {
+       echo  $seqcode = $row[0] ;
+       // echo $seqcode1 =   $row[1] ;
+       // echo $seqcode2 =   $row[2] ;
+       // echo $seqcode3 =   $row[3] ;
+      }
 
-                 // $messages = [
-                 //        'type' => 'text',
-                 //        'text' => $seqcode
-                 //      ];
-        $messages = [
-       'type' => 'template',
-        'altText' => 'this is a confirm template',
-        'template' => [
-            'type' => 'confirm',
-            'text' => $text ,
-            'actions' => [
-                [
-                    'type' => 'message',
-                    'label' => 'สนใจ',
-                    'text' => 'สนใจ'
-                ],
-                [
-                    'type' => 'message',
-                    'label' => 'ไม่สนใจ',
-                    'text' => 'ไม่สนใจ'
-                ],
-            ]
-        ]
-    ];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => $seqcode
+                      ];
+    //     $messages = [
+    //    'type' => 'template',
+    //     'altText' => 'this is a confirm template',
+    //     'template' => [
+    //         'type' => 'confirm',
+    //         'text' => $text ,
+    //         'actions' => [
+    //             [
+    //                 'type' => 'message',
+    //                 'label' => 'สนใจ',
+    //                 'text' => 'สนใจ'
+    //             ],
+    //             [
+    //                 'type' => 'message',
+    //                 'label' => 'ไม่สนใจ',
+    //                 'text' => 'ไม่สนใจ'
+    //             ],
+    //         ]
+    //     ]
+    // ];
 
  $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
 
@@ -285,47 +285,47 @@ if (!is_null($events['events'])) {
       ];
 
 
-  //  }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
+   }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
     
-  //    $replyToken = $event['replyToken'];
-  //    // Build message to reply back
-  //     $text = "ฉันไม่เข้าใจค่ะ";
-  //     $messages = [
-  //         'type' => 'text',
-  //         'text' => $text
-  //       ];
-
-  // }else {
-
-  //  $replyToken = $event['replyToken'];
-  //     $text = "คุณสนใจมีผู้ช่วยไหม";
-  //         $messages = [
-  //                'type' => 'template',
-  //                 'altText' => 'this is a confirm template',
-  //                 'template' => [
-  //                     'type' => 'confirm',
-  //                     'text' => $text ,
-  //                     'actions' => [
-  //                         [
-  //                             'type' => 'message',
-  //                             'label' => 'สนใจ',
-  //                             'text' => 'สนใจ'
-  //                         ],
-  //                         [
-  //                             'type' => 'message',
-  //                             'label' => 'ไม่สนใจ',
-  //                             'text' => 'ไม่สนใจ'
-  //                         ],
-  //                     ]
-  //                 ]
-  //             ]; 
-    }else{
-      $replyToken = $event['replyToken'];
+     $replyToken = $event['replyToken'];
+     // Build message to reply back
       $text = "ฉันไม่เข้าใจค่ะ";
       $messages = [
           'type' => 'text',
           'text' => $text
         ];
+
+  }else {
+
+   $replyToken = $event['replyToken'];
+      $text = "คุณสนใจมีผู้ช่วยไหม";
+          $messages = [
+                 'type' => 'template',
+                  'altText' => 'this is a confirm template',
+                  'template' => [
+                      'type' => 'confirm',
+                      'text' => $text ,
+                      'actions' => [
+                          [
+                              'type' => 'message',
+                              'label' => 'สนใจ',
+                              'text' => 'สนใจ'
+                          ],
+                          [
+                              'type' => 'message',
+                              'label' => 'ไม่สนใจ',
+                              'text' => 'ไม่สนใจ'
+                          ],
+                      ]
+                  ]
+              ]; 
+    // }else{
+    //   $replyToken = $event['replyToken'];
+    //   $text = "ฉันไม่เข้าใจค่ะ";
+    //   $messages = [
+    //       'type' => 'text',
+    //       'text' => $text
+    //     ];
   }
 
 
