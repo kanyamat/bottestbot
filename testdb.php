@@ -150,7 +150,7 @@ $sql="INSERT INTO  sequents (id, seqcode, question, answer, nexttype, nextseqcod
 
 (22, '1004', 'น้ำหนัก ', 'กิโลกรัม ถูกต้องหรือไม่ค่ะ ถ้าไม่ถูกต้องกรุณาพิมพ์ตัวเลขใหม่', 3, '1005', NULL, NULL),
 
-(23, '1005', 'รอการวิเคราะห์', NULL, 2, '1006', NULL, NULL))";
+(23, '1005', 'รอการวิเคราะห์', NULL, 2, '1006', NULL, NULL)";
 pg_exec($dbconn, $sql) or die(pg_errormessage());
 
 
