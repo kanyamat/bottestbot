@@ -14,7 +14,7 @@ $curr_y = ($curr_years+ 543);
 $_msg = $events['events'][0]['message']['text'];
 $user = $events['events'][0]['source']['userId'];
 $user_id = pg_escape_string($user);
-$check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at  FROM sequentsteps  WHERE sender_id = '{$user_id}'  order by updated_at desc limit 1   ");
+$check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at  FROM sequentsteps  WHERE sender_id = '{$user_id}'  order by updated_at desc limit 1  ");
                 while ($row = pg_fetch_row($check_q)) {
                   echo $seqcode =  $row[0];
                   echo $sender = $row[2]; 
@@ -28,41 +28,41 @@ if (!is_null($events['events'])) {
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
       // $text = "คุณสนใจมีผู้ช่วยไหม";
-    $query = "select question from sequents order by id asc limit 4";
-    $result = pg_query($query);
-      while ($row = pg_fetch_row($result)) {
-       echo  $seqcode = $row[0] ;
-       // echo $seqcode1 =   $row[1] ;
-       // echo $seqcode2 =   $row[2] ;
-       // echo $seqcode3 =   $row[3] ;
-      }
+    // $query = "select question from sequents order by id asc limit 4";
+    // $result = pg_query($query);
+    //   while ($row = pg_fetch_row($result)) {
+    //    echo  $seqcode = $row[0] ;
+    //    // echo $seqcode1 =   $row[1] ;
+    //    // echo $seqcode2 =   $row[2] ;
+    //    // echo $seqcode3 =   $row[3] ;
+    //   }
 
-                 $messages = [
-                        'type' => 'text',
-                        'text' => $seqcode
-                      ];
-    //     $messages = [
-    //    'type' => 'template',
-    //     'altText' => 'this is a confirm template',
-    //     'template' => [
-    //         'type' => 'confirm',
-    //         'text' => $text ,
-    //         'actions' => [
-    //             [
-    //                 'type' => 'message',
-    //                 'label' => 'สนใจ',
-    //                 'text' => 'สนใจ'
-    //             ],
-    //             [
-    //                 'type' => 'message',
-    //                 'label' => 'ไม่สนใจ',
-    //                 'text' => 'ไม่สนใจ'
-    //             ],
-    //         ]
-    //     ]
-    // ];
+    //              $messages = [
+    //                     'type' => 'text',
+    //                     'text' => $seqcode
+    //                   ];
+        $messages = [
+       'type' => 'template',
+        'altText' => 'this is a confirm template',
+        'template' => [
+            'type' => 'confirm',
+            'text' => $text ,
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => 'สนใจ',
+                    'text' => 'สนใจ'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่สนใจ',
+                    'text' => 'ไม่สนใจ'
+                ],
+            ]
+        ]
+    ];
 
- // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
+  $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
 
   }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
