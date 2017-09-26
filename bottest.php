@@ -12,6 +12,15 @@ $events = json_decode($content, true);
 $_msg = $events['events'][0]['message']['text'];
 $user = $events['events'][0]['source']['userId'];
 
+$curr_years = date("Y");
+$curr_y = ($curr_years+ 543);
+
+$user_id = pg_escape_string($user);
+$check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at  FROM sequentsteps  WHERE sender_id = '{$user_id}'  order by updated_at desc limit 1   ");
+                while ($row = pg_fetch_row($check_q)) {
+                  echo $seqcode =  $row[0];
+                  echo $sender = $row[2]; 
+                }
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
  // Loop through each event
@@ -77,7 +86,7 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' => 'ไว้โอกาสหน้าให้เราได้เป็นผู้ช่วยของคุณนะคะ:) ขอบคุณค่ะ'
                       ];          
-                      
+
   }elseif (is_numeric($_msg) !== false && $seqcode == "0006"  && strlen($_msg) == 4 && $_msg < $curr_y && $_msg > "2500" ) {
   
     $birth_years = $_msg;
