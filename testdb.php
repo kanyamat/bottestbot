@@ -76,14 +76,29 @@ if (!$dbconn) {
 // FOREIGN KEY (user_id) REFERENCES users_data(user_id)
 // )";   
 // pg_exec($dbconn, $sql) or die(pg_errormessage());
- $sql="CREATE TABLE user_data(
- id SERIAL,
- user_id  varchar(50),
- user_age varchar(10),
- user_weight varchar(10),
- user_height varchar(10),
- preg_week date,
- PRIMARY KEY(id)
- )";   
- pg_exec($dbconn, $sql) or die(pg_errormessage());
+
+ // $sql="CREATE TABLE user_data(
+ // id SERIAL,
+ // user_id  varchar(50),
+ // user_age varchar(10),
+ // user_weight varchar(10),
+ // user_height varchar(10),
+ // preg_week date,
+ // PRIMARY KEY(id)
+ // )";   
+ // pg_exec($dbconn, $sql) or die(pg_errormessage());
+
+ 
+$sql="CREATE TABLE sequentsteps(
+id SERIAL,
+sender_id varchar(50),
+seqcode varchar(30),
+answer varchar(255),
+nextseqcode varchar(255),
+status varchar(255),
+created_at timestamp,
+updated_at timestamp,
+PRIMARY KEY(id)
+)";   
+pg_exec($dbconn, $sql) or die(pg_errormessage());
 ?>
