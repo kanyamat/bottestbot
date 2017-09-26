@@ -28,6 +28,52 @@ if (!is_null($events['events'])) {
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
       $text = "คุณสนใจมีผู้ช่วยไหม";
+
+$check_q = pg_query($dbconn,"SELECT question FROM sequents order by id asc limit 4 ");
+                while ($row = pg_fetch_row($check_q)) {
+                  echo $hello = $row[0]; 
+                  echo $hello2 = $row[1]; 
+                  echo $hello3 = $row[2]; 
+                  echo $hello4 = $row[3];  
+                } 
+              
+                    $replyToken = $event['replyToken'];
+                    $text = "ฉันไม่เข้าใจค่ะ";
+                    $messages = [
+                        'type' => 'text',
+                        'text' =>  $hello
+                      ];
+                     $messages2 = [
+                        'type' => 'text',
+                        'text' =>  $hello2
+                      ];
+                    $messages3 = [
+                        'type' => 'text',
+                        'text' =>  $hello3
+                      ];
+                    $messages4 = [
+                        'type' => 'text',
+                        'text' =>  $hello4
+                      ];
+
+         $url = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages, $messages2, $messages3, $messages4],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
+
     // $query = "select question from sequents order by id asc limit 4";
     // $result = pg_query($query);
     //   while ($row = pg_fetch_row($result)) {
