@@ -334,8 +334,8 @@ $check_q = pg_query($dbconn,"SELECT question FROM sequents order by id asc limit
                       ];
                     $messages1 = [
                         'type' => 'image',
-                        'originalContentUrl' =>   'https://bottest14.herokuapp.com/week/'.$answer4 .'.jpg',
-                        'previewImageUrl' =>   'https://bottest14.herokuapp.com/week/'.$answer4 .'.jpg',
+                        'originalContentUrl' =>   'http://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
+                        'previewImageUrl' =>   'http://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
                       ];
          $des_preg = pg_query($dbconn,"SELECT  descript,img FROM pregnants WHERE  week = $answer4  ");
               while ($row = pg_fetch_row($des_preg)) {
