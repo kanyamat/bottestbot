@@ -26,8 +26,8 @@ if (!is_null($events['events'])) {
 
   // Reply only when message sent is in 'text' format
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
-      $replyToken = $event['replyToken'];
-      $text = "คุณสนใจมีผู้ช่วยไหม";
+      //$replyToken = $event['replyToken'];
+      //$text = "คุณสนใจมีผู้ช่วยไหม";
 
 $check_q = pg_query($dbconn,"SELECT question FROM sequents order by id asc limit 4 ");
                 while ($row = pg_fetch_row($check_q)) {
@@ -38,7 +38,7 @@ $check_q = pg_query($dbconn,"SELECT question FROM sequents order by id asc limit
                 } 
               
                     $replyToken = $event['replyToken'];
-                    $text = "ฉันไม่เข้าใจค่ะ";
+                    
                     $messages = [
                         'type' => 'text',
                         'text' =>  $hello
