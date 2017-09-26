@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
   // Reply only when message sent is in 'text' format
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
       $replyToken = $event['replyToken'];
-      //$text = "คุณสนใจมีผู้ช่วยไหม";
+      $text = "คุณสนใจมีผู้ช่วยไหม";
     $query = "select question from sequents order by id asc limit 4";
     $result = pg_query($query);
       while ($row = pg_fetch_row($result)) {
@@ -30,31 +30,31 @@ if (!is_null($events['events'])) {
        // echo $seqcode3 =   $row[3] ;
       }
 
-                 $messages = [
-                        'type' => 'text',
-                        'text' => $seqcode
-                      ]; 
+                 // $messages = [
+                 //        'type' => 'text',
+                 //        'text' => $seqcode
+                 //      ]; 
   
-    //     $messages = [
-    //    'type' => 'template',
-    //     'altText' => 'this is a confirm template',
-    //     'template' => [
-    //         'type' => 'confirm',
-    //         'text' => $text ,
-    //         'actions' => [
-    //             [
-    //                 'type' => 'message',
-    //                 'label' => 'สนใจ',
-    //                 'text' => 'สนใจ'
-    //             ],
-    //             [
-    //                 'type' => 'message',
-    //                 'label' => 'ไม่สนใจ',
-    //                 'text' => 'ไม่สนใจ'
-    //             ],
-    //         ]
-    //     ]
-    // ];
+        $messages = [
+       'type' => 'template',
+        'altText' => 'this is a confirm template',
+        'template' => [
+            'type' => 'confirm',
+            'text' => $text ,
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => 'สนใจ',
+                    'text' => 'สนใจ'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่สนใจ',
+                    'text' => 'ไม่สนใจ'
+                ],
+            ]
+        ]
+    ];
 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
   }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
