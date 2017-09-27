@@ -384,8 +384,8 @@ if (!is_null($events['events'])) {
                       ];
                     $messages3 = [
                         'type' => 'image',
-                        'originalContentUrl' =>   'http://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
-                        'previewImageUrl' =>   'http://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
+                        'originalContentUrl' =>   'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
+                        'previewImageUrl' =>   'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
                       ];
          $des_preg = pg_query($dbconn,"SELECT  descript,img FROM pregnants WHERE  week = $answer4  ");
               while ($row = pg_fetch_row($des_preg)) {
