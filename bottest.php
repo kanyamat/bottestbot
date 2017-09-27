@@ -83,23 +83,23 @@ if (!is_null($events['events'])) {
     //  $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());         
 
 
-    //      $url = 'https://api.line.me/v2/bot/message/reply';
-    //      $data = [
-    //       'replyToken' => $replyToken,
-    //       'messages' => [$messages, $messages2, $messages3, $messages4, $messages5],
-    //      ];
-    //      error_log(json_encode($data));
-    //      $post = json_encode($data);
-    //      $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-    //      $ch = curl_init($url);
-    //      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    //      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //      curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-    //      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    //      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    //      $result = curl_exec($ch);
-    //      curl_close($ch);
-    //      echo $result . "\r\n";
+         $url = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages, $messages2, $messages3, $messages4, $messages5],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
 
     // $query = "select question from sequents order by id asc limit 4";
     // $result = pg_query($query);
