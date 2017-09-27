@@ -32,18 +32,18 @@ if (!$dbconn) {
 // )";   
 // pg_exec($dbconn, $sql2) or die(pg_errormessage());
 
-$sql3="CREATE TABLE sequentsteps(
-id SERIAL,
-sender_id varchar(50),
-seqcode varchar(30),
-answer varchar(255),
-nextseqcode varchar(255),
-status varchar(255),
-created_at timestamp,
-updated_at timestamp,
-PRIMARY KEY(id)
-)";   
-pg_exec($dbconn, $sql3) or die(pg_errormessage());
+// $sql3="CREATE TABLE sequentsteps(
+// id SERIAL,
+// sender_id varchar(50),
+// seqcode varchar(30),
+// answer varchar(255),
+// nextseqcode varchar(255),
+// status varchar(255),
+// created_at timestamp,
+// updated_at timestamp,
+// PRIMARY KEY(id)
+// )";   
+// pg_exec($dbconn, $sql3) or die(pg_errormessage());
 
 // $sql4="CREATE TABLE pregnants(
 // id SERIAL,
@@ -57,16 +57,16 @@ pg_exec($dbconn, $sql3) or die(pg_errormessage());
 // )";   
 // pg_exec($dbconn, $sql4) or die(pg_errormessage());
 
-// $sql4="CREATE TABLE history_preg(
-// his_preg_id SERIAL,
-// user_id  varchar(225),
-// his_preg_week  varchar(2),
-// his_preg_weight varchar(3)
-//  -- PRIMARY KEY(his_preg_id),
-//  -- FOREIGN KEY (his_preg_week) REFERENCES Pregnancy_week_data(week_preg),
-//  -- FOREIGN KEY (user_id) REFERENCES users_data(user_id)
-//  )";   
-// pg_exec($dbconn, $sql4) or die(pg_errormessage());
+$sql4="CREATE TABLE history_preg(
+his_preg_id SERIAL,
+user_id  varchar(225),
+his_preg_week  varchar(2),
+his_preg_weight varchar(3)
+ -- PRIMARY KEY(his_preg_id),
+ -- FOREIGN KEY (his_preg_week) REFERENCES Pregnancy_week_data(week_preg),
+ -- FOREIGN KEY (user_id) REFERENCES users_data(user_id)
+ )";   
+pg_exec($dbconn, $sql4) or die(pg_errormessage());
 
 
 ##################################### INSERT ###########################################
