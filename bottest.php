@@ -414,6 +414,7 @@ if (!is_null($events['events'])) {
          $result = curl_exec($ch);
          curl_close($ch);
          echo $result . "\r\n";
+
   }elseif (is_numeric($_msg) !== false && $seqcode == "0014"  ) {
                  $height =  str_replace("ส่วนสูง","", $_msg);
                  $height_mes = 'ปัจจุบัน คุณสูง '.$height.'ถูกต้องหรือไม่คะ';
@@ -495,7 +496,7 @@ if (!is_null($events['events'])) {
          $url = 'https://api.line.me/v2/bot/message/reply';
          $data = [
           'replyToken' => $replyToken,
-          'messages' => [$messages],
+          'messages' => [$messages]
          ];
          error_log(json_encode($data));
          $post = json_encode($data);
