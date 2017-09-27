@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
       $replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
       
-    $check_q = pg_query($dbconn,"SELECT question FROM sequents order by id asc limit 4 ");
+    //$check_q = pg_query($dbconn,"SELECT question FROM sequents order by id asc limit 4 ");
     $check_q = pg_query($dbconn,"SELECT  question FROM sequents WHERE seqcode='0001'");
                 while ($row = pg_fetch_row($check_q)) {
                   echo $hello = $row[0]; 
@@ -110,10 +110,10 @@ if (!is_null($events['events'])) {
     //    // echo $seqcode3 =   $row[3] ;
     //   }
 
-    //              $messages = [
-    //                     'type' => 'text',
-    //                     'text' => $seqcode
-    //                   ];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => $seqcode
+                      ];
       $messages = [
              'type' => 'template',
               'altText' => 'this is a confirm template',
