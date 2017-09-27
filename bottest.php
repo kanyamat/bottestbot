@@ -26,81 +26,81 @@ if (!is_null($events['events'])) {
 
   // Reply only when message sent is in 'text' format
   if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'หวัดดี') !== false) {
-      $replyToken = $event['replyToken'];
+      // $replyToken = $event['replyToken'];
       //$text = "คุณสนใจมีผู้ช่วยไหม";
       
     //$check_q = pg_query($dbconn,"SELECT question FROM sequents order by id asc limit 4 ");
-    $check_q = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode='0001'");
-                while ($row = pg_fetch_row($check_q)) {
-                  echo $hello = $row[0]; 
-                }
+    // $check_q = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode='0001'");
+    //             while ($row = pg_fetch_row($check_q)) {
+    //               echo $hello = $row[0]; 
+    //             }
    
-    $check_q2 = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode='0002'");
-                while ($row = pg_fetch_row($check_q2)) {
-                  echo $hello2 = $row[0];        
-                }
+    // $check_q2 = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode='0002'");
+    //             while ($row = pg_fetch_row($check_q2)) {
+    //               echo $hello2 = $row[0];        
+    //             }
     
-    $check_q3 = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode='0003'");
-                while ($row = pg_fetch_row($check_q3)) {
-                  echo $hello3 = $row[0];       
-                }
+    // $check_q3 = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode='0003'");
+    //             while ($row = pg_fetch_row($check_q3)) {
+    //               echo $hello3 = $row[0];       
+    //             }
 
            $text = "หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ โปรดกดยืนยันด้างล่างด้วยนะคะ";
                     $replyToken = $event['replyToken'];
                     
+                    // $messages = [
+                    //     'type' => 'text',
+                    //     'text' =>  $hello
+                    //   ];
+                    //  $messages2 = [
+                    //     'type' => 'text',
+                    //     'text' =>  $hello2
+                    //   ];
+                    // $messages3 = [
+                    //     'type' => 'text',
+                    //     'text' =>  $hello3
+                    //   ];
+
                     $messages = [
-                        'type' => 'text',
-                        'text' =>  $hello
-                      ];
-                     $messages2 = [
-                        'type' => 'text',
-                        'text' =>  $hello2
-                      ];
-                    $messages3 = [
-                        'type' => 'text',
-                        'text' =>  $hello3
-                      ];
-
-     //                $messages4 = [
-     //                       'type' => 'template',
-     //                        'altText' => 'this is a confirm template',
-     //                        'template' => [
-     //                            'type' => 'confirm',
-     //                            'text' => $text ,
-     //                            'actions' => [
-     //                                [
-     //                                    'type' => 'message',
-     //                                    'label' => 'สนใจ',
-     //                                    'text' => 'สนใจ'
-     //                                ],
-     //                                [
-     //                                    'type' => 'message',
-     //                                    'label' => 'ไม่สนใจ',
-     //                                    'text' => 'ไม่สนใจ'
-     //                                ]
-     //                            ]
-     //                        ]
-     //                    ]; 
-     // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());         
+                           'type' => 'template',
+                            'altText' => 'this is a confirm template',
+                            'template' => [
+                                'type' => 'confirm',
+                                'text' => $text ,
+                                'actions' => [
+                                    [
+                                        'type' => 'message',
+                                        'label' => 'สนใจ',
+                                        'text' => 'สนใจ'
+                                    ],
+                                    [
+                                        'type' => 'message',
+                                        'label' => 'ไม่สนใจ',
+                                        'text' => 'ไม่สนใจ'
+                                    ]
+                                ]
+                            ]
+                        ]; 
+     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());         
 
 
-         $url = 'https://api.line.me/v2/bot/message/reply';
-         $data = [
-          'replyToken' => $replyToken,
-          'messages' => [$messages, $messages1, $messages2,$messages3,$messages4],
-         ];
-         error_log(json_encode($data));
-         $post = json_encode($data);
-         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-         $ch = curl_init($url);
-         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-         $result = curl_exec($ch);
-         curl_close($ch);
-         echo $result . "\r\n";
+         // $url = 'https://api.line.me/v2/bot/message/reply';
+         // $data = [
+         //  'replyToken' => $replyToken,
+         //  'messages' => [$messages, $messages1, $messages2,$messages3,$messages4],
+         // ];
+         // error_log(json_encode($data));
+         // $post = json_encode($data);
+         // $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         // $ch = curl_init($url);
+         // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         // curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         // $result = curl_exec($ch);
+         // curl_close($ch);
+         // echo $result . "\r\n";
 
     // $query = "select question from sequents order by id asc limit 4";
     // $result = pg_query($query);
@@ -115,27 +115,27 @@ if (!is_null($events['events'])) {
    //                      'type' => 'text',
    //                      'text' => $seqcode
    //                    ];
-      $messages4 = [
-             'type' => 'template',
-              'altText' => 'this is a confirm template',
-              'template' => [
-                  'type' => 'confirm',
-                  'text' => $text ,
-                  'actions' => [
-                      [
-                          'type' => 'message',
-                          'label' => 'สนใจ',
-                          'text' => 'สนใจ'
-                      ],
-                      [
-                          'type' => 'message',
-                          'label' => 'ไม่สนใจ',
-                          'text' => 'ไม่สนใจ'
-                      ],
-                  ]
-              ]
-          ];
-   $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
+   //    $messages4 = [
+   //           'type' => 'template',
+   //            'altText' => 'this is a confirm template',
+   //            'template' => [
+   //                'type' => 'confirm',
+   //                'text' => $text ,
+   //                'actions' => [
+   //                    [
+   //                        'type' => 'message',
+   //                        'label' => 'สนใจ',
+   //                        'text' => 'สนใจ'
+   //                    ],
+   //                    [
+   //                        'type' => 'message',
+   //                        'label' => 'ไม่สนใจ',
+   //                        'text' => 'ไม่สนใจ'
+   //                    ],
+   //                ]
+   //            ]
+   //        ];
+   // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
   
   }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
