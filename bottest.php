@@ -61,27 +61,27 @@ if (!is_null($events['events'])) {
                         'text' =>  $hello3
                       ];
 
-                    $messages4 = [
-                           'type' => 'template',
-                            'altText' => 'this is a confirm template',
-                            'template' => [
-                                'type' => 'confirm',
-                                'text' => $text ,
-                                'actions' => [
-                                    [
-                                        'type' => 'message',
-                                        'label' => 'สนใจ',
-                                        'text' => 'สนใจ'
-                                    ],
-                                    [
-                                        'type' => 'message',
-                                        'label' => 'ไม่สนใจ',
-                                        'text' => 'ไม่สนใจ'
-                                    ]
-                                ]
-                            ]
-                        ]; 
-     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());         
+     //                $messages4 = [
+     //                       'type' => 'template',
+     //                        'altText' => 'this is a confirm template',
+     //                        'template' => [
+     //                            'type' => 'confirm',
+     //                            'text' => $text ,
+     //                            'actions' => [
+     //                                [
+     //                                    'type' => 'message',
+     //                                    'label' => 'สนใจ',
+     //                                    'text' => 'สนใจ'
+     //                                ],
+     //                                [
+     //                                    'type' => 'message',
+     //                                    'label' => 'ไม่สนใจ',
+     //                                    'text' => 'ไม่สนใจ'
+     //                                ]
+     //                            ]
+     //                        ]
+     //                    ]; 
+     // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());         
 
 
          $url = 'https://api.line.me/v2/bot/message/reply';
@@ -115,7 +115,7 @@ if (!is_null($events['events'])) {
    //                      'type' => 'text',
    //                      'text' => $seqcode
    //                    ];
-      $messages = [
+      $messages4 = [
              'type' => 'template',
               'altText' => 'this is a confirm template',
               'template' => [
