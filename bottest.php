@@ -350,7 +350,7 @@ if (!is_null($events['events'])) {
                              ];   
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0012', $weight,'0013','0',NOW(),NOW())") or die(pg_errormessage()); 
  
-  }elseif ($event['message']['text'] == "ส่วนสูงถูกต้อง"  ) {
+}elseif ($event['message']['text'] == "ส่วนสูงถูกต้อง"  ) {
    $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
                 while ($row = pg_fetch_row($check_q)) {
             
@@ -367,13 +367,22 @@ if (!is_null($events['events'])) {
                 } 
                 $height1 =$height*0.01;
                 $bmi = $weight/($height1*$height1);
+                $bmi = number_format($bmi, 2, '.', '');
                     $replyToken = $event['replyToken'];
                     $text = "ฉันไม่เข้าใจค่ะ";
                     $messages = [
                         'type' => 'text',
-                        'text' =>  'ปัจจุบันคุณอายุ'.$answer1.'ค่าดัชนีมวลกาย'.$bmi.'คุณมีอายุครรภ์'.$answer4.'สัปดาห์'
+                        'text' =>  'ปัจจุบันคุณอายุ'.$answer1
                       ];
                     $messages1 = [
+                        'type' => 'text',
+                        'text' =>  'ค่าดัชนีมวลกาย'.$bmi
+                      ];
+                    $messages2 = [
+                        'type' => 'text',
+                        'text' => 'คุณมีอายุครรภ์'.$answer4.'สัปดาห์'
+                      ];
+                    $messages3 = [
                         'type' => 'image',
                         'originalContentUrl' =>   'http://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
                         'previewImageUrl' =>   'http://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
@@ -384,18 +393,14 @@ if (!is_null($events['events'])) {
                   echo $img = $row[1]; 
  
                 } 
-                    $messages2 = [
+                    $messages4 = [
                         'type' => 'text',
                         'text' =>  $des
                       ];
-
-
-
-
          $url = 'https://api.line.me/v2/bot/message/reply';
          $data = [
           'replyToken' => $replyToken,
-          'messages' => [$messages, $messages1, $messages2, $messages3],
+          'messages' => [$messages, $messages1, $messages2,$messages3,$messages4],
          ];
          error_log(json_encode($data));
          $post = json_encode($data);
@@ -409,7 +414,6 @@ if (!is_null($events['events'])) {
          $result = curl_exec($ch);
          curl_close($ch);
          echo $result . "\r\n";
- 
   }elseif (is_numeric($_msg) !== false && $seqcode == "0014"  ) {
                  $height =  str_replace("ส่วนสูง","", $_msg);
                  $height_mes = 'ปัจจุบัน คุณสูง '.$height.'ถูกต้องหรือไม่คะ';
@@ -506,3 +510,4 @@ if (!is_null($events['events'])) {
          curl_close($ch);
          echo $result . "\r\n";
 ?>
+
