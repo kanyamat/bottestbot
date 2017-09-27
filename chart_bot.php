@@ -8,13 +8,14 @@
 <script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
 <div id="chartdiv"></div>			
 
+<style type="text/css">
 #chartdiv {
 	width		: 100%;
 	height		: 500px;
 	font-size	: 11px;
 }							
-
-
+</style>
+<script>
 var chart = AmCharts.makeChart( "chartdiv", {
   "type": "xy",
   "theme": "none",
@@ -106,7 +107,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
   }
 } );
 
-
+</script>
   </head>
   <body>
     
