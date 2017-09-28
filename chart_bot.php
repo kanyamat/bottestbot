@@ -92,12 +92,12 @@ $dbconn = pg_pconnect($conn_string);
         "id": "x",
         "title": "Week"
       } ],
-        "valueAxes": [ {
-        "axisAlpha": 0,
-        "dashLength": 1,
-        "position": "left",
-        "id": "y",
-        "title": "Y Axis"
+        // "valueAxes": [ {
+        // "axisAlpha": 0,
+        // "dashLength": 1,
+        // "position": "left",
+        // "id": "y",
+        // "title": "Y Axis"
       } ],
       "startDuration": 1,
       "graphs": [ {
