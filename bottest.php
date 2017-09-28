@@ -210,6 +210,16 @@ if (!is_null($events['events'])) {
                         'text' => 'กรุณาพิมพ์พ.ศ.เกิดของคุณใหม่อีกครั้งค่ะ'
                       ];  
  
+
+
+  }elseif ($event['message']['text'] == "อายุครรภ์ไม่ถูกต้อง" ) {
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'กรุณาพิมพ์ครั้งสุดท้ายที่คุณมีประจำเดือนใหม่ค่ะ'
+                      ]; 
+
+
     }elseif (strlen($_msg) == 5 && $seqcode == "0008") {
     // $birth_years =  str_replace("วันที่","", $_msg);
     $pieces = explode(" ", $_msg);
@@ -247,7 +257,7 @@ if (!is_null($events['events'])) {
                 [
                     'type' => 'message',
                     'label' => 'ไม่ถูกต้อง',
-                    'text' => 'ไม่ถูกต้อง'
+                    'text' => 'อายุครรภ์ไม่ถูกต้อง'
                 ],
             ]
         ]
@@ -272,7 +282,7 @@ if (!is_null($events['events'])) {
                 [
                     'type' => 'message',
                     'label' => 'ไม่ถูกต้อง',
-                    'text' => 'ไม่ถูกต้อง'
+                    'text' => 'อายุครรภ์ไม่ถูกต้อง'
                 ],
             ]
         ]
@@ -305,7 +315,7 @@ if (!is_null($events['events'])) {
                 [
                     'type' => 'message',
                     'label' => 'ไม่ถูกต้อง',
-                    'text' => 'ไม่ถูกต้อง'
+                    'text' => 'อายุครรภ์ไม่ถูกต้อง'
                 ],
             ]
         ]
@@ -330,7 +340,7 @@ if (!is_null($events['events'])) {
                 [
                     'type' => 'message',
                     'label' => 'ไม่ถูกต้อง',
-                    'text' => 'ไม่ถูกต้อง'
+                    'text' => 'อายุครรภ์ไม่ถูกต้อง'
                 ],
             ]
         ]
@@ -342,7 +352,7 @@ if (!is_null($events['events'])) {
           $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => 'กรุณาพิมพ์ใหม่'
+                        'text' => 'กรุณาพิมพ์ครั้งสุดท้ายที่คุณมีประจำเดือนใหม่ค่ะ'
                       ]; 
         }
     } else {
