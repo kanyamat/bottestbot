@@ -568,7 +568,7 @@ if (!is_null($events['events'])) {
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => 'กรุณาพิมพ์ส่วนสูงไม่ถูกต้องของคุณใหม่ค่ะ'
+                        'text' => 'กรุณาพิมพ์ส่วนสูงของคุณใหม่ค่ะ'
                       ]; 
 
   }elseif (is_numeric($_msg) !== false && $seqcode == "0014"  ) {
