@@ -412,6 +412,15 @@ if (!is_null($events['events'])) {
     $q1 = pg_exec($dbconn, "UPDATE user_data SET  user_weight = $answer WHERE user_id = '{$user_id}' ") or die(pg_errormessage());   
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0012', '','0013','0',NOW(),NOW())") or die(pg_errormessage());
   
+
+
+  }elseif ($event['message']['text'] == "น้ำหนักก่อนตั้งครรภ์ไม่ถูกต้อง" ) {
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'กรุณาพิมพ์น้ำหนักก่อนตั้งครรภ์ของคุณใหม่ค่ะ'
+                      ]; 
+
   }elseif (is_numeric($_msg) !== false && $seqcode == "0010"  )  {
                  $weight =  $_msg;
                  $weight_mes = 'ก่อนตั้งครรภ์ คุณมีน้ำหนัก'.$weight.'กิโลกรัมถูกต้องหรือไม่คะ';
@@ -431,12 +440,20 @@ if (!is_null($events['events'])) {
                                         [
                                             'type' => 'message',
                                             'label' => 'ไม่ถูกต้อง',
-                                            'text' => 'ไม่ถูกต้อง'
+                                            'text' => 'น้ำหนักก่อนตั้งครรภ์ไม่ถูกต้อง'
                                         ],
                                     ]
                                  ]     
                              ];   
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0010', $weight,'0011','0',NOW(),NOW())") or die(pg_errormessage()); 
+
+
+  }elseif ($event['message']['text'] == "น้ำหนักปัจจุบันไม่ถูกต้อง" ) {
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'กรุณาพิมพ์น้ำหนักปัจจุบันของคุณใหม่ค่ะ'
+                      ]; 
 
   }elseif ($event['message']['text'] == "น้ำหนักปัจจุบันถูกต้อง" ) {
          $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
@@ -472,12 +489,13 @@ if (!is_null($events['events'])) {
                                         [
                                             'type' => 'message',
                                             'label' => 'ไม่ถูกต้อง',
-                                            'text' => 'ไม่ถูกต้อง'
+                                            'text' => 'น้ำหนักปัจจุบันไม่ถูกต้อง'
                                         ],
                                     ]
                                  ]     
                              ];   
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0012', $weight,'0013','0',NOW(),NOW())") or die(pg_errormessage()); 
+
  
 }elseif ($event['message']['text'] == "ส่วนสูงถูกต้อง"  ) {
    $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
@@ -544,6 +562,15 @@ if (!is_null($events['events'])) {
          curl_close($ch);
          echo $result . "\r\n";
 
+
+
+  }elseif ($event['message']['text'] == "ส่วนสูงไม่ถูกต้อง" ) {
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'กรุณาพิมพ์ส่วนสูงไม่ถูกต้องของคุณใหม่ค่ะ'
+                      ]; 
+
   }elseif (is_numeric($_msg) !== false && $seqcode == "0014"  ) {
                  $height =  str_replace("ส่วนสูง","", $_msg);
                  $height_mes = 'ปัจจุบัน คุณสูง '.$height.'ถูกต้องหรือไม่คะ';
@@ -563,7 +590,7 @@ if (!is_null($events['events'])) {
                                         [
                                             'type' => 'message',
                                             'label' => 'ไม่ถูกต้อง',
-                                            'text' => 'ไม่ถูกต้อง'
+                                            'text' => 'ส่วนสูงไม่ถูกต้อง'
                                         ],
                                     ]
                                  ]     
