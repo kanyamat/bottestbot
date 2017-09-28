@@ -210,21 +210,27 @@ if (!is_null($events['events'])) {
                         'text' => 'กรุณาพิมพ์พ.ศ.เกิดของคุณใหม่อีกครั้งค่ะ'
                       ];  
  
-  }elseif (strlen($_msg) == 5 && $seqcode == "0008") {
+    }elseif (strlen($_msg) == 5 && $seqcode == "0008") {
     // $birth_years =  str_replace("วันที่","", $_msg);
     $pieces = explode(" ", $_msg);
     $date = str_replace("","",$pieces[0]);
     $month  = str_replace("","",$pieces[1]);
     $date_today = date("d"); 
     $month_today = date("m");  
-        if ($date>$date_today){
-            $date_pre = $date-$date_today ;
-        }else{
-            $date_pre = $date_today-$date;
-        }
-    $month_pre = ($month_today-$month)*4 ;
-  
-    $age_pre = 'คุณมีอายุครรภ์'. $month_pre.'สัปดาห์'. $date_pre .'วัน' ;
+        
+    if (is_numeric($month) !== false &&is_numeric($date) !== false && strlen($date) == 2 && strlen($month) == 2  ) {
+        if($date<31 && $date >=0 && $month <12 && $month>=0 && $month<$month_today || ( $month== $month_today &&  $date< $date_today )){
+           if($date>$date_today){
+               $d_pre = $date - $date_today;
+                if($d_pre>=7){
+                   $m_pre = ($month_today - $month)*4;
+                   $w_pre =  $d_pre/7;
+                   $w_pre = number_format($w_pre);
+                  /////คำตอบ/////
+                   $re_date_pre =  $d_pre%7;
+                   $re_date_pre = number_format($re_date_pre);
+                   $re_week_pre = $m_pre+$w_pre;
+                   $age_pre = 'คุณมีอายุครรภ์'. $re_week_pre.'สัปดาห์'. $re_date_pre .'วัน' ;
     $replyToken = $event['replyToken'];
     $messages = [
         'type' => 'template',
@@ -241,19 +247,131 @@ if (!is_null($events['events'])) {
                 [
                     'type' => 'message',
                     'label' => 'ไม่ถูกต้อง',
-                    'text' => 'อายุครรภ์ไม่ถูกต้องไม่ถูกต้อง'
+                    'text' => 'ไม่ถูกต้อง'
                 ],
             ]
         ]
     ];   
-    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008',   $month_pre,'0009','0',NOW(),NOW())") or die(pg_errormessage());
-  
-    }elseif ($event['message']['text'] == "อายุครรภ์ไม่ถูกต้องไม่ถูกต้อง" ) {
-                 $replyToken = $event['replyToken'];
+                }else{
+                   $re_date_pre = $date - $date_today;
+                   $re_week_pre = ($month_today - $month)*4; 
+                     $age_pre = 'คุณมีอายุครรภ์'. $re_week_pre.'สัปดาห์'. $re_date_pre .'วัน' ;
+    $replyToken = $event['replyToken'];
+    $messages = [
+        'type' => 'template',
+        'altText' => 'this is a confirm template',
+        'template' => [
+            'type' => 'confirm',
+            'text' =>  $age_pre ,
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => 'ถูกต้อง',
+                    'text' => 'อายุครรภ์ถูกต้อง'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่ถูกต้อง',
+                    'text' => 'ไม่ถูกต้อง'
+                ],
+            ]
+        ]
+    ];   
+                }
+           }else{
+               $d_pre = $date_today - $date;
+                if($d_pre>=7){
+                   $m_pre = ($month_today - $month)*4;
+                   $w_pre =  $d_pre/7;
+                   $w_pre = number_format($w_pre);
+                  /////คำตอบ/////
+                   $re_date_pre =  $d_pre%7;
+                   $re_date_pre = number_format($re_date_pre);
+                   $re_week_pre = $m_pre+$w_pre;
+                     $age_pre = 'คุณมีอายุครรภ์'. $re_week_pre.'สัปดาห์'. $re_date_pre .'วัน' ;
+    $replyToken = $event['replyToken'];
+    $messages = [
+        'type' => 'template',
+        'altText' => 'this is a confirm template',
+        'template' => [
+            'type' => 'confirm',
+            'text' =>  $age_pre ,
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => 'ถูกต้อง',
+                    'text' => 'อายุครรภ์ถูกต้อง'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่ถูกต้อง',
+                    'text' => 'ไม่ถูกต้อง'
+                ],
+            ]
+        ]
+    ];   
+                }else{
+                   $re_date_pre = $date_today- $date;
+                   $re_week_pre = ($month_today - $month)*4; 
+                     $age_pre = 'คุณมีอายุครรภ์'. $re_week_pre.'สัปดาห์'. $re_date_pre .'วัน' ;
+    $replyToken = $event['replyToken'];
+    $messages = [
+        'type' => 'template',
+        'altText' => 'this is a confirm template',
+        'template' => [
+            'type' => 'confirm',
+            'text' =>  $age_pre ,
+            'actions' => [
+                [
+                    'type' => 'message',
+                    'label' => 'ถูกต้อง',
+                    'text' => 'อายุครรภ์ถูกต้อง'
+                ],
+                [
+                    'type' => 'message',
+                    'label' => 'ไม่ถูกต้อง',
+                    'text' => 'ไม่ถูกต้อง'
+                ],
+            ]
+        ]
+    ];   
+                }
+           }
+        
+        }else{
+          $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => 'กรุณาพิมพ์ครั้งสุดท้ายที่คุณมีประจำเดือนใหม่อีกครั้งค่ะ' 
-                      ];    
+                        'text' => 'กรุณาพิมพ์ใหม่'
+                      ]; 
+        }
+    } else {
+  
+                $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'กรุณาพิมพ์ใหม่ตามนี้ 17 02(วันที่ เดือน)'
+                      ];  
+    }   
+  
+      $url = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
+    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008', $re_week_pre ,'0009','0',NOW(),NOW())") or die(pg_errormessage());
     
   }elseif ($event['message']['text'] == "อายุครรภ์ถูกต้อง" ) {
     $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
