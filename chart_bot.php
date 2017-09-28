@@ -4,7 +4,7 @@ $dbconn = pg_pconnect($conn_string);
 ?>
 <html>
   <head>
-  
+
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/xy.js"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
@@ -92,6 +92,7 @@ $dbconn = pg_pconnect($conn_string);
         "id": "x",
         "title": "Week"
       } ],
+        "valueAxes": [ {
         "axisAlpha": 0,
         "dashLength": 1,
         "position": "left",
