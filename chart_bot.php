@@ -90,6 +90,13 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "id": "x",
     "title": "Week"
   } ],
+  "valueAxes": [ {
+    "position": "bottom",
+    "axisAlpha": 0,
+    "dashLength": 1,
+    "id": "y",
+    "title": "aaaaa"
+  } ],
   "startDuration": 1,
   "graphs": [ {
     "balloonText": "x:[[x]] y:[[y]]",
