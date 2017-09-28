@@ -92,10 +92,10 @@ var chart = AmCharts.makeChart( "chartdiv", {
   } ],
   "valueAxes": [ {
     "position": "bottom",
-    "axisAlpha": 0,
-    "dashLength": 1,
+    "axisAlpha": 1,
+    "dashLength": 0,
     "id": "y",
-    "title": "aaaaa"
+    "title": "Week"
   } ],
   "startDuration": 1,
   "graphs": [ {
