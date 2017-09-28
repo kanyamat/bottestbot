@@ -4,20 +4,22 @@ $dbconn = pg_pconnect($conn_string);
 ?>
 <html>
   <head>
+<style>
+#chartdiv {
+  width   : 100%;
+  height    : 500px;
+  font-size : 11px;
+}             
+</style>
+
+<!-- Resources -->
 <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script src="https://www.amcharts.com/lib/3/xy.js"></script>
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 <script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
-<div id="chartdiv"></div>			
 
-<style type="text/css">
-#chartdiv {
-	width		: 100%;
-	height		: 500px;
-	font-size	: 11px;
-}							
-</style>
+<!-- Chart code -->
 <script>
 var chart = AmCharts.makeChart( "chartdiv", {
   "type": "xy",
@@ -90,12 +92,11 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "id": "x",
     "title": "Week"
   } ],
-  "valueAxes": [ {
-    "position": "bottom",
-    "axisAlpha": 1,
-    "dashLength": 0,
+    "axisAlpha": 0,
+    "dashLength": 1,
+    "position": "left",
     "id": "y",
-    "title": "Week"
+    "title": "Y Axis"
   } ],
   "startDuration": 1,
   "graphs": [ {
@@ -120,7 +121,12 @@ var chart = AmCharts.makeChart( "chartdiv", {
 </script>
   </head>
   <body>
-    
+    <div id="chartdiv"></div>
    <!--  <div id="curve_chart" style="width: 900px; height: 500px"></div> -->
   </body>
 </html>
+
+<!-- Styles -->
+
+
+<!-- HTML -->
