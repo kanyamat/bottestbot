@@ -616,14 +616,10 @@ if (!is_null($events['events'])) {
                   "label"=> "Buy",
                   "data"=> "action=buy&itemid=123"
                 ],
-                [
-                  "type"=> "postback",
-                  "label"=> "Add to cart",
-                  "data"=> "action=add&itemid=123"
-                ],
+
                 [
                   "type"=> "uri",
-                  "label"=> "View detail",
+                  "label"=> "Chart",
                   "uri"=> "https://bottestbot.herokuapp.com/chart_bot.php"
                 ]
           ]
