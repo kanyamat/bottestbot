@@ -91,7 +91,7 @@ $dbconn = pg_pconnect($conn_string);
         "dashLength": 1,
         "id": "x",
         "title": "Week"
-      } ],
+      // } ],
         // "valueAxes": [ {
         // "axisAlpha": 0,
         // "dashLength": 1,
