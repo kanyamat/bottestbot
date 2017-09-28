@@ -598,6 +598,42 @@ if (!is_null($events['events'])) {
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0014', $height,'0015','0',NOW(),NOW())") or die(pg_errormessage()); 
 
 
+}else if (strpos($_msg, 'ทดสอบ') !== false) {
+    $replyToken = $event['replyToken'];
+
+
+      $messages = [
+        "type"=> "template",
+        "altText"=> "this is a buttons template",
+        "template"=> [
+            "type"=> "buttons",
+            "thumbnailImageUrl"=> "https://example.com/bot/images/image.jpg",
+            "title"=> "Menu",
+            "text"=> "Please select",
+            "actions"=> [
+                [
+                  "type"=> "postback",
+                  "label"=> "Buy",
+                  "data"=> "action=buy&itemid=123"
+                ],
+                [
+                  "type"=> "postback",
+                  "label"=> "Add to cart",
+                  "data"=> "action=add&itemid=123"
+                ],
+                [
+                  "type"=> "uri",
+                  "label"=> "View detail",
+                  "uri"=> "https://bottestbot.herokuapp.com/chart_bot.php"
+                ]
+          ]
+      ]
+    ];
+
+
+
+
+
    }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
     
      $replyToken = $event['replyToken'];
