@@ -600,7 +600,12 @@ if (!is_null($events['events'])) {
 
 }else if (strpos($_msg, 'ทดสอบ') !== false) {
     $replyToken = $event['replyToken'];
-
+             $des_preg = pg_query($dbconn,"SELECT  descript,img FROM pregnants WHERE  week = $answer4  ");
+              while ($row = pg_fetch_row($des_preg)) {
+                  echo $des = $row[0]; 
+                  echo $img = $row[1]; 
+ 
+                } 
 
       $messages = [
         "type"=> "template",
@@ -613,8 +618,8 @@ if (!is_null($events['events'])) {
             "actions"=> [
                 [
                   "type"=> "postback",
-                  "label"=> "Buy",
-                  "data"=> "action=buy&itemid=123"
+                  "label"=> "รายละเอียด",
+                  "data"=> $des
                 ],
 
                 [
