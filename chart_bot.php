@@ -16,7 +16,7 @@ $dbconn = pg_pconnect($conn_string);
   <head>
 
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
- <!--    <script src="https://www.amcharts.com/lib/3/xy.js"></script> -->
+    <script src="https://www.amcharts.com/lib/3/xy.js"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
