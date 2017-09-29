@@ -35,18 +35,18 @@ $check_q = pg_query($dbconn,"SELECT his_preg_week, his_preg_weight FROM history_
       "type": "xy",
       "theme": "none",
       "dataProvider": [ {
-        "ax": 1, //weekของแต่ละweek ในแนว X
-        "ay": 0.5,
+        "ax": $week, //weekของแต่ละweek ในแนว X
+        "ay": $weight,
         "bx": 1,
         "by": 2.2
       }, {
-        "ax": 2,
-        "ay": 1.3,
+        "ax": $week,
+        "ay": $weight,
         "bx": 2,
         "by": 4.9
       }, {
-        "ax": 3,
-        "ay": 2.3,
+        "ax": $week,
+        "ay": $weight,
         "bx": 3,
         "by": 5.1
       }, {
