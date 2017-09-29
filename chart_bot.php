@@ -9,7 +9,7 @@ if (!$dbconn) {
 $user = $_GET["data"];
 $user_id = pg_escape_string($user);
  // echo $user_id;
-$check = pg_query($dbconn,"SELECT user_weight FROM user_data  WHERE  user_id = '{$user_id}'  ");
+$check = pg_query($dbconn,"SELECT user_weight FROM user_data ");
                 while ($row= pg_fetch_row($check)) {
               
                  $result = $row[0];

@@ -559,10 +559,6 @@ if (!is_null($events['events'])) {
                                   ]
                               ];
 
-
-
-
-
          $des_preg = pg_query($dbconn,"SELECT  descript,img FROM pregnants WHERE  week = $answer4  ");
               while ($row = pg_fetch_row($des_preg)) {
                   echo $des = $row[0]; 
