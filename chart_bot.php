@@ -9,7 +9,7 @@ $check_q = pg_query($dbconn,"SELECT  his_preg_week, his_preg_weight FROM history
                   echo $weight = $row[1]; 
 
                 }
-      print $answer1;
+      echo $answer1;
 
 ?>
 <html>
