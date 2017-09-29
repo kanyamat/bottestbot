@@ -5,8 +5,8 @@ $dbconn = pg_pconnect($conn_string);
 $check_q = pg_query($dbconn,"SELECT his_preg_week, his_preg_weight FROM history_preg ");
 
  while ($row = pg_fetch_row($check_q)) {
-                  echo $week = $row[0], "<br>"; 
-                  echo $weight = $row[1], "<br>"; 
+                  echo $week = $row[0]; 
+                  echo $weight = $row[1]; 
 
                 }
 //       echo $answer1;
@@ -35,18 +35,18 @@ $check_q = pg_query($dbconn,"SELECT his_preg_week, his_preg_weight FROM history_
       "type": "xy",
       "theme": "none",
       "dataProvider": [ {
-        "ax": $week, //weekของแต่ละweek ในแนว X
-        "ay": $weight,
+        "ax": 1, //weekของแต่ละweek ในแนว X
+        "ay": 0.5,
         "bx": 1,
         "by": 2.2
       }, {
-        "ax": $week,
-        "ay": $weight,
+        "ax": 2,
+        "ay": 1.3,
         "bx": 2,
         "by": 4.9
       }, {
-        "ax": $week,
-        "ay": $weight,
+        "ax": 3,
+        "ay": 2.3,
         "bx": 3,
         "by": 5.1
       }, {
