@@ -5,8 +5,8 @@ $dbconn = pg_pconnect($conn_string);
 $check_q = pg_query($dbconn,"SELECT his_preg_week, his_preg_weight FROM history_preg ");
 
  while ($row = pg_fetch_row($check_q)) {
-                  echo $answer1 = $row[0]; 
-                  echo $weight = $row[1]; 
+                  echo $week = $row[0], '\n'; 
+                  echo $weight = $row[1], '\n'; 
 
                 }
 //       echo $answer1;
