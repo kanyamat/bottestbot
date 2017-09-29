@@ -600,36 +600,36 @@ if (!is_null($events['events'])) {
 
 }else if (strpos($_msg, 'ทดสอบ') !== false) {
     $replyToken = $event['replyToken'];
-             $des_preg = pg_query($dbconn,"SELECT  descript,img FROM pregnants WHERE  week = $answer4  ");
-              while ($row = pg_fetch_row($des_preg)) {
-                  echo $des = $row[0]; 
-                  echo $img = $row[1]; 
+             // $des_preg = pg_query($dbconn,"SELECT  descript,img FROM pregnants WHERE  week = $answer4  ");
+             //  while ($row = pg_fetch_row($des_preg)) {
+             //      echo $des = $row[0]; 
+             //      echo $img = $row[1]; 
  
-                } 
+             //    } 
 
       $messages = [
-        'type'=> 'template',
-        'altText'=> 'this is a buttons template',
-        'template'=> [
-            'type'=> 'buttons',
-            'thumbnailImageUrl'=> 'https://example.com/bot/images/image.jpg',
-            'title'=> 'Menu',
-            'text'=> 'Please select',
-            'actions'=> [
-                [
-                  'type'=> 'text',
-                  'label'=> 'รายละเอียด',
-                  'data'=> $des
-                ],
+            'type'=> 'template',
+            'altText'=> 'this is a buttons template',
+            'template'=> [
+                'type'=> 'buttons',
+                'thumbnailImageUrl'=> 'https://example.com/bot/images/image.jpg',
+                'title'=> 'Menu',
+                'text'=> 'Please select',
+                'actions'=> [
+                    [
+                      'type'=> 'uri',
+                      'label'=> 'Chart',
+                      'uri'=> 'https://bottestbot.herokuapp.com/chart_bot.php'
+                    ],
 
-                [
-                  'type'=> 'uri',
-                  'label'=> 'Chart',
-                  'uri'=> 'https://bottestbot.herokuapp.com/chart_bot.php'
-                ]
-          ]
-      ]
-    ];
+                    [
+                      'type'=> 'uri',
+                      'label'=> 'Chart',
+                      'uri'=> 'https://bottestbot.herokuapp.com/chart_bot.php'
+                    ]
+               ]
+            ]
+       ];
 
 
 
