@@ -608,30 +608,28 @@ if (!is_null($events['events'])) {
                 } 
 
       $messages = [
-        "type"=> "template",
-        "altText"=> "this is a buttons template",
-        "template"=> [
-            "type"=> "buttons",
-            "thumbnailImageUrl"=> "https://example.com/bot/images/image.jpg",
-            "title"=> "Menu",
-            "text"=> "Please select",
-            "actions"=> [
+        'type'=> 'template',
+        'altText'=> 'this is a buttons template',
+        'template'=> [
+            'type'=> 'buttons',
+            'thumbnailImageUrl'=> 'https://example.com/bot/images/image.jpg',
+            'title'=> 'Menu',
+            'text'=> 'Please select',
+            'actions'=> [
                 [
-                  "type"=> "postback",
-                  "label"=> "รายละเอียด",
-                  "data"=> $des
+                  'type'=> 'text',
+                  'label'=> 'รายละเอียด',
+                  'data'=> $des
                 ],
 
                 [
-                  "type"=> "uri",
-                  "label"=> "Chart",
-                  "uri"=> "https://bottestbot.herokuapp.com/chart_bot.php"
+                  'type'=> 'uri',
+                  'label'=> 'Chart',
+                  'uri'=> 'https://bottestbot.herokuapp.com/chart_bot.php'
                 ]
           ]
       ]
     ];
-
-
 
 
 
