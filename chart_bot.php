@@ -8,12 +8,10 @@ $check_q = pg_query($dbconn,"SELECT  his_preg_week, his_preg_weight FROM history
                   echo $answer1 = $row[0]; 
                   echo $weight = $row[1]; 
 
-                } 
-
-
+                }
 
 ?>
-<html>
+<!-- <html>
   <head>
 
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
@@ -141,3 +139,4 @@ $check_q = pg_query($dbconn,"SELECT  his_preg_week, his_preg_weight FROM history
 </html>
 
 
+ -->
