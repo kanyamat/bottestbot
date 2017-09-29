@@ -529,11 +529,40 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' => 'คุณมีอายุครรภ์'.$answer4.'สัปดาห์'
                       ];
-                    $messages3 = [
-                        'type' => 'image',
-                        'originalContentUrl' =>   'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
-                        'previewImageUrl' =>   'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
-                      ];
+                    // $messages3 = [
+                    //     'type' => 'image',
+                    //     'originalContentUrl' =>   'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
+                    //     'previewImageUrl' =>   'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
+                    //   ];
+
+                   $messages3 = [
+                                                              
+                                  'type' => 'template',
+                                  'altText' => 'template',
+                                  'template' => [
+                                      'type' => 'buttons',
+                                      'thumbnailImageUrl' => 'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
+                                      'title' => 'ลูกน้อยของคุณ',
+                                      'text' =>  'อายุ'.$answer4.'สัปดาห์',
+                                      'actions' => [
+                                          // [
+                                          //     'type' => 'postback',
+                                          //     'label' => 'good',
+                                          //     'data' => 'value'
+                                          // ],
+                                          [
+                                              'type' => 'uri',
+                                              'label' => 'กราฟ',
+                                              'uri' => 'http://bottestbot.herokuapp.com/chart_bot.php?data='.$user_id
+                                          ]
+                                      ]
+                                  ]
+                              ];
+
+
+
+
+
          $des_preg = pg_query($dbconn,"SELECT  descript,img FROM pregnants WHERE  week = $answer4  ");
               while ($row = pg_fetch_row($des_preg)) {
                   echo $des = $row[0]; 

@@ -2,28 +2,25 @@
 $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 $dbconn = pg_pconnect($conn_string);
 
-$check_q = pg_query($dbconn,"SELECT his_preg_week, his_preg_weight FROM history_preg ");
+if (!$dbconn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
- while ($row = pg_fetch_row($check_q)) {
-                  echo $week = $row[0]; 
-                  echo $weight = $row[1]; 
-
-                }
-//       echo $answer1;
-
-
+$user = $_GET["data"];
+$user_id = pg_escape_string($user);
+ // echo $user_id;
 $check = pg_query($dbconn,"SELECT user_weight FROM user_data  WHERE  user_id = '{$user_id}'  ");
                 while ($row= pg_fetch_row($check)) {
               
                  $result = $row[0];
   
                 } 
-// $check_q = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg  WHERE  user_id = '{$user_id}'  ");
-//                 while ($arr= pg_fetch_array($check_q)) {
-//                   $arr0 = $arr[0];
-//                   echo $arr1 = $arr[1]-$result;
+$check_q = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg  WHERE  user_id = '{$user_id}'  ");
+                while ($arr= pg_fetch_array($check_q)) {
+                  $arr0 = $arr[0];
+                  echo $arr1 = $arr[1]-$result;
                 
-//                 } 
+                } 
 
 
 
