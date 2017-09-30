@@ -7,11 +7,19 @@ if (!$dbconn) {
 }
 
 $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
-                while ($row= pg_fetch_assoc($check)) {
+                while ($row= pg_fetch_array($check)) {
                   echo $result = $row[0];
                 
                 } 
+// Set proper HTTP response headers
+header( 'Content-Type: application/json' );
 
+// Print out rows
+$data = array();
+while ( $row = $result->fetch_assoc() ) {
+  $data[] = $row;
+}
+echo json_encode( $data );
 
 // $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
 //                 while ($row= pg_fetch_row($check2)) {
