@@ -45,14 +45,15 @@ $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
     </style>
 
     <script>
-    <?php
-   $c_field = $result->field_count-1;
-    $c=0; while($row = $result->fetch_array(MYSQLI_NUM)){ $c++; ?>
-   <?php if($c>1){ ?>,<?php } 
-   $data[] = $row[$c_field]; 
-   ?>
-                '<?php echo htmlspecialchars(addslashes(str_replace("\t","",str_replace("\n","",str_replace("\r","",$row[0]))))); ?>'
-   <?php } ?>
+   //  <?php
+   // $c_field = $result->field_count-1;
+   //  $c=0; while($row = $result->fetch_array(MYSQLI_NUM)){ $c++; ?>
+   // <?php if($c>1){ ?>,<?php } 
+   // $data[] = $row[$c_field]; 
+   // ?>
+   //              '<?php 
+   // echo htmlspecialchars(addslashes(str_replace("\t","",str_replace("\n","",str_replace("\r","",$row[0]))))); ?>'
+   // <?php } ?>
     var chart = AmCharts.makeChart( "chartdiv", {
       "type": "xy",
       "theme": "none",
