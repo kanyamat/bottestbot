@@ -11,15 +11,6 @@ $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_pr
                   echo $result = $row[0];
                 
                 } 
-// Set proper HTTP response headers
-header( 'Content-Type: application/json' );
-
-// Print out rows
-$data = array();
-while ( $row = $result->fetch_assoc() ) {
-  $data[] = $row;
-}
-echo json_encode( $data );
 
 // $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
 //                 while ($row= pg_fetch_row($check2)) {
@@ -66,6 +57,7 @@ echo json_encode( $data );
     </style>
 
     <script>
+    var chartData = generateChartData();
     var chart = AmCharts.makeChart( "chartdiv", {
       "type": "xy",
       "theme": "none",
@@ -114,6 +106,33 @@ echo json_encode( $data );
         "position": "bottom-right"
       }
     } );
+    chart.addListener("dataUpdated", zoomChart);
+function zoomChart() {
+    // chart.zoomToDates(new Date(2012, 0, 3), new Date(2012, 0, 11));
+}
+// generate some random data, quite different range
+function generateChartData() {
+// var myData=[<?php 
+// while($info=pg_fetch_array($data))
+//     echo $info['his_preg_week'].','; 
+// ?>];
+// <?php
+// $data=pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg  WHERE  user_id = '{$user_id}'  ");
+// echo myData;
+// ?>
+// var myLabels=[<?php 
+// while($info = pg_fetch_array($data))
+//     echo '"'.$info['his_preg_weight'].'",'; 
+// ?>];
+    var we = "<?php echo $arr0 = "400,300,500"; ?>";
+    var chartData = [];
+        chartData.push({
+        "date": "2012-01-01",
+        "duration": we
+    });    
+    
+    return chartData;
+}
 
     </script>
   </head>
