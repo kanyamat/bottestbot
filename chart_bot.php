@@ -145,6 +145,7 @@ $check_q = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_
 <!-- HTML -->
 <div id="chartdiv"></div>
    <!--  <div id="curve_chart" style="width: 900px; height: 500px"></div> -->
+   
   </body>
 </html>
 
