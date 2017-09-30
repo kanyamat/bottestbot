@@ -3,11 +3,14 @@ $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=
 $dbconn = pg_pconnect($conn_string);
 
 $res_c = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight");
-
+                while ($row= pg_fetch_array($res_c)) {
+                  $result = $row[0];
+                
+                } 
 // $query = "SELECT industry,count(industry) FROM company GROUP BY industry ";
 // $res_c = $mysqli->query($query);
  
-if (!$res_c) {
+if (!$result) {
     die('<p><strong style="color:#FF0000">!! Invalid query:</strong> ' . $mysqli->error.'</p>');
 }
 ?>
