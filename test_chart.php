@@ -6,11 +6,13 @@ if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$res_c = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg");
-                while ($row= pg_fetch_array($res_c)) {
+$check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
+                while ($row= pg_fetch_array($check)) {
                   $result = $row[0];
                 
                 } 
+
+
 // $query = "SELECT industry,count(industry) FROM company GROUP BY industry ";
 // $res_c = $mysqli->query($query);
  
