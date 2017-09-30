@@ -49,7 +49,7 @@ $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
       "type": "xy",
       "theme": "none",
       "dataProvider": [ {
-        "ax": $result, //weekของแต่ละweek ในแนว X
+        "ax": 1, //weekของแต่ละweek ในแนว X
         "ay": 0.5,
         "bx": 1,
         "by": 2.2
