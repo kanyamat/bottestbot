@@ -7,23 +7,38 @@ if (!$dbconn) {
 }
 
 $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
-                while ($row= pg_fetch_array($check)) {
-                  echo $result = $row[0];
+                // while ($row= pg_fetch_array($check)) {
+                //   echo $result = $row[0];
                 
-                } 
+                // } 
+                  while ( $row = $check->fetch_assoc() ) {
+                    echo $row['his_preg_weight'] . ' | ' . $row['value1'] . ' | ' .$row['value2'] . "n";
+                  }
 
-$check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
-                while ($row= pg_fetch_row($check2)) {
+// $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
+//                 while ($row= pg_fetch_row($check2)) {
               
-                 echo $result2 = $row[0];
+//                  echo $result2 = $row[0];
   
-               }
+//                }
 // $query = "SELECT industry,count(industry) FROM company GROUP BY industry ";
 // $res_c = $mysqli->query($query);
  
 // if (!$result) {
 //     die('<p><strong style="color:#FF0000">!! Invalid query...:</strong> ' . $mysqli->error.'</p>');
 // }
+
+
+
+// Print out rows
+// while ( $row = $result->fetch_assoc() ) {
+//   echo $row['category'] . ' | ' . $row['value1'] . ' | ' .$row['value2'] . "n";
+// }
+
+// // Close the connection
+// mysqli_close($link);
+
+
 ?>
 
 <html>
