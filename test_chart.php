@@ -7,13 +7,11 @@ if (!$dbconn) {
 }
 
 $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
-                // while ($row= pg_fetch_array($check)) {
-                //   echo $result = $row[0];
+                while ($row= pg_fetch_assoc($check)) {
+                  echo $result = $row[0];
                 
-                // } 
-                  while ( $row = $check->fetch_assoc() ) {
-                    echo $row['his_preg_weight'] . ' | ' . $row['value1'] . ' | ' .$row['value2'] . "n";
-                  }
+                } 
+
 
 // $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
 //                 while ($row= pg_fetch_row($check2)) {
