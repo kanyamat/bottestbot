@@ -4,8 +4,8 @@ $dbconn = pg_pconnect($conn_string);
 
 $res_c = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight";
 
-$query = "SELECT industry,count(industry) FROM company GROUP BY industry ";
-$res_c = $mysqli->query($query);
+// $query = "SELECT industry,count(industry) FROM company GROUP BY industry ";
+// $res_c = $mysqli->query($query);
  
 if (!$res_c) {
     die('<p><strong style="color:#FF0000">!! Invalid query:</strong> ' . $mysqli->error.'</p>');
