@@ -12,6 +12,11 @@ $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_pr
                 
                 } 
 
+$check2 = pg_query($dbconn,"SELECT user_weight FROM user_data  ");
+                while ($row= pg_fetch_row($check2)) {
+              
+                 echo $result2 = $row[0];
+  
 
 // $query = "SELECT industry,count(industry) FROM company GROUP BY industry ";
 // $res_c = $mysqli->query($query);
