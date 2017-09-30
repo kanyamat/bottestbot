@@ -43,7 +43,9 @@ $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
         font-size : 11px;
       }             
     </style>
-<?php
+
+    <script>
+    <?php
    $c_field = $result->field_count-1;
     $c=0; while($row = $result->fetch_array(MYSQLI_NUM)){ $c++; ?>
    <?php if($c>1){ ?>,<?php } 
@@ -51,7 +53,6 @@ $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
    ?>
                 '<?php echo htmlspecialchars(addslashes(str_replace("\t","",str_replace("\n","",str_replace("\r","",$row[0]))))); ?>'
    <?php } ?>
-    <script>
     var chart = AmCharts.makeChart( "chartdiv", {
       "type": "xy",
       "theme": "none",
