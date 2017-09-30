@@ -61,7 +61,7 @@ $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
       
       } ],
       "valueAxes": [ {
-        "position": "bottom",
+        //"position": "bottom",
         "axisAlpha": 0,
         "dashLength": 1,
         "id": "x",
