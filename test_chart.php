@@ -14,7 +14,8 @@ if (!$result) {
     die('<p><strong style="color:#FF0000">!! Invalid query...:</strong> ' . $mysqli->error.'</p>');
 }
 ?>
-
+<html>
+  <head>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
@@ -77,4 +78,14 @@ $(function () {
 });
 </script>
 <!--แสดงกราฟ-->
+
+
+  </head>
+  <body>
+    
+<!-- HTML -->
 <div id="barchart"></div>
+   <!--  <div id="curve_chart" style="width: 900px; height: 500px"></div> -->
+   
+  </body>
+</html>
