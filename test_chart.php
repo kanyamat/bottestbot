@@ -10,8 +10,8 @@ $res_c = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_pr
 // $query = "SELECT industry,count(industry) FROM company GROUP BY industry ";
 // $res_c = $mysqli->query($query);
  
-if (!$result) {
-    die('<p><strong style="color:#FF0000">!! Invalid query...:</strong> ' . $mysqli->error.'</p>');
-}
+// if (!$result) {
+//     die('<p><strong style="color:#FF0000">!! Invalid query...:</strong> ' . $mysqli->error.'</p>');
+// }
 ?>
 
