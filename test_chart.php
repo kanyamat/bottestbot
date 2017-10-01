@@ -16,6 +16,12 @@ $data = array();
 
 echo json_encode($data);
 
+                while ($row = pg_fetch_assoc($check)) {
+                  echo $row['his_preg_week'];
+                  echo $row['his_preg_weight'];
+                }
+
+
 // Print out rows
 // $data = array();
 // while ( $row = $check->fetch_assoc() ) {
