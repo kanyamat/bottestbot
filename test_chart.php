@@ -6,12 +6,13 @@ if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
-//                 while ($row= pg_fetch_array($check)) {
-//                   echo $result = $row[0];
+$check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
+                while ($row= pg_fetch_array($check)) {
+                  echo $result = $row[0];
                 
-//                 } 
-while ( $row = $check->fetch_assoc() ) {
+                } 
+while ( $row = fetch_assoc($check) ) {
+// while ( $row = $check->fetch_assoc() ) {
   echo $row['his_preg_week'] . ' | ' . $row['his_preg_weight'] . "n";
 }
 
