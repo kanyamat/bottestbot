@@ -9,16 +9,13 @@ if (!$dbconn) {
 $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
 $data = array();
                 while ($row= pg_fetch_row($check)) {
-                  echo $result = $row[0],$row[1],"<br>";
+                  echo $result = $row[0],$row[1],"</n>";
                   $data[] = $row;
 
                 } 
 
 echo json_encode($data);
-// Print out rows
-while ( $row = $check->fetch_assoc() ) {
-  echo $row['his_preg_week'] ,' | ' , $row['his_preg_weight'] , <"br">;
-}
+
 
 // Print out rows
 // $data = array();
