@@ -8,7 +8,7 @@ if (!$dbconn) {
 
 $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
 $data = array();
-                while ( $row = $check->fetch_assoc() ) {
+                while ( $row = fetch_assoc($check) ) {
                   echo $result = $row[0],"<br>";
                   $data[] = $row;
                 } 
