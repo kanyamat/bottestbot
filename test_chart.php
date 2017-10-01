@@ -17,7 +17,7 @@ $data = array();
 echo json_encode($data);
 // Print out rows
 while ( $row = $check->fetch_assoc() ) {
-  echo $row['his_preg_week'] . ' | ' . $row['his_preg_weight'] . "n";
+  echo $row['his_preg_week'] ,' | ' , $row['his_preg_weight'] , <"br">;
 }
 
 // Print out rows
