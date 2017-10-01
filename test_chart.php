@@ -11,7 +11,16 @@ $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_pr
                   echo $result = $row[0], "<br>";
                 
                 } 
-echo json_encode( $result );
+
+
+
+// Print out rows
+// $data = array();
+// while ( $row = $result->fetch_assoc() ) {
+//   $data[] = $row;
+// }
+echo json_encode(  $result );
+
 // while ( $row = fetch_assoc($check) ) {
 // // while ( $row = $check->fetch_assoc() ) {
 //   echo $row['his_preg_week'] . ' | ' . $row['his_preg_weight'] . "<>";
