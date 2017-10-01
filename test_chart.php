@@ -15,12 +15,10 @@ $data = array();
                 } 
 
 echo json_encode($data);
-
-                while ($row = pg_fetch_assoc($check)) {
-                  echo $row[0];
-                  echo $row[1];
-                }
-
+// Print out rows
+while ( $row = $check->fetch_assoc() ) {
+  echo $row['his_preg_week'] . ' | ' . $row['his_preg_weight'] . "n";
+}
 
 // Print out rows
 // $data = array();
