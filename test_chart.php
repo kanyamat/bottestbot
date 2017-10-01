@@ -11,6 +11,9 @@ $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_pr
                   echo $result = $row[0];
                 
                 } 
+while ( $row = $check->fetch_assoc() ) {
+  echo $row['his_preg_week'] . ' | ' . $row['his_preg_weight'] . "n";
+}
 
 // $check2 = pg_query($dbconn,"SELECT user_weight FROM user_data" );
 //                 while ($row= pg_fetch_row($check2)) {
