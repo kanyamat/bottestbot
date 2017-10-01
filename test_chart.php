@@ -10,7 +10,7 @@ $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_pr
 $data = array();
                 while ($row= pg_fetch_array($check)) {
                   echo $result = $row[0];
-                  $data[] = $row;
+                  $data[] = $row,"<br>";
                 } 
 echo json_encode($data);
 
