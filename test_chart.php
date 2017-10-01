@@ -6,7 +6,7 @@ if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
- function drawChart() {
+
 $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
 $data = array();
                 while ($row= pg_fetch_array($check)) {
@@ -16,7 +16,7 @@ $data = array();
                 } 
 
 echo json_encode($data);
-}
+
 
 // Print out rows
 // $data = array();
