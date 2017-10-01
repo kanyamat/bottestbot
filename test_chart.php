@@ -9,8 +9,8 @@ if (!$dbconn) {
 $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
 $data = array();
                 while ($row= pg_fetch_array($check)) {
-                  echo $result = $row[0];
-                  $data[] = $row."<br>";
+                  echo $result = $row[0],"<br>";
+                  $data[] = $row;
                 } 
 echo json_encode($data);
 
