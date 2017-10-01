@@ -122,32 +122,8 @@ echo json_encode($data);
       }
     } );
     chart.addListener("dataUpdated", zoomChart);
-function zoomChart() {
-    // chart.zoomToDates(new Date(2012, 0, 3), new Date(2012, 0, 11));
 }
-// generate some random data, quite different range
-function generateChartData() {
-// var myData=[<?php 
-// while($info=pg_fetch_array($data))
-//     echo $info['his_preg_week'].','; 
-// ?>];
-// <?php
-// $data=pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg  WHERE  user_id = '{$user_id}'  ");
-// echo myData;
-// ?>
-// var myLabels=[<?php 
-// while($info = pg_fetch_array($data))
-//     echo '"'.$info['his_preg_weight'].'",'; 
-// ?>];
-    var we = "<?php echo $arr0 = "400,300,500"; ?>";
-    var chartData = [];
-        chartData.push({
-        "date": "2012-01-01",
-        "duration": we
-    });    
-    
-    return chartData;
-}
+
 
     </script>
   </head>
