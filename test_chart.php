@@ -8,13 +8,13 @@ if (!$dbconn) {
 
 
 $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
-//$data = array();
+$data = array();
                 while ($row= pg_fetch_array($check)) {
                   echo $result = $row[0],$row[1]."</br>";
                   $data[] = $row;
 
                 } 
-echo json_encode($result);
+
 echo json_encode($data);
 
 
@@ -78,14 +78,14 @@ echo json_encode($data);
     var chartData = generateChartData();
     var chart = AmCharts.makeChart( "chartdiv", {
       "type": "xy",
-      // "theme": "none",
-      // "dataProvider": [ {
-      //   "ax": 1, //weekของแต่ละweek ในแนว X
-      //   "ay": 0.5,
-      //   "bx": 1,
-      //   "by": 2.2
-      "dataLoader": {
-    "url": "data.php"
+      "theme": "none",
+      "dataProvider": [ {
+        "ax": 1, //weekของแต่ละweek ในแนว X
+        "ay": 0.5,
+        "bx": 1,
+        "by": 2.2
+    //   "dataLoader": {
+    // "url": "data.php"
   },
       } ],
       "valueAxes": [ {
