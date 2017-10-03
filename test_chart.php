@@ -58,7 +58,7 @@ echo json_encode($data);
 
 <html>
   <head>
-    <script src="http://www.amcharts.com/lib/3/plugins/dataloader/dataloader.min.js" type="text/javascript"></script>
+
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/xy.js"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
@@ -79,18 +79,18 @@ echo json_encode($data);
     var chart = AmCharts.makeChart( "chartdiv", {
       "type": "xy",
       "theme": "none",
-      "dataProvider": data.php
-      // [ {
-      //   "ax": 1, //weekของแต่ละweek ในแนว X
-      //   "ay": 0.5,
-      //   "bx": 1,
-      //   "by": 2.2
-      // }, {
-      //   "ax": 2,
-      //   "ay": 1.3,
-      //   "bx": 2,
-      //   "by": 4.9
-      // } ]
+      "dataProvider": 
+      [ {
+        "ax": 1, //weekของแต่ละweek ในแนว X
+        "ay": 0.5,
+        "bx": 1,
+        "by": 2.2
+      }, {
+        "ax": 2,
+        "ay": 1.3,
+        "bx": 2,
+        "by": 4.9
+      } ]
       ,
       "valueAxes": [ {
         "position": "bottom",
