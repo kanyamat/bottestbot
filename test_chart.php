@@ -73,6 +73,7 @@ echo json_encode($data);
         font-size : 11px;
       }             
     </style>
+    
 
     <script>
     var chartData = generateChartData();
