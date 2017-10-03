@@ -79,17 +79,19 @@ echo json_encode($data);
     var chart = AmCharts.makeChart( "chartdiv", {
       "type": "xy",
       "theme": "none",
-      "dataProvider": [ {
-        "ax": 1, //weekของแต่ละweek ในแนว X
-        "ay": 0.5,
-        "bx": 1,
-        "by": 2.2
-      }, {
-        "ax": 2,
-        "ay": 1.3,
-        "bx": 2,
-        "by": 4.9
-      } ],
+      "dataProvider": $data
+      // [ {
+      //   "ax": 1, //weekของแต่ละweek ในแนว X
+      //   "ay": 0.5,
+      //   "bx": 1,
+      //   "by": 2.2
+      // }, {
+      //   "ax": 2,
+      //   "ay": 1.3,
+      //   "bx": 2,
+      //   "by": 4.9
+      // } ]
+      ,
       "valueAxes": [ {
         "position": "bottom",
         "axisAlpha": 0,
