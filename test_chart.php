@@ -74,19 +74,12 @@ echo json_encode($data);
       }             
     </style>
 
-
     <script>
     var chartData = generateChartData();
     var chart = AmCharts.makeChart( "chartdiv", {
-        "type": "serial",
-        "dataLoader": {
-        //"url": "data.php",
-        "dataProvider": "data.php",
-        "format": "json"
-  },
-      // "type": "xy",
-      // "theme": "none",
-      // "dataProvider": $data
+      "type": "xy",
+      "theme": "none",
+      "dataProvider": data.php
       // [ {
       //   "ax": 1, //weekของแต่ละweek ในแนว X
       //   "ay": 0.5,
