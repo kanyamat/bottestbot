@@ -73,14 +73,15 @@ echo json_encode($data);
         font-size : 11px;
       }             
     </style>
-    
+
 
     <script>
     var chartData = generateChartData();
     var chart = AmCharts.makeChart( "chartdiv", {
         "type": "serial",
         "dataLoader": {
-        "url": "data.php",
+        //"url": "data.php",
+        "dataProvider": "data.php",
         "format": "json"
   },
       // "type": "xy",
