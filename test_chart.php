@@ -84,6 +84,16 @@ echo json_encode($data);
         "ay": 0.5,
         "bx": 1,
         "by": 2.2
+      }, {
+        "ax": 2,
+        "ay": 1.3,
+        "bx": 2,
+        "by": 4.9
+      }, {
+        "ax": 3,
+        "ay": 2.3,
+        "bx": 3,
+        "by": 5.1
       } ],
       "valueAxes": [ {
         "position": "bottom",
