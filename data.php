@@ -6,17 +6,15 @@ if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
 $check = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg" );
 $data = array();
-                while ($row= pg_fetch_array($check)) {
-                  echo $result = $row[0],$row[1],"</br>";
+                while ($row= pg_fetch_assoc($check)) {
+                  //echo $result = $row[0],$row[1]."</br>";
                   $data[] = $row;
 
                 } 
 
 echo json_encode($data);
-
 
 // Print out rows
 // $data = array();
