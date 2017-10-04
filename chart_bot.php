@@ -48,7 +48,7 @@ echo "var data = '$data';";
 var chartData = generateChartData();
 var chart = AmCharts.makeChart("chartdiv", {
     "type": "xy",
-  "theme": "none",
+  "theme": "light",
   "dataProvider": chartData,
     // "type": "serial",
     // "theme": "light",
