@@ -103,18 +103,17 @@ $dbconn = pg_pconnect($conn_string);
 if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-// $user = $_GET["data"];
-$user = "U2dc636d2cd052e82c29f5284e00f69b9";
+$user = $_GET["data"];
 $user_id = pg_escape_string($user);
  // echo $user_id;
-$check = pg_query($dbconn,"SELECT user_weight FROM user_data  WHERE  user_id = 'Ub840b452d253f3db490dd59507ab78d1'  ");
+$check = pg_query($dbconn,"SELECT user_weight FROM user_data  WHERE  user_id = '{$user_id}'  ");
                 while ($row= pg_fetch_row($check)) {
               
                  $result = $row[0];
   
                 } 
 $arrayName=[];
-$check_q = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg  WHERE  user_id = 'Ub840b452d253f3db490dd59507ab78d1' order by 'his_preg_week'*1  ASC  ");
+$check_q = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg  WHERE  user_id = '{$user_id}' order by his_preg_week  ASC  ");
                 while ($arr= pg_fetch_array($check_q)) {
                   $week = $arr[0];
                   $weight = $arr[1]-$result;
