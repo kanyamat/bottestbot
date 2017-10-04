@@ -46,10 +46,12 @@ echo "var data = '$data';";
 <script type="text/javascript">
     
 var chartData = generateChartData();
-var chart = AmCharts.makeChart("chartdiv", {
-    "type": "xy",
-  "theme": "light",
+// var chart = AmCharts.makeChart("chartdiv", {
+  var chart = AmCharts.makeChart( "chartdiv", {
+  "type": "xy",
+  "theme": "none",
   "dataProvider": chartData,
+ 
     // "type": "serial",
     // "theme": "light",
     // "marginRight": 80,
@@ -92,7 +94,7 @@ var chart = AmCharts.makeChart("chartdiv", {
     // "export": {
     //     "enabled": true
     // }
-     "valueAxes": [ {
+ "valueAxes": [ {
     "position": "bottom",
     "axisAlpha": 0,
     "dashLength": 1,
