@@ -47,15 +47,18 @@ echo "var data = '$data';";
     
 var chartData = generateChartData();
 var chart = AmCharts.makeChart("chartdiv", {
-    "type": "serial",
-    "theme": "light",
-    "marginRight": 80,
-    "dataProvider": chartData,
-    "balloon": {
-        "cornerRadius": 6,
-        "horizontalPadding": 15,
-        "verticalPadding": 10
-    },
+    "type": "xy",
+  "theme": "none",
+  "dataProvider": chartData,
+    // "type": "serial",
+    // "theme": "light",
+    // "marginRight": 80,
+    // "dataProvider": chartData,
+    // "balloon": {
+    //     "cornerRadius": 6,
+    //     "horizontalPadding": 15,
+    //     "verticalPadding": 10
+    // },
     // "valueAxes": [{
     //     "position": "left",
     //     "title": "weight"
