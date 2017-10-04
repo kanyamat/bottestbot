@@ -46,79 +46,50 @@ echo "var data = '$data';";
 <script type="text/javascript">
     
 var chartData = generateChartData();
-// var chart = AmCharts.makeChart("chartdiv", {
-  var chart = AmCharts.makeChart( "chartdiv", {
-  "type": "xy",
-  "theme": "none",
-  "dataProvider": chartData,
+var chart = AmCharts.makeChart("chartdiv", {
+    "type": "serial",
+    "theme": "light",
+    "marginRight": 80,
+    "dataProvider": chartData,
+    "balloon": {
+        "cornerRadius": 6,
+        "horizontalPadding": 15,
+        "verticalPadding": 10
+    },
+    "valueAxes": [{
+        "position": "left",
+        "title": "weight"
+    }],
+    "graphs": [{
+        "bullet": "square",
+        "bulletBorderAlpha": 1,
+        "bulletBorderThickness": 1,
+        "fillAlphas": 0.3,
+        "fillColorsField": "lineColor",
+        "legendValueText": "[[value]]",
+        "lineColorField": "lineColor",
+        "title": "duration",
+        "valueField": "duration"
+    }],
+    "chartScrollbar": {
+    },
+    "chartCursor": {
+        "categoryBalloonDateFormat": "week",
+        "cursorAlpha": 0,
+        "fullWidth": true
+    },
+    
+    "categoryField": "date",
+    
+    "categoryAxis": {
+        "axisColor": "#555555",
+        "gridAlpha": 0,
+        "gridCount": 50
+    },
+    "export": {
+        "enabled": true
+    }
  
-    // "type": "serial",
-    // "theme": "light",
-    // "marginRight": 80,
-    // "dataProvider": chartData,
-    // "balloon": {
-    //     "cornerRadius": 6,
-    //     "horizontalPadding": 15,
-    //     "verticalPadding": 10
-    // },
-    // "valueAxes": [{
-    //     "position": "left",
-    //     "title": "weight"
-    // }],
-    // "graphs": [{
-    //     "bullet": "square",
-    //     "bulletBorderAlpha": 1,
-    //     "bulletBorderThickness": 1,
-    //     "fillAlphas": 0.3,
-    //     "fillColorsField": "lineColor",
-    //     "legendValueText": "[[value]]",
-    //     "lineColorField": "lineColor",
-    //     "title": "duration",
-    //     "valueField": "duration"
-    // }],
-    // "chartScrollbar": {
-    // },
-    // "chartCursor": {
-    //     "categoryBalloonDateFormat": "week",
-    //     "cursorAlpha": 0,
-    //     "fullWidth": true
-    // },
-    
-    // "categoryField": "date",
-    
-    // "categoryAxis": {
-    //     "axisColor": "#555555",
-    //     "gridAlpha": 0,
-    //     "gridCount": 50
-    // },
-    // "export": {
-    //     "enabled": true
-    // }
- "valueAxes": [ {
-    "position": "bottom",
-    "axisAlpha": 0,
-    "dashLength": 1,
-    "id": "x",
-    "title": "Week"
-  } ],
-  "startDuration": 1,
-  "graphs": [ {
-    "balloonText": "x:[[x]] y:[[y]]",
-    "fillAlphas": 0.3,
-    "fillToAxis": "x",
-    "lineAlpha": 1,
-    "xField": "ax",
-    "yField": "ay",
-    "lineColor": "#FCD202"
-  } ],
-  "marginLeft": 64,
-  "marginBottom": 60,
-  "chartScrollbar": {},
-  "chartCursor": {},
-  "export": {
-    "enabled": true,
-    "position": "bottom-right"
-  }
 });
 chart.addListener("dataUpdated", zoomChart);
 function zoomChart() {
