@@ -581,12 +581,12 @@ if (!is_null($events['events'])) {
                                     'actions' => [
                                         [
                                             'type' => 'message',
-                                            'label' => 'ถูกต้อง',
+                                            'label' => 'สนใจรับข้อมูล',
                                             'text' => 'สนใจรับข้อมูล'
                                         ],
                                         [
                                             'type' => 'message',
-                                            'label' => 'ไม่ถูกต้อง',
+                                            'label' => 'สนใจรับข้อมูล',
                                             'text' => 'ไม่สนใจรับข้อมูล'
                                         ],
                                     ]
