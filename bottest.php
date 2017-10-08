@@ -496,6 +496,38 @@ if (!is_null($events['events'])) {
                              ];   
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0012', $weight,'0013','0',NOW(),NOW())") or die(pg_errormessage()); 
 
+  }elseif ($event['message']['text'] == "ส่วนสูงไม่ถูกต้อง" ) {
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' => 'กรุณาพิมพ์ส่วนสูงของคุณใหม่ค่ะ'
+                      ]; 
+
+  }elseif (is_numeric($_msg) !== false && $seqcode == "0014"  ) {
+                 $height =  str_replace("ส่วนสูง","", $_msg);
+                 $height_mes = 'ปัจจุบัน คุณสูง '.$height.'ถูกต้องหรือไม่คะ';
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                                'type' => 'template',
+                                'altText' => 'this is a confirm template',
+                                'template' => [
+                                    'type' => 'confirm',
+                                    'text' =>  $height_mes ,
+                                    'actions' => [
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ถูกต้อง',
+                                            'text' => 'ส่วนสูงถูกต้อง'
+                                        ],
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ไม่ถูกต้อง',
+                                            'text' => 'ส่วนสูงไม่ถูกต้อง'
+                                        ],
+                                    ]
+                                 ]     
+                             ];   
+    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0014', $height,'0015','0',NOW(),NOW())") or die(pg_errormessage()); 
  
 }elseif ($event['message']['text'] == "ส่วนสูงถูกต้อง"  ) {
    $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
@@ -611,74 +643,15 @@ if (!is_null($events['events'])) {
          curl_close($ch);
          echo $result . "\r\n";
 
-
-
-  }elseif ($event['message']['text'] == "ส่วนสูงไม่ถูกต้อง" ) {
+  }elseif ($event['message']['text'] == "สนใจรับข้อมูล" ) {
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
                         'text' => 'กรุณาพิมพ์ส่วนสูงของคุณใหม่ค่ะ'
                       ]; 
 
-  }elseif (is_numeric($_msg) !== false && $seqcode == "0014"  ) {
-                 $height =  str_replace("ส่วนสูง","", $_msg);
-                 $height_mes = 'ปัจจุบัน คุณสูง '.$height.'ถูกต้องหรือไม่คะ';
-                 $replyToken = $event['replyToken'];
-                 $messages = [
-                                'type' => 'template',
-                                'altText' => 'this is a confirm template',
-                                'template' => [
-                                    'type' => 'confirm',
-                                    'text' =>  $height_mes ,
-                                    'actions' => [
-                                        [
-                                            'type' => 'message',
-                                            'label' => 'ถูกต้อง',
-                                            'text' => 'ส่วนสูงถูกต้อง'
-                                        ],
-                                        [
-                                            'type' => 'message',
-                                            'label' => 'ไม่ถูกต้อง',
-                                            'text' => 'ส่วนสูงไม่ถูกต้อง'
-                                        ],
-                                    ]
-                                 ]     
-                             ];   
-    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0014', $height,'0015','0',NOW(),NOW())") or die(pg_errormessage()); 
 
 
-}else if (strpos($_msg, 'ทดสอบ') !== false) {
-    $replyToken = $event['replyToken'];
-             // $des_preg = pg_query($dbconn,"SELECT  descript,img FROM pregnants WHERE  week = $answer4  ");
-             //  while ($row = pg_fetch_row($des_preg)) {
-             //      echo $des = $row[0]; 
-             //      echo $img = $row[1]; 
- 
-             //    } 
-
-      $messages = [
-            'type'=> 'template',
-            'altText'=> 'this is a buttons template',
-            'template'=> [
-                'type'=> 'buttons',
-                'thumbnailImageUrl'=> 'https://example.com/bot/images/image.jpg',
-                'title'=> 'Menu',
-                'text'=> 'Please select',
-                'actions'=> [
-                    [
-                      'type'=> 'uri',
-                      'label'=> 'Chart',
-                      'uri'=> 'https://bottestbot.herokuapp.com/chart_bot.php'
-                    ],
-
-                    [
-                      'type'=> 'uri',
-                      'label'=> 'Chart',
-                      'uri'=> 'https://bottestbot.herokuapp.com/chart_bot.php'
-                    ]
-               ]
-            ]
-       ];
 
 
 
