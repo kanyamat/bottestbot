@@ -656,6 +656,44 @@ if (!is_null($events['events'])) {
             ]
        ];
 
+                    $messagesๅ = [
+                                'type' => 'template',
+                                'altText' => 'this is a confirm template',
+                                'template' => [
+                                    'type' => 'confirm',
+                                    'text' =>  'คุณสนใจรับข้อมูลของทารกในครรภ์ทุกสัปดาห์หรือไม่' ,
+                                    'actions' => [
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ถูกต้อง',
+                                            'text' => 'สนใจรับข้อมูล'
+                                        ],
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ไม่ถูกต้อง',
+                                            'text' => 'ไม่สนใจรับข้อมูล'
+                                        ],
+                                    ]
+                                 ]     
+                             ];   
+                             
+         $url = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages, $messages1],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
 
 
    }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
