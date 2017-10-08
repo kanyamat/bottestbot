@@ -577,7 +577,7 @@ if (!is_null($events['events'])) {
                                 'altText' => 'this is a confirm template',
                                 'template' => [
                                     'type' => 'confirm',
-                                    'text' =>  'คุณสนใจรับข้อมูลของทารกในครรภ์ทุกสัปดาห์หรือไม่' ,
+                                    'text' =>  'คุณสนใจรับข้อมูลของทารกในครรภ์ในทุกสัปดาห์หรือไม่' ,
                                     'actions' => [
                                         [
                                             'type' => 'message',
@@ -586,7 +586,7 @@ if (!is_null($events['events'])) {
                                         ],
                                         [
                                             'type' => 'message',
-                                            'label' => 'สนใจรับข้อมูล',
+                                            'label' => 'ไม่สนใจรับข้อมูล',
                                             'text' => 'ไม่สนใจรับข้อมูล'
                                         ],
                                     ]
