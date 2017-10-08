@@ -647,7 +647,7 @@ if (!is_null($events['events'])) {
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => 'กรุณาพิมพ์ส่วนสูงของคุณใหม่ค่ะ'
+                        'text' => 'ทางเราจะส่งข้อมูลของทารกในครรภ์ให้คุฯแม่ทราบในทุกๆสัปดาห์ค่ะ'
                       ]; 
 
 
