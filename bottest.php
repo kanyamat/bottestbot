@@ -525,17 +525,17 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' =>  'ค่าดัชนีมวลกาย'.$bmi
                       ];
-                    $messages2 = [
-                        'type' => 'text',
-                        'text' => 'คุณมีอายุครรภ์'.$answer4.'สัปดาห์'
-                      ];
+                    // $messages2 = [
+                    //     'type' => 'text',
+                    //     'text' => 'คุณมีอายุครรภ์'.$answer4.'สัปดาห์'
+                    //   ];
                     // $messages3 = [
                     //     'type' => 'image',
                     //     'originalContentUrl' =>   'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
                     //     'previewImageUrl' =>   'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
                     //   ];
 
-                   $messages3 = [
+                   $messages2 = [
                                                               
                                   'type' => 'template',
                                   'altText' => 'template',
@@ -543,7 +543,7 @@ if (!is_null($events['events'])) {
                                       'type' => 'buttons',
                                       'thumbnailImageUrl' => 'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
                                       'title' => 'ลูกน้อยของคุณ',
-                                      'text' =>  'อายุ'.$answer4.'สัปดาห์',
+                                      'text' =>  'คุณมีอายุครรภ์'.$answer4.'สัปดาห์',
                                       'actions' => [
                                           // [
                                           //     'type' => 'postback',
@@ -565,14 +565,14 @@ if (!is_null($events['events'])) {
                   echo $img = $row[1]; 
  
                 } 
-                    $messages4 = [
+                    $messages3 = [
                         'type' => 'text',
                         'text' =>  $des
                       ];
 
 
 
-                    $messages5 = [
+                    $messages4 = [
                                 'type' => 'template',
                                 'altText' => 'this is a confirm template',
                                 'template' => [
@@ -596,7 +596,7 @@ if (!is_null($events['events'])) {
          $url = 'https://api.line.me/v2/bot/message/reply';
          $data = [
           'replyToken' => $replyToken,
-          'messages' => [$messages, $messages1, $messages2,$messages3,$messages4,$messages5],
+          'messages' => [$messages, $messages1, $messages2,$messages3,$messages4],
          ];
          error_log(json_encode($data));
          $post = json_encode($data);
