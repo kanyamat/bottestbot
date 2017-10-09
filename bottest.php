@@ -603,7 +603,6 @@ if (!is_null($events['events'])) {
                       ];
 
 
-
                     $messages4 = [
                                 'type' => 'template',
                                 'altText' => 'this is a confirm template',
