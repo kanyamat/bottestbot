@@ -665,7 +665,6 @@ if (!is_null($events['events'])) {
           'type' => 'text',
           'text' => 'hello world'
           ]; 
-      }
 
 
          $url = 'https://api.line.me/v2/bot/message/reply';
