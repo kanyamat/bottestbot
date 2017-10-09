@@ -648,22 +648,24 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' => 'ทางเราจะส่งข้อมูลของทารกในครรภ์ให้คุณแม่ทราบในทุกๆสัปดาห์ค่ะ'
                       ]; 
-         App::import('Controller','Abc'); class MonthlyShell extends AppShell { public function main() { $abc = new AbcController(); try { $abc>myTestFunction();
-              } catch (Exception $e) {
-                   $z = print_r($e,1);
-                   echo '
-              Exception while running updateFromLms : '.$z;
-               }  
-                  }
-              }     
+         
+  App::import('Controller','Abc'); class MonthlyShell extends AppShell { public function main() { $abc = new AbcController(); 
+    try { $abc>myTestFunction();
+      
+    } catch (Exception $e) {
+          $z = print_r($e,1);
+          echo 'Exception while running updateFromLms : '.$z;
+        }  
+  }
+}     
                
-              public function myTestFunction(){
-              //do what you want here to be served by cron job
-                 $messages1 = [
-                        'type' => 'text',
-                        'text' => 'hello world'
-                      ]; 
-              }
+      public function myTestFunction(){
+      //do what you want here to be served by cron job
+        $messages1 = [
+          'type' => 'text',
+          'text' => 'hello world'
+          ]; 
+      }
 
          $url = 'https://api.line.me/v2/bot/message/reply';
          $data = [
