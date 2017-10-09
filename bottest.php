@@ -661,11 +661,12 @@ if (!is_null($events['events'])) {
                
       public function myTestFunction(){
       //do what you want here to be served by cron job
-        $messages1 = [
-          'type' => 'text',
-          'text' => 'hello world'
-          ]; 
+        // $messages1 = [
+        //   'type' => 'text',
+        //   'text' => 'hello world'
+        //   ]; 
       }
+
 
          $url = 'https://api.line.me/v2/bot/message/reply';
          $data = [
