@@ -52,8 +52,8 @@ for($x = 0; $x <= $arrlength ; $x++) {
                                 'text' => 'สัปดาห์นี้คุณมีอายุครรภ์'.$p_week.'สัปดาห์แล้วนะคะ'
                              ];
                 $messages2 = [ 'type'=> 'image',
-                               'originalContentUrl'=> 'https://bottest14.herokuapp.com/week/'.$p_week.'.jpg',
-                               'previewImageUrl'=> 'https://bottest14.herokuapp.com/week/'.$p_week.'.jpg'
+                               'originalContentUrl'=> 'https://bottestbot.herokuapp.com/week/'.$p_week.'.jpg',
+                               'previewImageUrl'=> 'https://bottestbot.herokuapp.com/week/'.$p_week.'.jpg'
                              ];
               
                 $des_preg = pg_query($dbconn,"SELECT  descript FROM pregnants WHERE  week = $p_week   ");
