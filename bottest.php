@@ -603,26 +603,26 @@ if (!is_null($events['events'])) {
                       ];
 
 
-                    $messages4 = [
-                                'type' => 'template',
-                                'altText' => 'this is a confirm template',
-                                'template' => [
-                                    'type' => 'confirm',
-                                    'text' =>  'คุณสนใจรับข้อมูลของทารกในครรภ์ในทุกสัปดาห์หรือไม่' ,
-                                    'actions' => [
-                                        [
-                                            'type' => 'message',
-                                            'label' => 'สนใจรับข้อมูล',
-                                            'text' => 'สนใจรับข้อมูล'
-                                        ],
-                                        [
-                                            'type' => 'message',
-                                            'label' => 'ไม่สนใจ',
-                                            'text' => 'ไม่สนใจ'
-                                        ],
-                                    ]
-                                 ]     
-                             ];   
+                    // $messages4 = [
+                    //             'type' => 'template',
+                    //             'altText' => 'this is a confirm template',
+                    //             'template' => [
+                    //                 'type' => 'confirm',
+                    //                 'text' =>  'คุณสนใจรับข้อมูลของทารกในครรภ์ในทุกสัปดาห์หรือไม่' ,
+                    //                 'actions' => [
+                    //                     [
+                    //                         'type' => 'message',
+                    //                         'label' => 'สนใจรับข้อมูล',
+                    //                         'text' => 'สนใจรับข้อมูล'
+                    //                     ],
+                    //                     [
+                    //                         'type' => 'message',
+                    //                         'label' => 'ไม่สนใจ',
+                    //                         'text' => 'ไม่สนใจ'
+                    //                     ],
+                    //                 ]
+                    //              ]     
+                    //          ];   
                              
          $url = 'https://api.line.me/v2/bot/message/reply';
          $data = [
