@@ -395,6 +395,32 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' =>  $des
                       ];
+<<<<<<< HEAD
+=======
+
+
+                    // $messages4 = [
+                    //             'type' => 'template',
+                    //             'altText' => 'this is a confirm template',
+                    //             'template' => [
+                    //                 'type' => 'confirm',
+                    //                 'text' =>  'คุณสนใจรับข้อมูลของทารกในครรภ์ในทุกสัปดาห์หรือไม่' ,
+                    //                 'actions' => [
+                    //                     [
+                    //                         'type' => 'message',
+                    //                         'label' => 'สนใจรับข้อมูล',
+                    //                         'text' => 'สนใจรับข้อมูล'
+                    //                     ],
+                    //                     [
+                    //                         'type' => 'message',
+                    //                         'label' => 'ไม่สนใจ',
+                    //                         'text' => 'ไม่สนใจ'
+                    //                     ],
+                    //                 ]
+                    //              ]     
+                    //          ];   
+                             
+>>>>>>> aa1431d599c98af1e0b0e1da8a1148fdedb4bd14
          $url = 'https://api.line.me/v2/bot/message/reply';
          $data = [
           'replyToken' => $replyToken,
