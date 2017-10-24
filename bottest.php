@@ -462,7 +462,7 @@ $replyToken = $event['replyToken'];
                                   'altText' => 'template',
                                   'template' => [
                                       'type' => 'buttons',
-                                      'thumbnailImageUrl' => 'https://bottest14.herokuapp.com/week/'.$p_week .'.jpg',
+                                      'thumbnailImageUrl' => 'https://bottestbot.herokuapp.com/week/'.$p_week .'.jpg',
                                       'title' => 'ลูกน้อยของคุณ',
                                       'text' =>  'อายุ'.$p_week .'สัปดาห์',
                                       'actions' => [
@@ -474,7 +474,7 @@ $replyToken = $event['replyToken'];
                                           [
                                               'type' => 'uri',
                                               'label' => 'กราฟ',
-                                              'uri' => 'https://bottest14.herokuapp.com/graph.php?data='.$user_id
+                                              'uri' => 'https://bottestbot.herokuapp.com/graph.php?data='.$user_id
                                           ]
                                       ]
                                   ]
