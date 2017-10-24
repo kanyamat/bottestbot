@@ -59,8 +59,6 @@ if (!is_null($events['events'])) {
         ]
     ];
    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
- 
-/* ตอบสนใจ */
   }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
                 while ($row = pg_fetch_row($result)) {
@@ -74,8 +72,7 @@ if (!is_null($events['events'])) {
                         'text' =>  $question
                       ];
                 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
-
-/*ตอบไม่สนใจ   */
+   
   }elseif ($event['message']['text'] == "ไม่สนใจ" ) {
                  $replyToken = $event['replyToken'];
                  $messages = [
@@ -372,7 +369,7 @@ if (!is_null($events['events'])) {
                                   'altText' => 'template',
                                   'template' => [
                                       'type' => 'buttons',
-                                      'thumbnailImageUrl' => 'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
+                                      'thumbnailImageUrl' => 'https://bottest14.herokuapp.com/week/'.$answer4 .'.jpg',
                                       'title' => 'ลูกน้อยของคุณ',
                                       'text' =>  'อายุ'.$answer4.'สัปดาห์',
                                       'actions' => [
@@ -384,7 +381,7 @@ if (!is_null($events['events'])) {
                                           [
                                               'type' => 'uri',
                                               'label' => 'กราฟ',
-                                              'uri' => 'https://bottestbot.herokuapp.com/graph.php?data='.$user_id
+                                              'uri' => 'https://bottest14.herokuapp.com/graph.php?data='.$user_id
                                           ]
                                       ]
                                   ]
@@ -462,7 +459,7 @@ $replyToken = $event['replyToken'];
                                   'altText' => 'template',
                                   'template' => [
                                       'type' => 'buttons',
-                                      'thumbnailImageUrl' => 'https://bottestbot.herokuapp.com/week/'.$p_week .'.jpg',
+                                      'thumbnailImageUrl' => 'https://bottest14.herokuapp.com/week/'.$p_week .'.jpg',
                                       'title' => 'ลูกน้อยของคุณ',
                                       'text' =>  'อายุ'.$p_week .'สัปดาห์',
                                       'actions' => [
@@ -474,7 +471,7 @@ $replyToken = $event['replyToken'];
                                           [
                                               'type' => 'uri',
                                               'label' => 'กราฟ',
-                                              'uri' => 'https://bottestbot.herokuapp.com/graph.php?data='.$user_id
+                                              'uri' => 'https://bottest14.herokuapp.com/graph.php?data='.$user_id
                                           ]
                                       ]
                                   ]
