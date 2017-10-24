@@ -6,6 +6,7 @@ $dbconn = pg_pconnect($conn_string);
 ##########################
 
 $access_token = '4gfsGaqIXbNfJ88oUSmGLr69EtzUII/sUdbnhRKz/vk0+ZbLS180P1mNoyO3YkhK63HtsANA6HSxJnUz2C0OHaq0wNUK6eZP/zMUGlpc0+NP5i1gnM+a6bfRho35/ugJplJg4T+Kb6x9PbYXbstz4wdB04t89/1O/w1cDnyilFU=';
+
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
@@ -20,6 +21,7 @@ $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at  FROM sequent
                   echo $seqcode =  $row[0];
                   echo $sender = $row[2]; 
                 } 
+// $check_user = pg_query($dbconn,"SELECT*FROM users  WHERE $user_id  = '{$user_id}' ");
 //****************ทดสอบ
        $d = date("D");
        $h = date("H:i");
@@ -31,7 +33,7 @@ if (!is_null($events['events'])) {
   // Reply only when message sent is in 'text' format
   if ($event['message']['text'] == "ต้องการผู้ช่วย") {
       $replyToken = $event['replyToken'];
-      $text = "สวัสดีค่ะ คุณสนใจมีผู้ช่วยไหม";
+      $text = "สวัสดีค่ะ คุณสนใจมีผู้ช่วยใช่ไหม";
       // $messages = [
       //   'type' => 'text',
       //   'text' => $text
@@ -75,7 +77,7 @@ if (!is_null($events['events'])) {
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => 'ไว้โอกาสหน้าให้เราได้เป็นผู้ช่วยของคุณนะคะ:) ขอบคุณค่ะ'
+                        'text' => 'ไว้โอกาสหน้าให้เราได้เป็นผู้ช่วยของคุณนะคะ:) หากคุณสนใจในภายหลังให้พิมพ์ว่า"ต้องการผู้ช่วย"'
                       ];          
   
            
@@ -207,7 +209,7 @@ if (!is_null($events['events'])) {
                $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => 'ดูเหมือนคุณจะพิมพ์ไม่ถูกต้อง กรุณาพิมพ์ใหม่อีกทีนะคะ'
+                        'text' => 'ดูเหมือนคุณจะพิมพ์ไม่ถูกต้อง'
                       ];
             }
             //สร้า้ง function DateDiff โดยรับค่าวันที่เริ่มต้น $strDate1 และวันที่สิ้นสุด $strDate2 
@@ -367,7 +369,7 @@ if (!is_null($events['events'])) {
                                   'altText' => 'template',
                                   'template' => [
                                       'type' => 'buttons',
-                                      'thumbnailImageUrl' => 'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
+                                      'thumbnailImageUrl' => 'https://bottest14.herokuapp.com/week/'.$answer4 .'.jpg',
                                       'title' => 'ลูกน้อยของคุณ',
                                       'text' =>  'อายุ'.$answer4.'สัปดาห์',
                                       'actions' => [
@@ -379,13 +381,102 @@ if (!is_null($events['events'])) {
                                           [
                                               'type' => 'uri',
                                               'label' => 'กราฟ',
-                                              'uri' => 'https://bottestbot.herokuapp.com/graph.php?data='.$user_id
+                                              'uri' => 'https://bottest14.herokuapp.com/graph.php?data='.$user_id
                                           ]
                                       ]
                                   ]
                               ];
         
-   }elseif (is_numeric($_msg) !== false && $seqcode == "0017"  )  {
+         $des_preg = pg_query($dbconn,"SELECT  descript,img FROM pregnants WHERE  week = $answer4  ");
+              while ($row = pg_fetch_row($des_preg)) {
+                  echo $des = $row[0]; 
+                  echo $img = $row[1]; 
+ 
+                } 
+                    $messages4 = [
+                        'type' => 'text',
+                        'text' =>  $des
+                      ];
+         $url = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages, $messages1, $messages2,$messages3,$messages4],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
+  }elseif (is_numeric($_msg) !== false && $seqcode == "0014"  ) {
+                 $height =  str_replace("ส่วนสูง","", $_msg);
+                 $height_mes = 'ปัจจุบัน คุณสูง '.$height.'ถูกต้องหรือไม่คะ';
+                 $replyToken = $event['replyToken'];
+                 $messages = [
+                                'type' => 'template',
+                                'altText' => 'this is a confirm template',
+                                'template' => [
+                                    'type' => 'confirm',
+                                    'text' =>  $height_mes ,
+                                    'actions' => [
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ถูกต้อง',
+                                            'text' => 'ส่วนสูงถูกต้อง'
+                                        ],
+                                        [
+                                            'type' => 'message',
+                                            'label' => 'ไม่ถูกต้อง',
+                                            'text' => 'ไม่ถูกต้อง'
+                                        ],
+                                    ]
+                                 ]     
+                             ];   
+    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0014', $height,'0015','0',NOW(),NOW())") or die(pg_errormessage()); 
+}elseif ($event['message']['text'] == "น้ำหนักถูกต้อง" && $seqcode ='0017') {
+    $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
+                while ($row = pg_fetch_row($check_q)) {
+            
+                  echo $answer = $row[3];  
+                } 
+             
+    $check = pg_query($dbconn,"SELECT preg_week FROM recordofpregnancy WHERE user_id = '{$user_id}' order by updated_at desc limit 1 ");
+            while ($row = pg_fetch_row($check)) {
+                echo  $p_week =  $row[0]+1;
+                } 
+    // // $q = pg_exec($dbconn, "UPDATE recordofpregnancy SET preg_weight = $answer WHERE user_id = '{$user_id}' ") or die(pg_errormessage());  
+    $q2 = pg_exec($dbconn, "INSERT INTO recordofpregnancy(user_id, preg_week, preg_weight,updated_at )VALUES('{$user_id}',$p_week,$answer ,  NOW()) ") or die(pg_errormessage());  
+    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0000', '' ,'0000','0',NOW(),NOW())") or die(pg_errormessage()); 
+$replyToken = $event['replyToken'];
+                 $messages = [                            
+                                  'type' => 'template',
+                                  'altText' => 'template',
+                                  'template' => [
+                                      'type' => 'buttons',
+                                      'thumbnailImageUrl' => 'https://bottest14.herokuapp.com/week/'.$p_week .'.jpg',
+                                      'title' => 'ลูกน้อยของคุณ',
+                                      'text' =>  'อายุ'.$p_week .'สัปดาห์',
+                                      'actions' => [
+                                          // [
+                                          //     'type' => 'postback',
+                                          //     'label' => 'good',
+                                          //     'data' => 'value'
+                                          // ],
+                                          [
+                                              'type' => 'uri',
+                                              'label' => 'กราฟ',
+                                              'uri' => 'https://bottest14.herokuapp.com/graph.php?data='.$user_id
+                                          ]
+                                      ]
+                                  ]
+                              ]; 
+  }elseif (is_numeric($_msg) !== false && $seqcode == "0017"  )  {
                  $weight =  $_msg;
                  $weight_mes = 'สัปดาห์นี้คุณมีน้ำหนัก'.$weight.'กิโลกรัมถูกต้องหรือไม่คะ';
                  $replyToken = $event['replyToken'];
@@ -420,9 +511,17 @@ if (!is_null($events['events'])) {
     $sql =pg_exec($dbconn,"DELETE FROM users WHERE user_id = '{$user_id}' ");
     $sql1 =pg_exec($dbconn,"DELETE FROM recordofpregnancy WHERE user_id = '{$user_id}' ");
    
-}elseif($event['message']['text'] == "หยุดการทำงาน" ){
+}elseif($event['message']['text'] == "x" ){
       $replyToken = $event['replyToken'];
-      $text = "ฉันหยุดการทำงานให้คุณแล้ว";
+      $text = "ออกจากการสอบถาม";
+      $messages = [
+          'type' => 'text',
+          'text' => $text
+        ]; 
+   $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0000', '','0000','0',NOW(),NOW())") or die(pg_errormessage()); 
+}elseif($event['message']['text'] == "Ramiหยุด" ){
+      $replyToken = $event['replyToken'];
+      $text = "RAMIหยุดการส่งข้อความให้คุณแล้วค่ะ";
       $messages = [
           'type' => 'text',
           'text' => $text
@@ -431,7 +530,7 @@ if (!is_null($events['events'])) {
 }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
     
      $replyToken = $event['replyToken'];
-      $text = "ฉันไม่เข้าใจค่ะ";
+      $text = "ดิฉันไม่เข้าใจค่ะ";
       $messages = [
           'type' => 'text',
           'text' => $text
