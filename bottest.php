@@ -600,14 +600,7 @@ $replyToken = $event['replyToken'];
         ]; 
    pg_exec($dbconn, "UPDATE users SET status= 0 WHERE user_id = '{$user_id}' ") or die(pg_errormessage());
 
-}elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
-    
-     $replyToken = $event['replyToken'];
-      $text = "ดิฉันไม่เข้าใจค่ะ";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ];
+
 
 }elseif($events['events'][0]['message']['type'] == 'location') {
     $x_tra = str_replace("Unnamed Road","", $_msg);
@@ -633,7 +626,14 @@ $replyToken = $event['replyToken'];
 //   }
  
 
-
+}elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
+    
+     $replyToken = $event['replyToken'];
+      $text = "ดิฉันไม่เข้าใจค่ะ";
+      $messages = [
+          'type' => 'text',
+          'text' => $text
+        ];
 
   }else {
    $replyToken = $event['replyToken'];
