@@ -7,16 +7,17 @@ if (!$dbconn) {
 
 ########################CREATE TABLE #######################################################
 
-// $sql="CREATE TABLE user_data(
-// id SERIAL,
-// user_id varchar(50),
-// user_age  varchar(10),
-// user_weight varchar(10),
-// user_height varchar(10),
-// preg_week  varchar(10),
-// PRIMARY KEY(id)
-// )";   
-// pg_exec($dbconn, $sql) or die(pg_errormessage());
+// $sql="CREATE TABLE users_data(
+//  id SERIAL,
+//  user_id  varchar(225),
+//  user_age varchar(2),
+//  user_weight varchar(3),
+//  user_height varchar(3),
+//  preg_week date,
+//  PRIMARY KEY(id)
+//  )";   
+//  pg_exec($dbconn, $sql) or die(pg_errormessage());
+
 
 
 // $sql2="CREATE TABLE sequents(
@@ -69,18 +70,18 @@ if (!$dbconn) {
 //  )";   
 // pg_exec($dbconn, $sql) or die(pg_errormessage());
 
-$sql="CREATE TABLE RecordOfPregnancy(
-id SERIAL,
-user_id  varchar(50),
-preg_week  integer,
-preg_weight varchar(3),
-updated_at timestamp,
--- his_preg_wc varchar(225)
- PRIMARY KEY(id)
- -- FOREIGN KEY (his_preg_week) REFERENCES Pregnancy_week_data(week_preg),
- -- FOREIGN KEY (user_id) REFERENCES users_data(user_id)
- )";   
-pg_exec($dbconn, $sql) or die(pg_errormessage());
+// $sql="CREATE TABLE RecordOfPregnancy(
+// id SERIAL,
+// user_id  varchar(50),
+// preg_week  integer,
+// preg_weight varchar(3),
+// updated_at timestamp,
+// -- his_preg_wc varchar(225)
+//  PRIMARY KEY(id)
+//  -- FOREIGN KEY (his_preg_week) REFERENCES Pregnancy_week_data(week_preg),
+//  -- FOREIGN KEY (user_id) REFERENCES users_data(user_id)
+//  )";   
+// pg_exec($dbconn, $sql) or die(pg_errormessage());
 
 // $sql1="CREATE TABLE users(
 // id SERIAL,
@@ -192,6 +193,82 @@ pg_exec($dbconn, $sql) or die(pg_errormessage());
 
 // (23, '1005', 'รอการวิเคราะห์', NULL, 2, '1006', NULL, NULL)";
 // pg_exec($dbconn, $sql) or die(pg_errormessage());
+
+$sql1="CREATE TABLE users(
+id SERIAL,
+user_id varchar(50),
+user_age  varchar(3),
+user_weight varchar(3),
+user_height varchar(3),
+preg_week  varchar(3),
+status integer,
+updated_at timestamp,
+PRIMARY KEY(id)
+)";   
+pg_exec($dbconn, $sql1) or die(pg_errormessage());
+
+
+$sql="CREATE TABLE sequents(
+id SERIAL,
+seqcode varchar(255),
+question varchar(255),
+answer varchar(255),
+nexttype integer,
+nextseqcode varchar(255),
+created_at timestamp,
+updated_at timestamp,
+PRIMARY KEY(id)
+)";   
+pg_exec($dbconn, $sql) or die(pg_errormessage());
+
+
+$sql2="CREATE TABLE sequentsteps(
+id SERIAL,
+sender_id varchar(50),
+seqcode varchar(30),
+answer varchar(255),
+nextseqcode varchar(255),
+status varchar(255),
+created_at timestamp,
+updated_at timestamp,
+PRIMARY KEY(id)
+)";   
+pg_exec($dbconn, $sql2) or die(pg_errormessage());
+
+
+$sql3="CREATE TABLE pregnants(
+id SERIAL,
+week  integer,
+title text,
+descript text,
+img text,
+created_at timestamp,
+updated_at timestamp,
+PRIMARY KEY(id)
+)";   
+pg_exec($dbconn, $sql3) or die(pg_errormessage());
+
+
+$sql4="CREATE TABLE RecordOfPregnancy(
+id SERIAL,
+user_id  varchar(50),
+preg_week  integer,
+preg_weight varchar(3),
+updated_at timestamp,
+-- his_preg_wc varchar(225)
+ PRIMARY KEY(id)
+ -- FOREIGN KEY (his_preg_week) REFERENCES Pregnancy_week_data(week_preg),
+ -- FOREIGN KEY (user_id) REFERENCES users_data(user_id)
+ )";   
+pg_exec($dbconn, $sql4) or die(pg_errormessage());
+
+
+
+
+
+
+
+
 
 
 ?>
