@@ -369,7 +369,7 @@ if (!is_null($events['events'])) {
                                   'altText' => 'template',
                                   'template' => [
                                       'type' => 'buttons',
-                                      'thumbnailImageUrl' => 'https://bottest14.herokuapp.com/week/'.$answer4 .'.jpg',
+                                      'thumbnailImageUrl' => 'https://bottestbot.herokuapp.com/week/'.$answer4 .'.jpg',
                                       'title' => 'ลูกน้อยของคุณ',
                                       'text' =>  'อายุ'.$answer4.'สัปดาห์',
                                       'actions' => [
@@ -381,7 +381,7 @@ if (!is_null($events['events'])) {
                                           [
                                               'type' => 'uri',
                                               'label' => 'กราฟ',
-                                              'uri' => 'https://bottest14.herokuapp.com/graph.php?data='.$user_id
+                                              'uri' => 'https://bottestbot.herokuapp.com/chart_bot.php?data='.$user_id
                                           ]
                                       ]
                                   ]
@@ -511,6 +511,11 @@ $replyToken = $event['replyToken'];
     $sql =pg_exec($dbconn,"DELETE FROM users WHERE user_id = '{$user_id}' ");
     $sql1 =pg_exec($dbconn,"DELETE FROM recordofpregnancy WHERE user_id = '{$user_id}' ");
    
+
+
+
+
+
 }elseif($event['message']['text'] == "x" ){
       $replyToken = $event['replyToken'];
       $text = "ออกจากการสอบถาม";
@@ -519,6 +524,7 @@ $replyToken = $event['replyToken'];
           'text' => $text
         ]; 
    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0000', '','0000','0',NOW(),NOW())") or die(pg_errormessage()); 
+
 }elseif($event['message']['text'] == "Ramiหยุด" ){
       $replyToken = $event['replyToken'];
       $text = "RAMIหยุดการส่งข้อความให้คุณแล้วค่ะ";
@@ -527,6 +533,7 @@ $replyToken = $event['replyToken'];
           'text' => $text
         ]; 
    pg_exec($dbconn, "UPDATE users SET status= 0 WHERE user_id = '{$user_id}' ") or die(pg_errormessage());
+
 }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
     
      $replyToken = $event['replyToken'];
@@ -535,6 +542,7 @@ $replyToken = $event['replyToken'];
           'type' => 'text',
           'text' => $text
         ];
+
 }elseif($events['events'][0]['message']['type'] == 'location') {
     $x_tra = str_replace("Unnamed Road","", $_msg);
     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
