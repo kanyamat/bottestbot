@@ -24,7 +24,7 @@ $check_q = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_
                                       'duration'=> $weight);
                 }   
 $data = json_encode($arrayName);
-echo "var data = '$data';";
+// echo "var data = '$data';";
 ?>
 <!DOCTYPE html>
 <html>
@@ -89,7 +89,6 @@ var chart = AmCharts.makeChart("chartdiv", {
     "export": {
         "enabled": true
     }
- 
 });
 chart.addListener("dataUpdated", zoomChart);
 function zoomChart() {
@@ -98,7 +97,7 @@ function zoomChart() {
 // generate some random data, quite different range
 function generateChartData() {
    var chartData = <?php 
-$conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47";
+$conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 $dbconn = pg_pconnect($conn_string);
 if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -106,21 +105,23 @@ if (!$dbconn) {
 $user = $_GET["data"];
 $user_id = pg_escape_string($user);
  // echo $user_id;
-$check = pg_query($dbconn,"SELECT user_weight FROM user_data  WHERE  user_id = '{$user_id}'  ");
+$check = pg_query($dbconn,"SELECT user_weight FROM users  WHERE  user_id = '{$user_id}'  ");
                 while ($row= pg_fetch_row($check)) {
               
                  $result = $row[0];
   
                 } 
 $arrayName=[];
-$check_q = pg_query($dbconn,"SELECT his_preg_week ,his_preg_weight FROM history_preg  WHERE  user_id = '{$user_id}' order by his_preg_week  ASC  ");
+$check_q = pg_query($dbconn,"SELECT preg_week ,preg_weight FROM recordofpregnancy WHERE  user_id = '{$user_id}' order by preg_week  ASC  ");
                 while ($arr= pg_fetch_array($check_q)) {
                   $week = $arr[0];
-                  $weight = $arr[1]-$result;
-         
+           
+                        $weight = $arr[1]-$result;
+                        $weight1 = abs($weight);
+                 
                   $arrayName[] = array( 'date' =>  $week ,
-                                       'duration'=> $weight);
-                }    
+                                       'duration'=> $weight1);
+                }  
 echo $data = json_encode($arrayName);
  ?>;
     // chartData.push({
