@@ -471,7 +471,7 @@ $replyToken = $event['replyToken'];
                                           [
                                               'type' => 'uri',
                                               'label' => 'กราฟ',
-                                              'uri' => 'https://bottestbot.herokuapp.com/graph.php?data='.$user_id
+                                              'uri' => 'https://bottestbot.herokuapp.com/chart_bot.php?data='.$user_id
                                           ]
                                       ]
                                   ]
