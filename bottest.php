@@ -518,7 +518,7 @@ $replyToken = $event['replyToken'];
 
  }else if (strpos($_msg, 'แพ้ท้อง') !== false) {
     $replyToken = $event['replyToken'];
-    $x_tra = str_replace("หนัก","", $_msg);
+    $x_tra = str_replace("แพ้ท้อง","", $_msg);
     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyB5FmzSJk9yrpwHTyJMQSvl7EdjC7asyyU&q='.$x_tra;
    
     $json= file_get_contents($url);
