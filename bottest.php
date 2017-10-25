@@ -518,9 +518,9 @@ $replyToken = $event['replyToken'];
 
  }else if (strpos($_msg, 'แพ้ท้อง') !== false) {
     $replyToken = $event['replyToken'];
-    $x_tra = str_replace("แพ้ท้อง","", $_msg);
-    // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyB5FmzSJk9yrpwHTyJMQSvl7EdjC7asyyU&q='.$x_tra;
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    // $x_tra = str_replace("แพ้ท้อง","", $_msg);
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyB5FmzSJk9yrpwHTyJMQSvl7EdjC7asyyU&q='.$_msg
+   
     $json= file_get_contents($url);
     $events = json_decode($json, true);
 
