@@ -1,4 +1,5 @@
 <?php
+
 ######## DATABASE ########
 $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 $dbconn = pg_pconnect($conn_string);
@@ -534,14 +535,14 @@ $replyToken = $event['replyToken'];
         ]; 
    pg_exec($dbconn, "UPDATE users SET status= 0 WHERE user_id = '{$user_id}' ") or die(pg_errormessage());
 
-}elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
+// }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
     
-     $replyToken = $event['replyToken'];
-      $text = "ดิฉันไม่เข้าใจค่ะ";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ];
+//      $replyToken = $event['replyToken'];
+//       $text = "ดิฉันไม่เข้าใจค่ะ";
+//       $messages = [
+//           'type' => 'text',
+//           'text' => $text
+//         ];
 
 }elseif($events['events'][0]['message']['type'] == 'location') {
     $x_tra = str_replace("Unnamed Road","", $_msg);
