@@ -513,62 +513,6 @@ $replyToken = $event['replyToken'];
     $sql1 =pg_exec($dbconn,"DELETE FROM recordofpregnancy WHERE user_id = '{$user_id}' ");
    
 
-
-
-
-
-}elseif($event['message']['text'] == "x" ){
-      $replyToken = $event['replyToken'];
-      $text = "ออกจากการสอบถาม";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ]; 
-   $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0000', '','0000','0',NOW(),NOW())") or die(pg_errormessage()); 
-
-}elseif($event['message']['text'] == "Ramiหยุด" ){
-      $replyToken = $event['replyToken'];
-      $text = "RAMIหยุดการส่งข้อความให้คุณแล้วค่ะ";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ]; 
-   pg_exec($dbconn, "UPDATE users SET status= 0 WHERE user_id = '{$user_id}' ") or die(pg_errormessage());
-
-}elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
-    
-     $replyToken = $event['replyToken'];
-      $text = "ดิฉันไม่เข้าใจค่ะ";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ];
-
-}elseif($events['events'][0]['message']['type'] == 'location') {
-    $x_tra = str_replace("Unnamed Road","", $_msg);
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-    $json= file_get_contents($url);
-    $events = json_decode($json, true);
-    $address = $events['events'][0]['message']['address'] ;
-    $replyToken = $event['replyToken'];
-     // Build message to reply back
-      $messages = [
-          'type' => 'text',
-          'text' => $address
-        ];
-// $location = $events['events'][0]['message']['type']; 
-// $user_id = pg_escape_string($user);
-//   "message": {
-//     "id": "325708",
-//     "type": "location",
-//     "title": "my location",
-//     "address": "〒150-0002 東京都渋谷区渋谷２丁目２１−１",
-//     "latitude": 35.65910807942215,
-//     "longitude": 139.70372892916203
-//   }
- 
-
-
 ############################ Conversation ############################
 
 
@@ -630,6 +574,64 @@ $replyToken = $event['replyToken'];
 
 
 ############################ END Conversation ############################
+
+
+
+
+
+}elseif($event['message']['text'] == "x" ){
+      $replyToken = $event['replyToken'];
+      $text = "ออกจากการสอบถาม";
+      $messages = [
+          'type' => 'text',
+          'text' => $text
+        ]; 
+   $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0000', '','0000','0',NOW(),NOW())") or die(pg_errormessage()); 
+
+}elseif($event['message']['text'] == "Ramiหยุด" ){
+      $replyToken = $event['replyToken'];
+      $text = "RAMIหยุดการส่งข้อความให้คุณแล้วค่ะ";
+      $messages = [
+          'type' => 'text',
+          'text' => $text
+        ]; 
+   pg_exec($dbconn, "UPDATE users SET status= 0 WHERE user_id = '{$user_id}' ") or die(pg_errormessage());
+
+}elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
+    
+     $replyToken = $event['replyToken'];
+      $text = "ดิฉันไม่เข้าใจค่ะ";
+      $messages = [
+          'type' => 'text',
+          'text' => $text
+        ];
+
+}elseif($events['events'][0]['message']['type'] == 'location') {
+    $x_tra = str_replace("Unnamed Road","", $_msg);
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    $json= file_get_contents($url);
+    $events = json_decode($json, true);
+    $address = $events['events'][0]['message']['address'] ;
+    $replyToken = $event['replyToken'];
+     // Build message to reply back
+      $messages = [
+          'type' => 'text',
+          'text' => $address
+        ];
+// $location = $events['events'][0]['message']['type']; 
+// $user_id = pg_escape_string($user);
+//   "message": {
+//     "id": "325708",
+//     "type": "location",
+//     "title": "my location",
+//     "address": "〒150-0002 東京都渋谷区渋谷２丁目２１−１",
+//     "latitude": 35.65910807942215,
+//     "longitude": 139.70372892916203
+//   }
+ 
+
+
+
   }else {
    $replyToken = $event['replyToken'];
       $text = "หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ โปรดกดยืนยันด้านล่างด้วยนะคะ";
