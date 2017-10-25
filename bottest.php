@@ -566,6 +566,68 @@ $replyToken = $event['replyToken'];
 //     "longitude": 139.70372892916203
 //   }
  
+
+
+############################ Conversation ############################
+
+
+ }else if (strpos($_msg, 'แพ้ท้อง') !== false) {
+    $replyToken = $event['replyToken'];
+    $x_tra = str_replace("แพ้ท้อง","", $_msg);
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyB5FmzSJk9yrpwHTyJMQSvl7EdjC7asyyU&q='.$x_tra;
+    $json= file_get_contents($url);
+    $events = json_decode($json, true);
+
+    $title= $events['items'][0]['title'];
+    $link = $events['items'][0]['link'];
+    $link2 = $events['items'][1]['link'];
+
+   $messages = [
+        'type' => 'template',
+        'altText' => 'template',
+        'template' => [
+            'type' => 'buttons',
+            'title' =>  $x_tra,
+            'text' =>   $title,
+            'actions' => [
+                [
+                    'type' => 'postback',
+                    'label' => 'good',
+                    'data' => 'value'
+                ],
+                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์',
+                    'uri' => $link
+                ],
+    [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์2',
+                    'uri' => $link2
+                ]
+            ]
+        ]
+    ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################ END Conversation ############################
   }else {
    $replyToken = $event['replyToken'];
       $text = "หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ โปรดกดยืนยันด้านล่างด้วยนะคะ";
@@ -623,3 +685,7 @@ $replyToken = $event['replyToken'];
          echo $result . "\r\n";
 
 ?>
+
+<!-- AIzaSyB5FmzSJk9yrpwHTyJMQSvl7EdjC7asyyU
+
+search engin 014388729015054466439:gqr4m9bfx0i -->
