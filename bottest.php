@@ -35,7 +35,7 @@ if (!is_null($events['events'])) {
   // if ($event['message']['text'] == "ต้องการผู้ช่วย") {
 
  if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'ต้องการผู้ช่วย') !== false) {
-    
+
       $replyToken = $event['replyToken'];
       $text = "สวัสดีค่ะ คุณสนใจมีผู้ช่วยใช่ไหม";
       // $messages = [
@@ -62,21 +62,29 @@ if (!is_null($events['events'])) {
             ]
         ]
     ];
+
+####################################  insert data to sequentsteps   ####################################
    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
+
+
+#################################### ผู็ใช้เลือกสนใจ #################################### 
   }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
-                  echo $question = $row[1];
+                  echo $question = $row[1]; /*ก่อนอื่น ดิฉันขออนุญาตถามข้อมูลเบื้องต้นเกี่ยวกับคุณก่อนนะคะ
+ขอทราบปีพ.ศ.เกิดเพื่อคำนวณอายุค่ะ*/
                 }   
-                 //$text = 'ขอเริ่มสอบถามข้อมูลเบื้องต้นก่อนนะคะ ขอทราบพ.ศ.เกิดของคุณเพื่อคำนวณอายุ (ตัวอย่างการพิมพ์ เกิด2530)';
+
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
                         'text' =>  $question
                       ];
+
                 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
-   
+
+#################################### ผู็ใช้เลือกไม่สนใจ ####################################    
   }elseif ($event['message']['text'] == "ไม่สนใจ" ) {
                  $replyToken = $event['replyToken'];
                  $messages = [
@@ -85,7 +93,7 @@ if (!is_null($events['events'])) {
                       ];          
   
            
-    
+################################# รับค่าปีพ.ศ.ของผู้ใช้ และถามว่าอายุถูกต้องหรือไม่ #################################    
   }elseif (is_numeric($_msg) !== false && $seqcode == "0006"  && strlen($_msg) == 4 && $_msg < $curr_y && $_msg > "2500" ) {
   
     $birth_years = $_msg;
@@ -113,9 +121,11 @@ if (!is_null($events['events'])) {
             ]
         ]
     ];     
+ ####################################  insert age of user to sequentsteps   ####################################   
       $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006', $age ,'0007','0',NOW(),NOW())") or die(pg_errormessage());
            
-       // $q = pg_exec($dbconn, "INSERT INTO user_data(user_id,user_age,user_weight,user_height,preg_week )VALUES('{$user_id}',$age,'0','0','0') ") or die(pg_errormessage());      
+ 
+#################################### กรณีผู็ใช้กดอายุถูกต้อง ####################################    
   }elseif ($event['message']['text'] == "อายุถูกต้อง" ) {
       $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
                 while ($row = pg_fetch_row($check_q)) {
@@ -128,14 +138,20 @@ if (!is_null($events['events'])) {
                         'text' => 'ขอทราบครั้งสุดท้ายที่คุณมีประจำเดือนเพื่อคำนวณอายุครรภ์ค่ะ (กรุณาตอบประมาณวันที่และเดือนเป็นตัวเลขนะคะ เช่น 17 04 คือ วันที่ 17 เมษายน)
 '
                       ];
+          /*ถึงคำถามข้อที่0008-0009*/
            $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008','','0009','0',NOW(),NOW())") or die(pg_errormessage());
+           /*insert่ข้อมูลที่userกรอกเข้ามา*/
            $q1 = pg_exec($dbconn, "INSERT INTO users(user_id,user_age,user_weight,user_height,preg_week,status,updated_at)VALUES('{$user_id}',$answer,'0','0','0','1',NOW()) ") or die(pg_errormessage());   
+
+#################################### ผู็ใช้กดไม่ถูกต้อง ####################################    
   }elseif ($event['message']['text'] == "ไม่ถูกต้อง" ) {
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
                         'text' => 'กรุณาพิมพ์ใหม่'
-                      ];  
+                     ];  
+
+################################# คำถามถัดมา ข้อที่0008 คำนวณอายุครรภ์#################################   
   }elseif (strlen($_msg) == 5 && $seqcode == "0008") {
     // $birth_years =  str_replace("วันที่","", $_msg);
     $pieces = explode(" ", $_msg);
@@ -213,7 +229,7 @@ if (!is_null($events['events'])) {
                $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' => 'ดูเหมือนคุณจะพิมพ์ไม่ถูกต้อง'
+                        'text' => 'ดูเหมือนคุณจะพิมพ์ไม่ถูกต้องนะคะ'
                       ];
             }
             //สร้า้ง function DateDiff โดยรับค่าวันที่เริ่มต้น $strDate1 และวันที่สิ้นสุด $strDate2 
@@ -241,8 +257,10 @@ if (!is_null($events['events'])) {
          $result = curl_exec($ch);
          curl_close($ch);
          echo $result . "\r\n";
+    /*inert อายุครรภ์ที่คำนวณแล้วลง sequentsteps*/
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008', $week_preg ,'0009','0',NOW(),NOW())") or die(pg_errormessage());
-    
+
+############################## กรณีผู้ใช้เลือกอายุครรภ์ถูกต้องให้ถามน้ำหนักก่อนตั้งครรภ์##############################     
   }elseif ($event['message']['text'] == "อายุครรภ์ถูกต้อง" ) {
     $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
                 while ($row = pg_fetch_row($check_q)) {
@@ -256,7 +274,9 @@ if (!is_null($events['events'])) {
                       ];
     $q1 = pg_exec($dbconn, "UPDATE users SET preg_week = $answer WHERE user_id = '{$user_id}' ") or die(pg_errormessage());   
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0010', '','0011','0',NOW(),NOW())") or die(pg_errormessage());
-    $q2 = pg_exec($dbconn, "INSERT INTO recordofpregnancy(user_id,preg_week,preg_weight,updated_at  )VALUES('{$user_id}',$answer ,'0',NOW()) ") or die(pg_errormessage());   
+    $q2 = pg_exec($dbconn, "INSERT INTO recordofpregnancy(user_id,preg_week,preg_weight,updated_at  )VALUES('{$user_id}',$answer ,'0',NOW()) ") or die(pg_errormessage());  
+
+ 
   }elseif ($event['message']['text'] == "น้ำหนักก่อนตั้งครรภ์ถูกต้อง" ) {
          $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
                 while ($row = pg_fetch_row($check_q)) {
