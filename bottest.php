@@ -591,7 +591,7 @@ $replyToken = $event['replyToken'];
  //        ]
  //    ];
 
-  }else if (strpos($_msg, 'แพ้ท้อง') !== false || strpos($_msg, 'ตั้งครรภ์') !== false ||) || strpos($_msg, 'คนท้อง') !== false || {
+  }else if (strpos($_msg, 'แพ้ท้อง') !== false || strpos($_msg, 'ตั้งครรภ์') !== false || strpos($_msg, 'คนท้อง') !== false)  {
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("","", $_msg);
     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
