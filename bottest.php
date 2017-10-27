@@ -602,7 +602,7 @@ $replyToken = $event['replyToken'];
     $title= $events['items'][0]['title'];
     $link = $events['items'][0]['link'];
     $link2 = $events['items'][1]['link'];
-
+    $link3 = $events['items'][2]['link'];
    $messages = [
         'type' => 'template',
         'altText' => 'template',
@@ -611,20 +611,21 @@ $replyToken = $event['replyToken'];
             'title' =>  $x_tra,
             'text' =>   $title,
             'actions' => [
-                [
-                    'type' => 'postback',
-                    'label' => 'good',
-                    'data' => 'value'
-                ],
+
                 [
                     'type' => 'uri',
                     'label' => 'ไปยังลิงค์',
                     'uri' => $link
                 ],
-    [
+                [
                     'type' => 'uri',
                     'label' => 'ไปยังลิงค์2',
                     'uri' => $link2
+                ],
+                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์2',
+                    'uri' => $link3
                 ]
             ]
         ]
