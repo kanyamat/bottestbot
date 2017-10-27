@@ -1,10 +1,10 @@
 <?php
 
-######## DATABASE ########
+################################## DATABASE ##################################
 $conn_string = "host=ec2-23-21-220-167.compute-1.amazonaws.com port=5432 dbname=dh3dj7jtq6jct user=kywyvkvocykcqg password=76902c76ba27fc88dbde51ca9c2e7d67af1ec06ffd14ba80853acf8e748c4a47 ";
 $dbconn = pg_pconnect($conn_string);
 
-##########################
+##############################################################################
 
 $access_token = '4gfsGaqIXbNfJ88oUSmGLr69EtzUII/sUdbnhRKz/vk0+ZbLS180P1mNoyO3YkhK63HtsANA6HSxJnUz2C0OHaq0wNUK6eZP/zMUGlpc0+NP5i1gnM+a6bfRho35/ugJplJg4T+Kb6x9PbYXbstz4wdB04t89/1O/w1cDnyilFU=';
 
@@ -32,7 +32,10 @@ if (!is_null($events['events'])) {
  // Loop through each event
  foreach ($events['events'] as $event) {
   // Reply only when message sent is in 'text' format
-  if ($event['message']['text'] == "ต้องการผู้ช่วย") {
+  // if ($event['message']['text'] == "ต้องการผู้ช่วย") {
+
+ if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'ต้องการผู้ช่วย') !== false) {
+    
       $replyToken = $event['replyToken'];
       $text = "สวัสดีค่ะ คุณสนใจมีผู้ช่วยใช่ไหม";
       // $messages = [
