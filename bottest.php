@@ -67,7 +67,7 @@ if (!is_null($events['events'])) {
    $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0006','0',NOW(),NOW())") or die(pg_errormessage());
 
 
-#################################### ผู็ใช้เลือกสนใจ #################################### 
+#################################### ผู้ใช้เลือกสนใจ #################################### 
   }elseif ($event['message']['text'] == "สนใจ" && $seqcode == "0004"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
                 while ($row = pg_fetch_row($result)) {
@@ -84,7 +84,7 @@ if (!is_null($events['events'])) {
 
                 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006','','0007','0',NOW(),NOW())") or die(pg_errormessage());
 
-#################################### ผู็ใช้เลือกไม่สนใจ ####################################    
+#################################### ผู้ใช้เลือกไม่สนใจ ####################################    
   }elseif ($event['message']['text'] == "ไม่สนใจ" ) {
                  $replyToken = $event['replyToken'];
                  $messages = [
@@ -125,7 +125,7 @@ if (!is_null($events['events'])) {
       $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006', $age ,'0007','0',NOW(),NOW())") or die(pg_errormessage());
            
  
-#################################### กรณีผู็ใช้กดอายุถูกต้อง ####################################    
+#################################### กรณีผู้ใช้กดอายุถูกต้อง ####################################    
   }elseif ($event['message']['text'] == "อายุถูกต้อง" ) {
       $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
                 while ($row = pg_fetch_row($check_q)) {
@@ -143,7 +143,7 @@ if (!is_null($events['events'])) {
            /*insert่ข้อมูลที่userกรอกเข้ามา*/
            $q1 = pg_exec($dbconn, "INSERT INTO users(user_id,user_age,user_weight,user_height,preg_week,status,updated_at)VALUES('{$user_id}',$answer,'0','0','0','1',NOW()) ") or die(pg_errormessage());   
 
-#################################### ผู็ใช้กดไม่ถูกต้อง ####################################    
+#################################### ผู้ใช้กดไม่ถูกต้อง ####################################    
   }elseif ($event['message']['text'] == "ไม่ถูกต้อง" ) {
                  $replyToken = $event['replyToken'];
                  $messages = [
@@ -276,7 +276,7 @@ if (!is_null($events['events'])) {
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0010', '','0011','0',NOW(),NOW())") or die(pg_errormessage());
     $q2 = pg_exec($dbconn, "INSERT INTO recordofpregnancy(user_id,preg_week,preg_weight,updated_at  )VALUES('{$user_id}',$answer ,'0',NOW()) ") or die(pg_errormessage());  
 
- 
+############################ ผู้ใช้กดน้ำหนักก่อนตั้งครรภ์ถูกต้องถูกต้อง ให้ถามคำถามถัดไป ############################   
   }elseif ($event['message']['text'] == "น้ำหนักก่อนตั้งครรภ์ถูกต้อง" ) {
          $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
                 while ($row = pg_fetch_row($check_q)) {
@@ -287,9 +287,13 @@ if (!is_null($events['events'])) {
                  $messages = [
                         'type' => 'text',
                         'text' => 'ขออนุญาตถามน้ำหนักปัจจุบันของคุณค่ะ (กรุณาตอบเป็นตัวเลขในหน่วยกิโลกรัม)'
-                      ];  
+                      ];
+######################################################################################################################## 
+   /* update น้ำหนักปจัจุบันของผู้ใช้ */
     $q1 = pg_exec($dbconn, "UPDATE users SET  user_weight = $answer WHERE user_id = '{$user_id}' ") or die(pg_errormessage());   
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0012', '','0013','0',NOW(),NOW())") or die(pg_errormessage());
+
+################################# เช็คคำตอบที่ผู้ใช้กรอกเข้ามา#################################  
   }elseif (is_numeric($_msg) !== false && $seqcode == "0010"  )  {
                  $weight =  $_msg;
                  $weight_mes = 'ก่อนตั้งครรภ์ คุณมีน้ำหนัก'.$weight.'กิโลกรัมถูกต้องหรือไม่คะ';
@@ -314,7 +318,11 @@ if (!is_null($events['events'])) {
                                     ]
                                  ]     
                              ];   
+   /* insert น้ำหนักก่อนตั้งคาาภ์*/
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0010', $weight,'0011','0',NOW(),NOW())") or die(pg_errormessage()); 
+
+
+################################# เมื่อผู้ใช้เลือกน้ำหนักปัจจุบันถูกต้อง ################################# 
 }elseif ($event['message']['text'] == "น้ำหนักปัจจุบันถูกต้อง" ) {
          $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at ,answer FROM sequentsteps  WHERE sender_id = '{$user_id}' order by updated_at desc limit 1   ");
                 while ($row = pg_fetch_row($check_q)) {
@@ -326,9 +334,11 @@ if (!is_null($events['events'])) {
                         'type' => 'text',
                         'text' => 'ขออนุญาตถามส่วนสูงปัจจุบันของคุณค่ะ (กรุณาตอบเป็นตัวเลขในหน่วยเซ็นติเมตร ส่วนสูง160)'
                       ];  
-    // $q1 = pg_exec($dbconn, "UPDATE user_data SET preg_week = $answer WHERE user_id = '{$user_id}' ") or die(pg_errormessage());   
+   /* update การตั้งครรภ์ของผู้ใช้*/
     $q1 = pg_exec($dbconn, "UPDATE recordofpregnancy SET preg_weight = $answer WHERE user_id = '{$user_id}' ") or die(pg_errormessage());   
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0014', '','0015','0',NOW(),NOW())") or die(pg_errormessage());
+
+
   }elseif (is_numeric($_msg) !== false && $seqcode == "0012"  )  {
                  $weight =  $_msg;
                  $weight_mes = 'ปัจจุบัน คุณมีน้ำหนัก'.$weight.'กิโลกรัมถูกต้องหรือไม่คะ';
@@ -536,7 +546,7 @@ $replyToken = $event['replyToken'];
     $sql1 =pg_exec($dbconn,"DELETE FROM recordofpregnancy WHERE user_id = '{$user_id}' ");
    
 
-############################ Conversation ############################
+############################################## Conversation ##############################################
 
 
  }else if (strpos($_msg, 'แพ้ท้อง') !== false) {
