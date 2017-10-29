@@ -601,8 +601,8 @@ $replyToken = $event['replyToken'];
     
     $events = json_decode($json, true);
     $title= $events['items'][0]['title'];
-    $title= $events['items'][1]['title'];
-    $title= $events['items'][2]['title'];
+    $title2= $events['items'][1]['title'];
+    $title3= $events['items'][2]['title'];
     
     $link = $events['items'][0]['link'];
     $link2 = $events['items'][1]['link'];
@@ -619,17 +619,17 @@ $replyToken = $event['replyToken'];
 
                 [
                     'type' => 'uri',
-                    'label' => 'ไปยังลิงค์',
+                    'label' => '$title',
                     'uri' => $link
                 ],
                 [
                     'type' => 'uri',
-                    'label' => 'ไปยังลิงค์2',
+                    'label' => '$title2',
                     'uri' => $link2
                 ],
                 [
                     'type' => 'uri',
-                    'label' => 'ไปยังลิงค์2',
+                    'label' => '$title3',
                     'uri' => $link3
                 ]
             ]
