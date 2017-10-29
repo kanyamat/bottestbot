@@ -685,7 +685,7 @@ $replyToken = $event['replyToken'];
             ]
         ]
     ]
-  ]
+  ];
 
 
 
