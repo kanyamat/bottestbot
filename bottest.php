@@ -619,17 +619,17 @@ $replyToken = $event['replyToken'];
 
                 [
                     'type' => 'uri',
-                    'label' => $title,
+                    'label' => 'ไปยังลิงค์',
                     'uri' => $link
                 ],
                 [
                     'type' => 'uri',
-                    'label' => $title,
+                    'label' => 'ไปยังลิงค์ที่2',
                     'uri' => $link2
                 ],
                 [
                     'type' => 'uri',
-                    'label' => $title,
+                    'label' => 'ไปยังลิงค์ที่3',
                     'uri' => $link3
                 ]
             ]
