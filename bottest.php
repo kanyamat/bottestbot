@@ -600,8 +600,8 @@ $replyToken = $event['replyToken'];
     $json= file_get_contents($url);
     $events = json_decode($json, true);
     $title= $events['items'][0]['title'];
-     $title= $events['items'][1]['title'];
-      $title= $events['items'][2]['title'];
+    $title= $events['items'][1]['title'];
+    $title= $events['items'][2]['title'];
     $link = $events['items'][0]['link'];
     $link2 = $events['items'][1]['link'];
     $link3 = $events['items'][2]['link'];
@@ -686,18 +686,6 @@ $replyToken = $event['replyToken'];
         ]
     ]
   ];
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
