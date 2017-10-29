@@ -641,23 +641,23 @@ $replyToken = $event['replyToken'];
         'columns': [
             [
               'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
-              'title'=> 'this is menu',
-              'text'=> 'description',
+              'title'=> $x_tra,
+              'text'=> $title,
               'actions'=> [
                   [
                       'type'=> 'postback',
                       'label'=> 'Buy',
-                      'data'=> 'action=buy&itemid=111'
+                      'uri'=> $link
                   ],
                   [
                       'type'=> 'postback',
                       'label'=> 'Add to cart',
-                      'data'=> 'action=add&itemid=111'
+                      'uri'=> $link2
                   ],
                   [
                       'type'=> 'uri',
                       'label'=> 'View detail',
-                      'uri'=> 'http://example.com/page/111'
+                      'uri'=> $link3
                   ]
               ]
             ],
