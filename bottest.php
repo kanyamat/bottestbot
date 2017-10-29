@@ -624,12 +624,12 @@ $replyToken = $event['replyToken'];
                 ],
                 [
                     'type' => 'uri',
-                    'label' => $title2,
+                    'label' => $title,
                     'uri' => $link2
                 ],
                 [
                     'type' => 'uri',
-                    'label' => $title3,
+                    'label' => $title,
                     'uri' => $link3
                 ]
             ]
