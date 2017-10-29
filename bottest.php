@@ -600,38 +600,93 @@ $replyToken = $event['replyToken'];
     $json= file_get_contents($url);
     $events = json_decode($json, true);
     $title= $events['items'][0]['title'];
+     $title= $events['items'][1]['title'];
+      $title= $events['items'][2]['title'];
     $link = $events['items'][0]['link'];
     $link2 = $events['items'][1]['link'];
     $link3 = $events['items'][2]['link'];
-   $messages = [
-        'type' => 'template',
-        'altText' => 'template',
-        'template' => [
-            'type' => 'buttons',
-            'title' =>  $x_tra,
-            'text' =>   $title,
-            'actions' => [
+   // $messages = [
+   //      'type' => 'template',
+   //      'altText' => 'template',
+   //      'template' => [
+   //          'type' => 'buttons',
+   //          'title' =>  $x_tra,
+   //          'text' =>   $title,
+   //          'actions' => [
 
-                [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์',
-                    'uri' => $link
-                ],
-                [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์2',
-                    'uri' => $link2
-                ],
-                [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์2',
-                    'uri' => $link3
-                ]
+   //              [
+   //                  'type' => 'uri',
+   //                  'label' => 'ไปยังลิงค์',
+   //                  'uri' => $link
+   //              ],
+   //              [
+   //                  'type' => 'uri',
+   //                  'label' => 'ไปยังลิงค์2',
+   //                  'uri' => $link2
+   //              ],
+   //              [
+   //                  'type' => 'uri',
+   //                  'label' => 'ไปยังลิงค์2',
+   //                  'uri' => $link3
+   //              ]
+   //          ]
+   //      ]
+   //  ];
+
+  $messages = [
+  "type": "template",
+  "altText": "this is a carousel template",
+  "template": {
+      "type": "carousel",
+      "columns": [
+          {
+            "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+            "title": "this is menu",
+            "text": "description",
+            "actions": [
+                {
+                    "type": "postback",
+                    "label": "Buy",
+                    "data": "action=buy&itemid=111"
+                },
+                {
+                    "type": "postback",
+                    "label": "Add to cart",
+                    "data": "action=add&itemid=111"
+                },
+                {
+                    "type": "uri",
+                    "label": "View detail",
+                    "uri": "http://example.com/page/111"
+                }
             ]
-        ]
-    ];
-
-
+          },
+          {
+            "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+            "title": "this is menu",
+            "text": "description",
+            "actions": [
+                {
+                    "type": "postback",
+                    "label": "Buy",
+                    "data": "action=buy&itemid=222"
+                },
+                {
+                    "type": "postback",
+                    "label": "Add to cart",
+                    "data": "action=add&itemid=222"
+                },
+                {
+                    "type": "uri",
+                    "label": "View detail",
+                    "uri": "http://example.com/page/222"
+                }
+            ]
+          }
+      ]
+  }
+}
+]
 
 
 
