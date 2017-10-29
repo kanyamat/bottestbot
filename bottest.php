@@ -652,12 +652,12 @@ $replyToken = $event['replyToken'];
                   [
                       'type'=> 'postback',
                       'label'=> 'Add to cart',
-                      'uri'=> $link2
+                      'uri'=> $link
                   ],
                   [
                       'type'=> 'uri',
                       'label'=> 'View detail',
-                      'uri'=> $link3
+                      'uri'=> $link
                   ]
               ]
             ],
@@ -674,12 +674,12 @@ $replyToken = $event['replyToken'];
                   [
                       'type'=> 'postback',
                       'label'=> 'Add to cart',
-                      'data'=> $link2
+                      'data'=> $link
                   ],
                   [
                       'type'=> 'uri',
                       'label'=> 'View detail',
-                      'uri'=> $link3
+                      'uri'=> $link
                   ]
               ]
             ]
