@@ -602,90 +602,92 @@ $replyToken = $event['replyToken'];
     $title= $events['items'][0]['title'];
     $title= $events['items'][1]['title'];
     $title= $events['items'][2]['title'];
+    
     $link = $events['items'][0]['link'];
     $link2 = $events['items'][1]['link'];
     $link3 = $events['items'][2]['link'];
-   // $messages = [
-   //      'type' => 'template',
-   //      'altText' => 'template',
-   //      'template' => [
-   //          'type' => 'buttons',
-   //          'title' =>  $x_tra,
-   //          'text' =>   $title,
-   //          'actions' => [
+  
+   $messages = [
+        'type' => 'template',
+        'altText' => 'template',
+        'template' => [
+            'type' => 'buttons',
+            'title' =>  $x_tra,
+            'text' =>   $title,
+            'actions' => [
 
-   //              [
-   //                  'type' => 'uri',
-   //                  'label' => 'ไปยังลิงค์',
-   //                  'uri' => $link
-   //              ],
-   //              [
-   //                  'type' => 'uri',
-   //                  'label' => 'ไปยังลิงค์2',
-   //                  'uri' => $link2
-   //              ],
-   //              [
-   //                  'type' => 'uri',
-   //                  'label' => 'ไปยังลิงค์2',
-   //                  'uri' => $link3
-   //              ]
-   //          ]
-   //      ]
-   //  ];
-
-  $messages = [
-    'type'=> 'template',
-    'altText'=> 'this is a carousel template',
-    'template'=> [
-        'type'=> 'carousel',
-        'columns'=> [
-            [
-              'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
-              'title'=> $x_tra,
-              'text'=> $title,
-              'actions'=> [
-                  [
-                      'type'=> 'uri',
-                      'label'=> 'View detail',
-                      'uri'=> $link
-                  ],
-                  [
-                      'type'=> 'uri',
-                      'label'=> 'View detail',
-                      'uri'=> $link
-                  ],
-                  [
-                      'type'=> 'uri',
-                      'label'=> 'View detail',
-                      'uri'=> $link
-                  ]
-              ]
-            ],
-            [
-              'thumbnailImageUrl' => 'https://example.com/bot/images/item2.jpg',
-              'title'=> $x_tra,
-              'text'=> $title,
-              'actions'=> [
-                  [
-                      'type'=> 'uri',
-                      'label'=> 'View detail',
-                      'data'=> $link
-                  ],
-                  [
-                      'type'=> 'uri',
-                      'label'=> 'View detail',
-                      'data'=> $link
-                  ],
-                  [
-                      'type'=> 'uri',
-                      'label'=> 'View detail',
-                      'uri'=> $link
-                  ]
-              ]
+                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์',
+                    'uri' => $link
+                ],
+                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์2',
+                    'uri' => $link2
+                ],
+                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์2',
+                    'uri' => $link3
+                ]
             ]
         ]
-    ]
-  ];
+    ];
+
+  // $messages = [
+  //   'type'=> 'template',
+  //   'altText'=> 'this is a carousel template',
+  //   'template'=> [
+  //       'type'=> 'carousel',
+  //       'columns'=> [
+  //           [
+  //             'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+  //             'title'=> $x_tra,
+  //             'text'=> $title,
+  //             'actions'=> [
+  //                 [
+  //                     'type'=> 'uri',
+  //                     'label'=> 'View detail',
+  //                     'uri'=> $link
+  //                 ],
+  //                 [
+  //                     'type'=> 'uri',
+  //                     'label'=> 'View detail',
+  //                     'uri'=> $link
+  //                 ],
+  //                 [
+  //                     'type'=> 'uri',
+  //                     'label'=> 'View detail',
+  //                     'uri'=> $link
+  //                 ]
+  //             ]
+  //           ],
+  //           [
+  //             'thumbnailImageUrl' => 'https://example.com/bot/images/item2.jpg',
+  //             'title'=> $x_tra,
+  //             'text'=> $title,
+  //             'actions'=> [
+  //                 [
+  //                     'type'=> 'uri',
+  //                     'label'=> 'View detail',
+  //                     'data'=> $link
+  //                 ],
+  //                 [
+  //                     'type'=> 'uri',
+  //                     'label'=> 'View detail',
+  //                     'data'=> $link
+  //                 ],
+  //                 [
+  //                     'type'=> 'uri',
+  //                     'label'=> 'View detail',
+  //                     'uri'=> $link
+  //                 ]
+  //             ]
+  //           ]
+  //       ]
+  //   ]
+  // ];
 
 
 
