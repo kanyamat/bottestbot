@@ -645,13 +645,13 @@ $replyToken = $event['replyToken'];
               'text'=> $title,
               'actions'=> [
                   [
-                      'type'=> 'postback',
-                      'label'=> 'Buy',
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
                       'uri'=> $link
                   ],
                   [
-                      'type'=> 'postback',
-                      'label'=> 'Add to cart',
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
                       'uri'=> $link
                   ],
                   [
@@ -667,13 +667,13 @@ $replyToken = $event['replyToken'];
               'text'=> $title,
               'actions'=> [
                   [
-                      'type'=> 'postback',
-                      'label'=> 'Buy',
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
                       'data'=> $link
                   ],
                   [
-                      'type'=> 'postback',
-                      'label'=> 'Add to cart',
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
                       'data'=> $link
                   ],
                   [
