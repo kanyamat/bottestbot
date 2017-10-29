@@ -638,7 +638,7 @@ $replyToken = $event['replyToken'];
     'altText'=> 'this is a carousel template',
     'template'=> [
         'type'=> 'carousel',
-        'columns': [
+        'columns'=> [
             [
               'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
               'title'=> $x_tra,
