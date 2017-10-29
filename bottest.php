@@ -595,9 +595,9 @@ $replyToken = $event['replyToken'];
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("","", $_msg);
     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-   
-
+    $url2 = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $json= file_get_contents($url);
+    $json= file_get_contents($url2);
     $events = json_decode($json, true);
     $title= $events['items'][0]['title'];
     $title= $events['items'][1]['title'];
@@ -790,6 +790,7 @@ $replyToken = $event['replyToken'];
 }
   // Make a POST Request to Messaging API to reply to sender
          $url = 'https://api.line.me/v2/bot/message/reply';
+         $url2 = 'https://api.line.me/v2/bot/message/reply';
          $data = [
           'replyToken' => $replyToken,
           'messages' => [$messages],
@@ -798,6 +799,7 @@ $replyToken = $event['replyToken'];
          $post = json_encode($data);
          $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
          $ch = curl_init($url);
+         $ch2 = curl_init($url2);
          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
          curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
