@@ -595,9 +595,10 @@ $replyToken = $event['replyToken'];
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("","", $_msg);
     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-    $url2 = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    // $url2 = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $json= file_get_contents($url);
-    $json= file_get_contents($url2);
+    // $json= file_get_contents($url2);
+    
     $events = json_decode($json, true);
     $title= $events['items'][0]['title'];
     $title= $events['items'][1]['title'];
@@ -613,7 +614,7 @@ $replyToken = $event['replyToken'];
         'template' => [
             'type' => 'buttons',
             'title' =>  $x_tra,
-            'text' =>   $title,
+            'text' =>   'สามารถกดดูข้อมูลจากลิงค์ด้านล่างได้เลยค่ะ',
             'actions' => [
 
                 [
@@ -745,7 +746,7 @@ $replyToken = $event['replyToken'];
 }elseif ($event['type'] == 'message' && $event['message']['type'] == 'text'){
     
      $replyToken = $event['replyToken'];
-      $text = "ดิฉันไม่เข้าใจค่ะ";
+      $text = "ดิฉันไม่เข้าใจค่ะ กรุณาพิมพ์ใหม่อีกครั้งนะคะ";
       $messages = [
           'type' => 'text',
           'text' => $text
@@ -790,7 +791,7 @@ $replyToken = $event['replyToken'];
 }
   // Make a POST Request to Messaging API to reply to sender
          $url = 'https://api.line.me/v2/bot/message/reply';
-         $url2 = 'https://api.line.me/v2/bot/message/reply';
+         // $url2 = 'https://api.line.me/v2/bot/message/reply';
          $data = [
           'replyToken' => $replyToken,
           'messages' => [$messages],
@@ -799,7 +800,7 @@ $replyToken = $event['replyToken'];
          $post = json_encode($data);
          $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
          $ch = curl_init($url);
-         $ch2 = curl_init($url2);
+         // $ch2 = curl_init($url2);
          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
          curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
