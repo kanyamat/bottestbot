@@ -510,6 +510,7 @@ $replyToken = $event['replyToken'];
                                       ]
                                   ]
                               ]; 
+ 
   }elseif (is_numeric($_msg) !== false && $seqcode == "0017"  )  {
                  $weight =  $_msg;
                  $weight_mes = 'สัปดาห์นี้คุณมีน้ำหนัก'.$weight.'กิโลกรัมถูกต้องหรือไม่คะ';
@@ -535,6 +536,7 @@ $replyToken = $event['replyToken'];
                                  ]     
                              ];   
     $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0017', $weight,'','0',NOW(),NOW())") or die(pg_errormessage()); 
+
 }elseif($event['message']['text'] == "Clear" ){
       $replyToken = $event['replyToken'];
       $text = "cleared!";
@@ -545,7 +547,38 @@ $replyToken = $event['replyToken'];
     $sql =pg_exec($dbconn,"DELETE FROM users WHERE user_id = '{$user_id}' ");
     $sql1 =pg_exec($dbconn,"DELETE FROM recordofpregnancy WHERE user_id = '{$user_id}' ");
    
+}elseif($event['message']['text'] == "x" ){
+      $replyToken = $event['replyToken'];
+      $text = "ออกจากการสอบถาม";
+      $messages = [
+          'type' => 'text',
+          'text' => $text
+        ]; 
+   $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0000', '','0000','0',NOW(),NOW())") or die(pg_errormessage()); 
 
+}elseif($event['message']['text'] == "Ramiหยุด" ){
+      $replyToken = $event['replyToken'];
+      $text = "RAMIหยุดการส่งข้อความให้คุณแล้วค่ะ";
+      $messages = [
+          'type' => 'text',
+          'text' => $text
+        ]; 
+   pg_exec($dbconn, "UPDATE users SET status= 0 WHERE user_id = '{$user_id}' ") or die(pg_errormessage());
+
+
+
+}elseif($events['events'][0]['message']['type'] == 'location') {
+    $x_tra = str_replace("Unnamed Road","", $_msg);
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    $json= file_get_contents($url);
+    $events = json_decode($json, true);
+    $address = $events['events'][0]['message']['address'] ;
+    $replyToken = $event['replyToken'];
+     // Build message to reply back
+      $messages = [
+          'type' => 'text',
+          'text' => $address
+        ];
 ############################################## Conversation ##############################################
 
 
@@ -699,38 +732,7 @@ $replyToken = $event['replyToken'];
 
 
 
-}elseif($event['message']['text'] == "x" ){
-      $replyToken = $event['replyToken'];
-      $text = "ออกจากการสอบถาม";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ]; 
-   $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0000', '','0000','0',NOW(),NOW())") or die(pg_errormessage()); 
 
-}elseif($event['message']['text'] == "Ramiหยุด" ){
-      $replyToken = $event['replyToken'];
-      $text = "RAMIหยุดการส่งข้อความให้คุณแล้วค่ะ";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ]; 
-   pg_exec($dbconn, "UPDATE users SET status= 0 WHERE user_id = '{$user_id}' ") or die(pg_errormessage());
-
-
-
-}elseif($events['events'][0]['message']['type'] == 'location') {
-    $x_tra = str_replace("Unnamed Road","", $_msg);
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-    $json= file_get_contents($url);
-    $events = json_decode($json, true);
-    $address = $events['events'][0]['message']['address'] ;
-    $replyToken = $event['replyToken'];
-     // Build message to reply back
-      $messages = [
-          'type' => 'text',
-          'text' => $address
-        ];
 // $location = $events['events'][0]['message']['type']; 
 // $user_id = pg_escape_string($user);
 //   "message": {
