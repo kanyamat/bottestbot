@@ -628,7 +628,8 @@ $replyToken = $event['replyToken'];
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("","", $_msg);
     // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyChTL_piBbKdxW7av7yCLOkdO0IelD-4AI&q='.$x_tra;
+    // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyChTL_piBbKdxW7av7yCLOkdO0IelD-4AI&q='.$x_tra;
+     $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $json= file_get_contents($url);
     // $json= file_get_contents($url2);
     
