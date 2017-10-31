@@ -628,7 +628,7 @@ $replyToken = $event['replyToken'];
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("","", $_msg);
     // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDPQZW0B0VtstDaEKkf4cyTYeSq1MY5m1I&q='.$x_tra;
+    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDPQZW0B0VtstDaEKkf4cyTYeSq1MY5m1I&q='.$_msg;
     
    //$url = 'https://www.googleapis.com/customsearch/v1?&cx=011030528095328264272:_0c9oat4ztq&key=AIzaSyBgzyv2TiMpaZxxthxX1jYNdskfxi7ah_4&q='.$_msg;
     
@@ -644,69 +644,69 @@ $replyToken = $event['replyToken'];
     $link2 = $events['items'][1]['link'];
     $link3 = $events['items'][2]['link'];
   
-   // $messages = [
-   //      'type' => 'template',
-   //      'altText' => 'template',
-   //      'template' => [
-   //          'type' => 'buttons',
-   //          'title' =>  $x_tra,
-   //          'text' =>   'สามารถกดดูข้อมูลจากลิงค์ด้านล่างได้เลยค่ะ',
-   //          'actions' => [
-
-   //              [
-   //                  'type' => 'uri',
-   //                  'label' => 'ไปยังลิงค์',
-   //                  'uri' => $link
-   //              ],
-   //              [
-   //                  'type' => 'uri',
-   //                  'label' => 'ไปยังลิงค์ที่2',
-   //                  'uri' => $link2
-   //              ],
-   //              [
-   //                  'type' => 'uri',
-   //                  'label' => 'ไปยังลิงค์ที่3',
-   //                  'uri' => $link3
-   //              ]
-   //          ]
-   //      ]
-   //  ];
-
-$messages = [
-  'type'=> 'template',
-  'altText'=> 'this is a carousel template',
-  'template'=> [
-      'type'=> 'carousel',
-      'columns'=> [
-          [
-            'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
-            'title'=> $_msg,
-            'text'=>  $title,
-            'actions'=> [
+   $messages = [
+        'type' => 'template',
+        'altText' => 'template',
+        'template' => [
+            'type' => 'buttons',
+            'title' =>  $x_tra,
+            'text' =>   'สามารถกดดูข้อมูลจากลิงค์ด้านล่างได้เลยค่ะ',
+            'actions' => [
 
                 [
-                    'type'=> 'uri',
-                    'label'=> 'View detail',
-                    'uri'=> $link
-                ]
-            ]
-          ],
-          [
-            'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
-            'title'=>  'description',
-            'text'=> 'description',
-            'actions'=> [
-
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์',
+                    'uri' => $link
+                ],
                 [
-                    'type'=> 'uri',
-                    'label'=> 'detail',
-                    'uri'=> $link2
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์ที่2',
+                    'uri' => $link2
+                ],
+                [
+                    'type' => 'uri',
+                    'label' => 'ไปยังลิงค์ที่3',
+                    'uri' => $link3
                 ]
             ]
-          ]
-      ]
-  ]
-];
+        ]
+    ];
+
+// $messages = [
+//   'type'=> 'template',
+//   'altText'=> 'this is a carousel template',
+//   'template'=> [
+//       'type'=> 'carousel',
+//       'columns'=> [
+//           [
+//             'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+//             'title'=> $_msg,
+//             'text'=>  $title,
+//             'actions'=> [
+
+//                 [
+//                     'type'=> 'uri',
+//                     'label'=> 'View detail',
+//                     'uri'=> $link
+//                 ]
+//             ]
+//           ],
+//           [
+//             'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+//             'title'=>  'description',
+//             'text'=> 'description',
+//             'actions'=> [
+
+//                 [
+//                     'type'=> 'uri',
+//                     'label'=> 'detail',
+//                     'uri'=> $link2
+//                 ]
+//             ]
+//           ]
+//       ]
+//   ]
+// ];
 
 
 
