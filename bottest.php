@@ -668,59 +668,59 @@ $replyToken = $event['replyToken'];
         ]
     ];
 
-  // $messages = [
-  //   'type'=> 'template',
-  //   'altText'=> 'this is a carousel template',
-  //   'template'=> [
-  //       'type'=> 'carousel',
-  //       'columns'=> [
-  //           [
-  //             'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
-  //             'title'=> $x_tra,
-  //             'text'=> $title,
-  //             'actions'=> [
-  //                 [
-  //                     'type'=> 'uri',
-  //                     'label'=> 'View detail',
-  //                     'uri'=> $link
-  //                 ],
-  //                 [
-  //                     'type'=> 'uri',
-  //                     'label'=> 'View detail',
-  //                     'uri'=> $link
-  //                 ],
-  //                 [
-  //                     'type'=> 'uri',
-  //                     'label'=> 'View detail',
-  //                     'uri'=> $link
-  //                 ]
-  //             ]
-  //           ],
-  //           [
-  //             'thumbnailImageUrl' => 'https://example.com/bot/images/item2.jpg',
-  //             'title'=> $x_tra,
-  //             'text'=> $title,
-  //             'actions'=> [
-  //                 [
-  //                     'type'=> 'uri',
-  //                     'label'=> 'View detail',
-  //                     'data'=> $link
-  //                 ],
-  //                 [
-  //                     'type'=> 'uri',
-  //                     'label'=> 'View detail',
-  //                     'data'=> $link
-  //                 ],
-  //                 [
-  //                     'type'=> 'uri',
-  //                     'label'=> 'View detail',
-  //                     'uri'=> $link
-  //                 ]
-  //             ]
-  //           ]
-  //       ]
-  //   ]
-  // ];
+  $messages = [
+    'type'=> 'template',
+    'altText'=> 'this is a carousel template',
+    'template'=> [
+        'type'=> 'carousel',
+        'columns'=> [
+            [
+              'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+              'title'=> 't',
+              'text'=> 'h',
+              'actions'=> [
+                  [
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
+                      'uri'=> $link
+                  ],
+                  [
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
+                      'uri'=> $link
+                  ],
+                  [
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
+                      'uri'=> $link
+                  ]
+              ]
+            ],
+            [
+              'thumbnailImageUrl' => 'https://example.com/bot/images/item2.jpg',
+              'title'=> 'h',
+              'text'=>'t',
+              'actions'=> [
+                  [
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
+                      'data'=> $link
+                  ],
+                  [
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
+                      'data'=> $link
+                  ],
+                  [
+                      'type'=> 'uri',
+                      'label'=> 'View detail',
+                      'uri'=> $link
+                  ]
+              ]
+            ]
+        ]
+    ]
+  ];
 
 
 
