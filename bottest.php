@@ -623,7 +623,7 @@ $replyToken = $event['replyToken'];
  //        ]
  //    ];
 
-  }else if (strpos($_msg, 'แพ้ท้อง') !== false || strpos($_msg, 'ตั้งครรภ์') !== false || strpos($_msg, 'คนท้อง') !== false || strpos($_msg, 'ปวดท้อง') !== false || strpos($_msg, 'ท้องแข็ง') !== false || strpos($_msg, 'ปวด') !== false || strpos($_msg, 'กิน') !== false || strpos($_msg, 'ทาน') !== false || strpos($_msg, 'ดื่ม') !== false || strpos($_msg, 'อาหาร') !== false || strpos($_msg, 'ฝากครรภ์') !== false || strpos($_msg, 'ฝากท้อง') !== false || strpos($_msg, 'หมอ') !== false || strpos($_msg, 'ยา') !== false   )  {
+  }else if (strpos($_msg, 'แพ้ท้อง') !== false || strpos($_msg, 'ตั้งครรภ์') !== false || strpos($_msg, 'คนท้อง') !== false || strpos($_msg, 'ปวดท้อง') !== false || strpos($_msg, 'ท้องแข็ง') !== false || strpos($_msg, 'ปวด') !== false || strpos($_msg, 'กิน') !== false || strpos($_msg, 'ทาน') !== false || strpos($_msg, 'ดื่ม') !== false || strpos($_msg, 'อาหาร') !== false || strpos($_msg, 'ฝากครรภ์') !== false || strpos($_msg, 'ฝากท้อง') !== false || strpos($_msg, 'หมอ') !== false || strpos($_msg, 'ยา') !== false || strpos($_msg, 'สมุนไพร') !== false || strpos($_msg, 'น้ำนม') !== false|| strpos($_msg, 'เลือดออก') !== false  )  {
     
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("","", $_msg);
@@ -642,89 +642,87 @@ $replyToken = $event['replyToken'];
     $link2 = $events['items'][1]['link'];
     $link3 = $events['items'][2]['link'];
   
-   $messages = [
-        'type' => 'template',
-        'altText' => 'template',
-        'template' => [
-            'type' => 'buttons',
-            'title' =>  $x_tra,
-            'text' =>   'สามารถกดดูข้อมูลจากลิงค์ด้านล่างได้เลยค่ะ',
-            'actions' => [
+   // $messages = [
+   //      'type' => 'template',
+   //      'altText' => 'template',
+   //      'template' => [
+   //          'type' => 'buttons',
+   //          'title' =>  $x_tra,
+   //          'text' =>   'สามารถกดดูข้อมูลจากลิงค์ด้านล่างได้เลยค่ะ',
+   //          'actions' => [
 
+   //              [
+   //                  'type' => 'uri',
+   //                  'label' => 'ไปยังลิงค์',
+   //                  'uri' => $link
+   //              ],
+   //              [
+   //                  'type' => 'uri',
+   //                  'label' => 'ไปยังลิงค์ที่2',
+   //                  'uri' => $link2
+   //              ],
+   //              [
+   //                  'type' => 'uri',
+   //                  'label' => 'ไปยังลิงค์ที่3',
+   //                  'uri' => $link3
+   //              ]
+   //          ]
+   //      ]
+   //  ];
+
+$messages = [
+  'type'=> 'template',
+  'altText'=> 'this is a carousel template',
+  'template'=> [
+      'type'=> 'carousel',
+      'columns'=> [
+          [
+            'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+            'title'=> $_msg,
+            'text'=>  $title,
+            'actions'=> [
+                // [
+                //     'type'=> 'postback',
+                //     'label'=> 'link',
+                //     'data'=> 'link'
+                // ],
+                // [
+                //     'type'=> 'postback',
+                //     'label'=> 'Add to cart',
+                //    'data'=> 'action=add&itemid=111'
+                // ],
                 [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์',
-                    'uri' => $link
-                ],
-                [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์ที่2',
-                    'uri' => $link2
-                ],
-                [
-                    'type' => 'uri',
-                    'label' => 'ไปยังลิงค์ที่3',
-                    'uri' => $link3
+                    'type'=> 'uri',
+                    'label'=> 'View detail',
+                    'uri'=> $link
                 ]
             ]
-        ]
-    ];
-
-  // $messages = [
-
-  // 'type'=> 'template',
-  // 'altText'=> 'this is a carousel template',
-  // 'template'=> [
-  //     'type'=> 'carousel',
-  //     'columns'=> [
-  //         [
-  //           'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
-  //           'title'=> 'this is menu',
-  //           'text'=> 'description',
-  //           'actions'=> [
-  //               [
-  //                   'type'=> 'postback',
-  //                   'label'=> 'Buy',
-  //                   'data'=> 'action=buy&itemid=111'
-  //               ],
-  //               [
-  //                   'type'=> 'postback',
-  //                   'label'=> 'Add to cart',
-  //                   'data'=> 'action=add&itemid=111'
-  //               ],
-  //               [
-  //                   'type'=> 'uri',
-  //                   'label'=> 'View detail',
-  //                   'uri'=> 'http://example.com/page/111'
-  //               ]
-  //           ]
-  //         ],
-  //         [
-  //           'thumbnailImageUrl'=> 'https://example.com/bot/images/item2.jpg',
-  //           'title'=> 'this is menu',
-  //           'text'=> 'description',
-  //           'actions'=> [
-  //               [
-  //                   'type'=> 'postback',
-  //                   'label'=> 'Buy',
-  //                   'data'=> 'action=buy&itemid=222'
-  //               ],
-  //               [
-  //                   'type'=> 'postback'
-  //                   'label'=> 'Add to cart',
-  //                   'data'=> 'action=add&itemid=222'
-  //               ],
-  //               [
-  //                   'type'=> 'uri',
-  //                   'label'=> 'View detail',
-  //                   'uri'=> 'http://example.com/page/222'
-  //               ]
-  //           ]
-  //         ]
-  //     ]
-  // ]
-
-  // ];
+          ],
+          [
+            'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+            'title'=>  'description',
+            'text'=> 'description',
+            'actions'=> [
+                // [
+                //     'type'=> 'postback',
+                //     'label'=> 'link',
+                //     'data'=>  'link'
+                // ],
+                // [
+                //     'type'=> 'postback',
+                //     'label'=> 'Add to cart',
+                //    'data'=> 'action=add&itemid=111'
+                // ],
+                [
+                    'type'=> 'uri',
+                    'label'=> 'View detail',
+                    'uri'=> 'http://example.com/page/111'
+                ]
+            ]
+          ]
+      ]
+  ]
+];
 
 
 
