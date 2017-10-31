@@ -626,10 +626,10 @@ $replyToken = $event['replyToken'];
   }else if (strpos($_msg, 'แพ้ท้อง') !== false || strpos($_msg, 'ตั้งครรภ์') !== false || strpos($_msg, 'คนท้อง') !== false || strpos($_msg, 'ปวดท้อง') !== false || strpos($_msg, 'ท้องแข็ง') !== false || strpos($_msg, 'ปวด') !== false || strpos($_msg, 'กิน') !== false || strpos($_msg, 'ทาน') !== false || strpos($_msg, 'ดื่ม') !== false || strpos($_msg, 'อาหาร') !== false|| strpos($_msg, 'ฝากครรภ์') !== false || strpos($_msg, 'ฝากท้อง') !== false|| strpos($_msg, 'หมอ') !== false || strpos($_msg, 'ยา') !== false || strpos($_msg, 'สมุนไพร') !== false || strpos($_msg, 'น้ำนม') !== false|| strpos($_msg, 'เลือดออก') !== false  )  {
     $replyToken = $event['replyToken'];
     $x_tra = str_replace("","", $_msg);
-    $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+    // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $url2 = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     $json= file_get_contents($url);
-    $json= file_get_contents($url2);
+    // $json= file_get_contents($url2);
     
     $events = json_decode($json, true);
     $title= $events['items'][0]['title'];
@@ -792,7 +792,7 @@ $replyToken = $event['replyToken'];
 }
   // Make a POST Request to Messaging API to reply to sender
          $url = 'https://api.line.me/v2/bot/message/reply';
-         $url2 = 'https://api.line.me/v2/bot/message/reply';
+         // $url2 = 'https://api.line.me/v2/bot/message/reply';
          $data = [
           'replyToken' => $replyToken,
           'messages' => [$messages],
@@ -801,7 +801,7 @@ $replyToken = $event['replyToken'];
          $post = json_encode($data);
          $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
          $ch = curl_init($url);
-         $ch2 = curl_init($url2);
+         // $ch2 = curl_init($url2);
          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
          curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
