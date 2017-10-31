@@ -44,27 +44,21 @@ $data = json_encode($arrayName);
 }                            
 </style>
 <script type="text/javascript">
+
 var chartData = generateChartData();
 var chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
     "theme": "light",
     "marginRight": 80,
-    "dataProvider": [{ chartData,
-        "lineColor": "#b7e021",
-
-    }],
+    "dataProvider": chartData,
     "balloon": {
         "cornerRadius": 6,
         "horizontalPadding": 15,
         "verticalPadding": 10
     },
     "valueAxes": [{
-        "duration": "mm",
-        "durationUnits": {
-            "hh": "h ",
-            "mm": "min"
-        },
-        "axisAlpha": 0
+        "position": "left",
+        "title": "weight"
     }],
     "graphs": [{
         "bullet": "square",
@@ -78,31 +72,16 @@ var chart = AmCharts.makeChart("chartdiv", {
         "valueField": "duration"
     }],
     "chartScrollbar": {
-
     },
     "chartCursor": {
-        "categoryBalloonDateFormat": "YYYY MMM DD",
+        "categoryBalloonDateFormat": "week",
         "cursorAlpha": 0,
         "fullWidth": true
     },
-    "dataDateFormat": "YYYY-MM-DD",
+    
     "categoryField": "date",
+    
     "categoryAxis": {
-        "dateFormats": [{
-            "period": "DD",
-            "format": "DD"
-        }, {
-            "period": "WW",
-            "format": "MMM DD"
-        }, {
-            "period": "MM",
-            "format": "MMM"
-        }, {
-            "period": "YYYY",
-            "format": "YYYY"
-        }],
-        "parseDates": true,
-        "autoGridCount": false,
         "axisColor": "#555555",
         "gridAlpha": 0,
         "gridCount": 50
@@ -112,63 +91,11 @@ var chart = AmCharts.makeChart("chartdiv", {
     }
 });
 
-
-
 chart.addListener("dataUpdated", zoomChart);
-
 function zoomChart() {
-    chart.zoomToDates(new Date(2012, 0, 3), new Date(2012, 0, 11));
-}   
-// var chartData = generateChartData();
-// var chart = AmCharts.makeChart("chartdiv", {
-//     "type": "serial",
-//     "theme": "light",
-//     "marginRight": 80,
-//     "dataProvider": chartData,
-//     "balloon": {
-//         "cornerRadius": 6,
-//         "horizontalPadding": 15,
-//         "verticalPadding": 10
-//     },
-//     "valueAxes": [{
-//         "position": "left",
-//         "title": "weight"
-//     }],
-//     "graphs": [{
-//         "bullet": "square",
-//         "bulletBorderAlpha": 1,
-//         "bulletBorderThickness": 1,
-//         "fillAlphas": 0.3,
-//         "fillColorsField": "lineColor",
-//         "legendValueText": "[[value]]",
-//         "lineColorField": "lineColor",
-//         "title": "duration",
-//         "valueField": "duration"
-//     }],
-//     "chartScrollbar": {
-//     },
-//     "chartCursor": {
-//         "categoryBalloonDateFormat": "week",
-//         "cursorAlpha": 0,
-//         "fullWidth": true
-//     },
-    
-//     "categoryField": "date",
-    
-//     "categoryAxis": {
-//         "axisColor": "#555555",
-//         "gridAlpha": 0,
-//         "gridCount": 50
-//     },
-//     "export": {
-//         "enabled": true
-//     }
-// });
+    // chart.zoomToDates(new Date(2012, 0, 3), new Date(2012, 0, 11));
+}
 
-// chart.addListener("dataUpdated", zoomChart);
-// function zoomChart() {
-//     // chart.zoomToDates(new Date(2012, 0, 3), new Date(2012, 0, 11));
-// }
 // generate some random data, quite different range
 function generateChartData() {
    var chartData = <?php 
