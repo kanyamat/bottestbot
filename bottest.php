@@ -626,7 +626,7 @@ $replyToken = $event['replyToken'];
   // }else if (strpos($_msg, 'แพ้ท้อง') !== false || strpos($_msg, 'ตั้งครรภ์') !== false || strpos($_msg, 'คนท้อง') !== false || strpos($_msg, 'ปวดท้อง') !== false || strpos($_msg, 'ท้องแข็ง') !== false || strpos($_msg, 'ปวด') !== false || strpos($_msg, 'กิน') !== false || strpos($_msg, 'ทาน') !== false || strpos($_msg, 'ดื่ม') !== false || strpos($_msg, 'อาหาร') !== false || strpos($_msg, 'ฝากครรภ์') !== false || strpos($_msg, 'ฝากท้อง') !== false || strpos($_msg, 'หมอ') !== false || strpos($_msg, 'ยา') !== false || strpos($_msg, 'สมุนไพร') !== false || strpos($_msg, 'น้ำนม') !== false|| strpos($_msg, 'เลือดออก') !== false  )  {
 }elseif(strpos($_msg, 'แพ้ท้อง')!== false )  {   
     $replyToken = $event['replyToken'];
-    $x_tra = str_replace("","", $_msg);
+    //$x_tra = str_replace("","", $_msg);
     // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
     // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:gqr4m9bfx0i&key=AIzaSyChTL_piBbKdxW7av7yCLOkdO0IelD-4AI&q='.$x_tra;
     $url = 'https://www.googleapis.com/customsearch/v1?&cx=011030528095328264272:_0c9oat4ztq&key=AIzaSyBgzyv2TiMpaZxxthxX1jYNdskfxi7ah_4&q='.$_msg;
@@ -694,7 +694,7 @@ $messages = [
                 // ],
                 [
                     'type'=> 'uri',
-                    'label'=> 'View detail',
+                    'label'=> 'สามารถกดดูข้อมูลจากลิงค์ด้านล่างได้เลยค่ะ',
                     'uri'=> $link
                 ]
             ]
@@ -716,8 +716,8 @@ $messages = [
                 // ],
                 [
                     'type'=> 'uri',
-                    'label'=> 'View detail',
-                    'uri'=> 'http://example.com/page/111'
+                    'label'=> 'สามารถกดดูข้อมูลจากลิงค์ด้านล่างได้เลยค่ะ',
+                    'uri'=> $link2
                 ]
             ]
           ]
