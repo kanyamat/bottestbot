@@ -447,6 +447,7 @@ if (!is_null($events['events'])) {
          $result = curl_exec($ch);
          curl_close($ch);
          echo $result . "\r\n";
+
   }elseif (is_numeric($_msg) !== false && $seqcode == "0014"  ) {
                  $height =  str_replace("ส่วนสูง","", $_msg);
                  $height_mes = 'ปัจจุบัน คุณสูง '.$height.'ถูกต้องหรือไม่คะ';
@@ -723,7 +724,29 @@ $replyToken = $event['replyToken'];
     ];
 
 
-
+                    $messages1 = [
+                        'type' => 'text',
+                        'text' =>  '$des'
+                        'text' =>  '$deq'
+                      ];
+         $url = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages, $messages1],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
+         
 
 // ############################ END Conversation ############################
 
