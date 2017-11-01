@@ -682,7 +682,7 @@ $replyToken = $event['replyToken'];
           'type'=> 'carousel',
           'columns'=> [
               [
-                'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+                'thumbnailImageUrl'=> 'https://ptcdn.info/pantip/pantip_logo_02.png',
                 'title'=> $_msg,
                 'text'=>  $title,
                 'actions'=> [
@@ -695,7 +695,7 @@ $replyToken = $event['replyToken'];
                 ]
               ],
               [
-                'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+                'thumbnailImageUrl'=> 'https://ptcdn.info/pantip/pantip_logo_02.png',
                 'title'=>  $_msg,
                 'text'=> $title2,
                 'actions'=> [
@@ -708,7 +708,7 @@ $replyToken = $event['replyToken'];
                 ]
               ],
               [
-                'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+                'thumbnailImageUrl'=> 'https://ptcdn.info/pantip/pantip_logo_02.png',
                 'title'=>  $_msg,
                 'text'=> $title3,
                 'actions'=> [
