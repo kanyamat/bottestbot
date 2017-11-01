@@ -694,14 +694,27 @@ $replyToken = $event['replyToken'];
               ],
               [
                 'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
-                'title'=>  'description',
-                'text'=> 'description',
+                'title'=>  $_msg,
+                'text'=> $title2,
                 'actions'=> [
 
                     [
                         'type'=> 'uri',
                         'label'=> 'detail',
                         'uri'=> $link2
+                    ]
+                ]
+              ],
+              [
+                'thumbnailImageUrl'=> 'https://example.com/bot/images/item1.jpg',
+                'title'=>  $_msg,
+                'text'=> $title3,
+                'actions'=> [
+
+                    [
+                        'type'=> 'uri',
+                        'label'=> 'detail',
+                        'uri'=> $link3
                     ]
                 ]
               ]
