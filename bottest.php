@@ -633,17 +633,17 @@ $replyToken = $event['replyToken'];
    // $url = 'https://www.googleapis.com/customsearch/v1?&cx=011030528095328264272:_0c9oat4ztq&key=AIzaSyBgzyv2TiMpaZxxthxX1jYNdskfxi7ah_4&q='.$_msg;
    $url = 'https://www.googleapis.com/customsearch/v1?&cx=011030528095328264272:_0c9oat4ztq&key=AIzaSyBgzyv2TiMpaZxxthxX1jYNdskfxi7ah_4&q='.$_msg;
      
-//     $json= file_get_contents($url);
-//     // $json= file_get_contents($url2);
+    $json= file_get_contents($url);
+    // $json= file_get_contents($url2);
     
-//     $events = json_decode($json, true);
-//     $title= $events['items'][0]['title'];
-//     $title2= $events['items'][1]['title'];
-//     $title3= $events['items'][2]['title'];
+    $events = json_decode($json, true);
+    $title= $events['items'][0]['title'];
+    $title2= $events['items'][1]['title'];
+    $title3= $events['items'][2]['title'];
     
-//     $link = $events['items'][0]['link'];
-//     $link2 = $events['items'][1]['link'];
-//     $link3 = $events['items'][2]['link'];
+    $link = $events['items'][0]['link'];
+    $link2 = $events['items'][1]['link'];
+    $link3 = $events['items'][2]['link'];
   
 //    $messages = [
 //         'type' => 'template',
