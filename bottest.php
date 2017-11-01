@@ -624,111 +624,111 @@ $replyToken = $event['replyToken'];
  //        ]
  //    ];
 
-  }else if (strpos($_msg, 'แพ้ท้อง') !== false || strpos($_msg, 'ตั้งครรภ์') !== false || strpos($_msg, 'คนท้อง') !== false || strpos($_msg, 'ปวดท้อง') !== false || strpos($_msg, 'ท้องแข็ง') !== false || strpos($_msg, 'ปวด') !== false || strpos($_msg, 'กิน') !== false || strpos($_msg, 'ทาน') !== false || strpos($_msg, 'ดื่ม') !== false || strpos($_msg, 'อาหาร') !== false || strpos($_msg, 'ฝากครรภ์') !== false || strpos($_msg, 'ฝากท้อง') !== false || strpos($_msg, 'หมอ') !== false || strpos($_msg, 'ยา') !== false || strpos($_msg, 'สมุนไพร') !== false || strpos($_msg, 'บำรุง') !== false  || strpos($_msg, 'น้ำนม') !== false|| strpos($_msg, 'เลือดออก') !== false || strpos($_msg, 'อาการชา') !== false  )  {
-// }elseif(strpos($_msg, 'แพ้ท้อง')!== false )  {   
-    $replyToken = $event['replyToken'];
-    //$x_tra = str_replace("","", $_msg);
-    // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
-    // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDPQZW0B0VtstDaEKkf4cyTYeSq1MY5m1I&q='.$_msg;
+//   }else if (strpos($_msg, 'แพ้ท้อง') !== false || strpos($_msg, 'ตั้งครรภ์') !== false || strpos($_msg, 'คนท้อง') !== false || strpos($_msg, 'ปวดท้อง') !== false || strpos($_msg, 'ท้องแข็ง') !== false || strpos($_msg, 'ปวด') !== false || strpos($_msg, 'กิน') !== false || strpos($_msg, 'ทาน') !== false || strpos($_msg, 'ดื่ม') !== false || strpos($_msg, 'อาหาร') !== false || strpos($_msg, 'ฝากครรภ์') !== false || strpos($_msg, 'ฝากท้อง') !== false || strpos($_msg, 'หมอ') !== false || strpos($_msg, 'ยา') !== false || strpos($_msg, 'สมุนไพร') !== false || strpos($_msg, 'บำรุง') !== false  || strpos($_msg, 'น้ำนม') !== false|| strpos($_msg, 'เลือดออก') !== false || strpos($_msg, 'อาการชา') !== false  )  {
+// // }elseif(strpos($_msg, 'แพ้ท้อง')!== false )  {   
+//     $replyToken = $event['replyToken'];
+//     //$x_tra = str_replace("","", $_msg);
+//     // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDmVU8aawr5mNpqbiUdYMph8r7K-siKn-0&q='.$x_tra;
+//     // $url = 'https://www.googleapis.com/customsearch/v1?&cx=014388729015054466439:e_gyj6qnxr8&key=AIzaSyDPQZW0B0VtstDaEKkf4cyTYeSq1MY5m1I&q='.$_msg;
     
-   $url = 'https://www.googleapis.com/customsearch/v1?&cx=011030528095328264272:_0c9oat4ztq&key=AIzaSyBgzyv2TiMpaZxxthxX1jYNdskfxi7ah_4&q='.$_msg;
- /*  ของงสี*/
-   // $url = 'https://www.googleapis.com/customsearch/v1?&cx=011030528095328264272:_0c9oat4ztq&key=AIzaSyBgzyv2TiMpaZxxthxX1jYNdskfxi7ah_4&q='.$_msg;
+//    $url = 'https://www.googleapis.com/customsearch/v1?&cx=011030528095328264272:_0c9oat4ztq&key=AIzaSyBgzyv2TiMpaZxxthxX1jYNdskfxi7ah_4&q='.$_msg;
+//  /*  ของงสี*/
+//    // $url = 'https://www.googleapis.com/customsearch/v1?&cx=011030528095328264272:_0c9oat4ztq&key=AIzaSyBgzyv2TiMpaZxxthxX1jYNdskfxi7ah_4&q='.$_msg;
      
-    $json= file_get_contents($url);
-    // $json= file_get_contents($url2);
+//     $json= file_get_contents($url);
+//     // $json= file_get_contents($url2);
     
-    $events = json_decode($json, true);
-    $title= $events['items'][0]['title'];
-    $title2= $events['items'][1]['title'];
-    $title3= $events['items'][2]['title'];
+//     $events = json_decode($json, true);
+//     $title= $events['items'][0]['title'];
+//     $title2= $events['items'][1]['title'];
+//     $title3= $events['items'][2]['title'];
     
-    $link = $events['items'][0]['link'];
-    $link2 = $events['items'][1]['link'];
-    $link3 = $events['items'][2]['link'];
+//     $link = $events['items'][0]['link'];
+//     $link2 = $events['items'][1]['link'];
+//     $link3 = $events['items'][2]['link'];
   
-//    $messages = [
-//         'type' => 'template',
-//         'altText' => 'template',
-//         'template' => [
-//             'type' => 'buttons',
-//             'title' =>  $x_tra,
-//             'text' =>   'สามารถกดดูข้อมูลจากลิงค์ด้านล่างได้เลยค่ะ',
-//             'actions' => [
+// //    $messages = [
+// //         'type' => 'template',
+// //         'altText' => 'template',
+// //         'template' => [
+// //             'type' => 'buttons',
+// //             'title' =>  $x_tra,
+// //             'text' =>   'สามารถกดดูข้อมูลจากลิงค์ด้านล่างได้เลยค่ะ',
+// //             'actions' => [
 
-//                 [
-//                     'type' => 'uri',
-//                     'label' => 'ไปยังลิงค์',
-//                     'uri' => $link
-//                 ],
-//                 [
-//                     'type' => 'uri',
-//                     'label' => 'ไปยังลิงค์ที่2',
-//                     'uri' => $link2
-//                 ],
-//                 [
-//                     'type' => 'uri',
-//                     'label' => 'ไปยังลิงค์ที่3',
-//                     'uri' => $link3
+// //                 [
+// //                     'type' => 'uri',
+// //                     'label' => 'ไปยังลิงค์',
+// //                     'uri' => $link
+// //                 ],
+// //                 [
+// //                     'type' => 'uri',
+// //                     'label' => 'ไปยังลิงค์ที่2',
+// //                     'uri' => $link2
+// //                 ],
+// //                 [
+// //                     'type' => 'uri',
+// //                     'label' => 'ไปยังลิงค์ที่3',
+// //                     'uri' => $link3
+// //                 ]
+// //             ]
+// //         ]
+// //     ];
+
+//     $messages = [
+//       'type'=> 'template',
+//       'altText'=> 'this is a carousel template',
+//       'template'=> [
+//           'type'=> 'carousel',
+//           'columns'=> [
+//               [
+//                 'thumbnailImageUrl'=> 'https://ptcdn.info/pantip/pantip_logo_02.png',
+//                 'title'=> $_msg,
+//                 'text'=>  $title,
+//                 'actions'=> [
+
+//                     [
+//                         'type'=> 'uri',
+//                         'label'=> 'View detail',
+//                         'uri'=> $link
+//                     ]
 //                 ]
-//             ]
-//         ]
+//               ],
+//               [
+//                 'thumbnailImageUrl'=> 'https://ptcdn.info/pantip/pantip_logo_02.png',
+//                 'title'=>  $_msg,
+//                 'text'=> $title2,
+//                 'actions'=> [
+
+//                     [
+//                         'type'=> 'uri',
+//                         'label'=> 'detail',
+//                         'uri'=> $link2
+//                     ]
+//                 ]
+//               ],
+//               [
+//                 'thumbnailImageUrl'=> 'https://ptcdn.info/pantip/pantip_logo_02.png',
+//                 'title'=>  $_msg,
+//                 'text'=> $title3,
+//                 'actions'=> [
+
+//                     [
+//                         'type'=> 'uri',
+//                         'label'=> 'detail',
+//                         'uri'=> $link3
+//                     ]
+//                 ]
+//               ]
+//           ]
+//       ]
 //     ];
 
-    $messages = [
-      'type'=> 'template',
-      'altText'=> 'this is a carousel template',
-      'template'=> [
-          'type'=> 'carousel',
-          'columns'=> [
-              [
-                'thumbnailImageUrl'=> 'https://ptcdn.info/pantip/pantip_logo_02.png',
-                'title'=> $_msg,
-                'text'=>  $title,
-                'actions'=> [
 
-                    [
-                        'type'=> 'uri',
-                        'label'=> 'View detail',
-                        'uri'=> $link
-                    ]
-                ]
-              ],
-              [
-                'thumbnailImageUrl'=> 'https://ptcdn.info/pantip/pantip_logo_02.png',
-                'title'=>  $_msg,
-                'text'=> $title2,
-                'actions'=> [
-
-                    [
-                        'type'=> 'uri',
-                        'label'=> 'detail',
-                        'uri'=> $link2
-                    ]
-                ]
-              ],
-              [
-                'thumbnailImageUrl'=> 'https://ptcdn.info/pantip/pantip_logo_02.png',
-                'title'=>  $_msg,
-                'text'=> $title3,
-                'actions'=> [
-
-                    [
-                        'type'=> 'uri',
-                        'label'=> 'detail',
-                        'uri'=> $link3
-                    ]
-                ]
-              ]
-          ]
-      ]
-    ];
-
-
-                    $messages1 = [
-                        'type' => 'text',
-                        'text' =>  'ท่านสามารถดูรายละเอียดเพิ่มเติมได้ที่ '. 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$_msg
-                      ];
+//                     $messages1 = [
+//                         'type' => 'text',
+//                         'text' =>  'ท่านสามารถดูรายละเอียดเพิ่มเติมได้ที่ '. 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$_msg
+//                       ];
 
          // $url = 'https://api.line.me/v2/bot/message/reply';
          // $data = [
