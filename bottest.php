@@ -727,7 +727,7 @@ $replyToken = $event['replyToken'];
                     $messages1 = [
                         'type' => 'text',
                         'text' =>  '$des'
-                        'text' =>  '$deq'
+                   
                       ];
          $url = 'https://api.line.me/v2/bot/message/reply';
          $data = [
