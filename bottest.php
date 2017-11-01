@@ -726,7 +726,7 @@ $replyToken = $event['replyToken'];
 
                     $messages1 = [
                         'type' => 'text',
-                        'text' =>  'ท่านสามารถดูรายละเอียดเพิ่มเติมได้ที่'. 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$_msg
+                        'text' =>  'ท่านสามารถดูรายละเอียดเพิ่มเติมได้ที่ '. 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$_msg
                       ];
 
          $url = 'https://api.line.me/v2/bot/message/reply';
