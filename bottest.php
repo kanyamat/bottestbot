@@ -730,23 +730,23 @@ $replyToken = $event['replyToken'];
                         'text' =>  'ท่านสามารถดูรายละเอียดเพิ่มเติมได้ที่ '. 'http://search.pantip.com/ss?s=a&nms=1&sa=Smart+Search&q='.$_msg
                       ];
 
-         // $url = 'https://api.line.me/v2/bot/message/reply';
-         // $data = [
-         //  'replyToken' => $replyToken,
-         //  'messages' => [$messages, $messages1],
-         // ];
-         // error_log(json_encode($data));
-         // $post = json_encode($data);
-         // $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-         // $ch = curl_init($url);
-         // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-         // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-         // curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-         // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-         // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-         // $result = curl_exec($ch);
-         // curl_close($ch);
-         // echo $result . "\r\n";
+         $url = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages, $messages1],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
          
 
 // ############################ END Conversation ############################
@@ -819,7 +819,7 @@ $replyToken = $event['replyToken'];
          // $url2 = 'https://api.line.me/v2/bot/message/reply';
          $data = [
           'replyToken' => $replyToken,
-          'messages' => [$messages,$messages1],
+          'messages' => [$messages],
          ];
          error_log(json_encode($data));
          $post = json_encode($data);
